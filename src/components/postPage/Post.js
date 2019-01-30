@@ -17,11 +17,8 @@ class Post extends Component {
     // let user = this.props.ProfileStore.user
     let url = `${API_URL}/twitter/post?socketId=${socket.id}`
     console.log(url)
-    console.log(user)
     console.log(this.props.PostStore)
     Axios.post(url, {
-      accessToken: user.accessToken,
-      refreshToken: user.refreshToken,
       text: this.props.PostStore.TextInput,
       img: this.props.PostStore.imageInput
     })
