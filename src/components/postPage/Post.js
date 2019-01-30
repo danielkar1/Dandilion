@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import TextInput from './TextInput'
 import CheckInputs from './CheckInputs'
+import Axios from 'axios';
+import io from 'socket.io-client'
+import FontAwesome from '@fortawesome/fontawesome-free'
+const API_URL = 'http://127.0.0.1:8080'
+const socket = io(API_URL)
 
 @observer
 class Post extends Component {
@@ -16,36 +21,13 @@ class Post extends Component {
       .then(res => console.log(res))
   }
   render() {
+    const { name, photo } = this.state.user
+    const { disabled } = this.state
     return (
       <div className="post">
         <TextInput />
         <CheckInputs />
-        <div className={'container'}>
-          {/* Show the user if it exists. Otherwise show the login button */}
-          {name
-            ? <div className={'card'}>
-              <img src={photo} alt={name} />
-              <FontAwesome
-                name={'times-circle'}
-                className={'close'}
-                onClick={this.closeCard.bind(this)}
-              />
-              <h4>{`@${name}`}</h4>
-            </div>
-            : <div className={'button'}>
-              <button
-                onClick={this.startAuth.bind(this)}
-                className={`twitter ${disabled}`}
-              >
-                <FontAwesome
-                  name={'twitter'}
-                />button
-            </button>
-            </div>
-          }
-          <button onClick={this.clickFunc}> post </button>
-          {/* <Footer /> */}
-        </div>
+        <button onClick={this.clickFunc}> post </button>
         <button>Post</button>
       </div>
     )

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import io from 'socket.io-client'
+const API_URL = 'http://127.0.0.1:8080'
+const socket = io(API_URL)
 
 class Profile extends Component {
   constructor() {
@@ -59,13 +61,36 @@ class Profile extends Component {
   closeCard() {
     this.setState({ user: {} })
   }
-    render() {
-      return (
-        <div className="profile">
-            profile
+  render() {
+    return (
+      <div className="profile">
+        <div className={'container'}>
+          {/* Show the user if it exists. Otherwise show the login button */}
+          {name
+            ? <div className={'card'}>
+              <img src={photo} alt={name} />
+              <FontAwesome
+                name={'times-circle'}
+                className={'close'}
+                onClick={this.closeCard.bind(this)}
+              />
+              <h4>{`@${name}`}</h4>
+            </div>
+            : <div className={'button'}>
+              <button
+                onClick={this.startAuth.bind(this)}
+                className={`twitter ${disabled}`}
+              >
+                <FontAwesome
+                  name={'twitter'}
+                />button
+            </button>
+            </div>
+          }
         </div>
-      );
-    }
+      </div>
+    );
   }
-  
-  export default Profile;
+}
+
+export default Profile;
