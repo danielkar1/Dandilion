@@ -1,4 +1,4 @@
-USE danielkar1_db;
+USE AlonRR_db;
 
 -- CREATE TABLE User(
 --     id INT NOT NULL AUTO_INCREMENT NULL PRIMARY KEY,
@@ -7,6 +7,7 @@ USE danielkar1_db;
     
     
 -- );
+
 -- CREATE TABLE Twitter(
 --     id INT NOT NULL AUTO_INCREMENT NULL PRIMARY KEY,
 --     Twitter_id INT,
@@ -21,7 +22,7 @@ USE danielkar1_db;
 --     Twitter_id INT,
 --    FOREIGN KEY(User_id) REFERENCES User(id),
 --    FOREIGN KEY(Twitter_id) REFERENCES Twitter(id)
-);
+-- );
 
 
 -- DROP TABLE User_SocialNetwork

@@ -8,7 +8,7 @@ class StartPageStore {
             value: ''
         },
         password: {
-            type: 'password',
+            type: 'text',
             placeholder: 'Password',
             value: ''
         }

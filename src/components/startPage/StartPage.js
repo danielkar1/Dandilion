@@ -3,6 +3,10 @@ import StartPageStore from '../../stores/StartPageStore'
 import ProfileStore from '../../stores/ProfileStore'
 import { inject, observer } from 'mobx-react'
 import Axios from 'axios'
+import io from 'socket.io-client'
+
+const API_URL = 'http://127.0.0.1:8080'
+const socket = io(API_URL)
 
 @inject(`StartPageStore`, `ProfileStore`)
 @observer
@@ -12,11 +16,15 @@ class StartPage extends Component {
     }
     login = () => {
         let LoginData = this.props.StartPageStore.LoginData
-        Axios.post(`/login`, {
+        console.log(this.props.StartPageStore.LoginData.password)
+        let url = `${API_URL}/login?socketId=${socket.id}`
+        console.log(LoginData)
+        Axios.post(url, {
             password: LoginData.password.value,
             name: LoginData.name.value
         })
             .then(Id => {
+                console.log(`sadas`)
                 ProfileStore.clientInternalIdstorage(Id)
                 this.props.StartPageStore.resetValues()
             })
@@ -29,7 +37,7 @@ class StartPage extends Component {
                     return (
                         <div key={index}>
                             <label>{d}</label>
-                            <input type={inputSettings[d].type} name={d} onChange={this.handleChange} placeholder={inputSettings[d].placeholder}></input>
+                            <input type={inputSettings[d].type} name={d} onKeyPress={this.handleChange} placeholder={inputSettings[d].placeholder}></input>
                         </div>
                     )
                 })}
