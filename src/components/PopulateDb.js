@@ -1,24 +1,26 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://danielkar1:12345678@fs-bootcamp.cqc0oq2maxqm.us-west-2.rds.amazonaws.com/danielkar1_db')
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
+import { action } from 'mobx';
 
 
-
-
-class SqlDb extends  Component {
-  constructor(){
-  super()
-  this.accessToken=""
-  this.accessTokenSecret=""
-  }
-    insertUserToDb=()=>{
-sequelize
-    .query(`INSERT INTO User VALUES(null,12345,'Mozart')`)
+@observer
+class PopulateDb extends  Component {
+    @observeble userId
+    @observable accessToken
+    @observable accessTokenSecret
+    @observable UserSocialCounter=this.GettableSize()
+   @action insertNewUserToDb=(password,name)=>{
+    sequelize
+    .query(`INSERT INTO User VALUES(null,${password},${name})`)
     .then(function (result) {
         console.log(result)
+
     })
     }
 
-    insertTokenToDb=()=>{
+  @action  insertTokenToDb=()=>{
     sequelize
     .query(`INSERT INTO Twitter VALUES(null,'1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg','DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb')`)
     .then(function (result) {
@@ -26,27 +28,53 @@ sequelize
     })
     }
 
-    insetIntoUserNetworkTable=()=>{
+   @action insetIntoUserNetworkTable=()=>{
     sequelize
-    .query(`INSERT INTO User_SocialNetwork VALUES(1,1)`)
+    .query(`INSERT INTO User_SocialNetwork VALUES(${this.UserSocialCounter},${this.UserSocialCounter})`)
     .then(function (result) {
         console.log(result)
+        this.UserSocialCounter++
     })
     }
-}
-const GetAccessTokens= (userId,SocielNetworkType)=>{
+
+    @action GetExcsitingClientAccessTokens= (userId,SocielNetworkType)=>{
      sequelize
     .query(`SELECT accessToken,accessTokenSecret FROM User_SocialNetwork,User,${SocielNetworkType} WHERE User_SocialNetwork.User_id=${userId}`)
     .then(function (result) {
         results = JSON.parse(JSON.stringify(result[0]))
-        let accessToken=results[0].accessToken
-        let accessTokenSecret=results[0].accessTokenSecret
+         this.accessToken =results[0].accessToken
+        this.accessTokenSecret=results[0].accessTokenSecret
         console.log(accessTokenSecret)
     })
+
 }
+    @action getUserId=(password,name)=>{
+        sequelize
+        .query(`SELECT User_id FROM  User WHERE
+            User.password= ${password} AND
+            User.name= ${name}`)
+        .then(function(result){
+            result = JSON.parse(JSON.stringify(result[0]))
+            console.log(result)
+            this.userId=result
+            this.GetAccessTokens(result)
+        })
+    }
+     @action GettableSize=()=>{
+         sequelize
+         .query(`SELECT COUNT(User_id)
+         FROM User`)
+             .then(function(result){
+                 this.UserSocialCounter= result
+             })
+     }   
+
+    }
+
+
 const userId=1
 const SocielNetworkType= 'Twitter'
 GetAccessTokens(userId,SocielNetworkType)
     
 
-export default SqlDb
+export default PopulateDb

@@ -6,7 +6,9 @@ const Schema = mongoose.Schema
 
 
 const userSchema = new Schema({
-    profile:{}
+    accessToken: String,
+    refreshToken: String,
+    profile: {}
 })
 
 let user = mongoose.model(`User`,userSchema)
