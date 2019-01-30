@@ -12,15 +12,15 @@ const twitterAuth = passport.authenticate('twitter')
 
 passport.use(new TwitterStrategy(
     TWITTER_CONFIG,
-     (accessToken, refreshToken, profile, cb) => {
+    (accessToken, refreshToken, profile, cb) => {
         profile = JSON.parse(JSON.stringify(profile))
         name = profile.displayName
-        TwitterId=profile.id
+        TwitterId = profile.id
         console.log(name)
-       sqlOperations.CheckIfExsict(name)?null:sqlOperations.insertTokensToDb(accessToken,refreshToken,TwitterId)
-       
+        sqlOperations.CheckIfExsict(name) ? null : sqlOperations.insertTokensToDb(accessToken, refreshToken, TwitterId)
+
         // )[0][`COUNT(1)`]?
-       
+
         // User.findOne({ profile: profile })
         //     .then(user => {
         //         cb(null, user)

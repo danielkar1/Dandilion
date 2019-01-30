@@ -2,12 +2,12 @@ import { action, observable } from 'mobx';
 
 class StartPageStore {
     @observable LoginData = {
-        Name: {
+        name: {
             type: 'text',
             placeholder: 'Username',
             value: ''
         },
-        Password: {
+        password: {
             type: 'password',
             placeholder: 'Password',
             value: ''
@@ -16,6 +16,11 @@ class StartPageStore {
     @action changeLoginData (name, value) {
         this.LoginData[name].value = value
     }
+    @action resetValues (){
+        this.LoginData.map(input=>{
+            [input].value = ``
+        })
+    }
  }
 
-export default new StartPageStore
+export default new StartPageStore()
