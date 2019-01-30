@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer} from 'mobx-react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Post from './components/postPage/Post';
 import Profile from './components/profilePage/Profile'

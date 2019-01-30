@@ -5,15 +5,30 @@ import { observer, inject } from 'mobx-react';
 @observer
 class TextInput extends Component {
     inputHandler = (e) => {
-        this.props.PostStore.handleInput(e.target.name, e.target.value)   
-      }
+        this.props.PostStore.handleInput(e.target.name, e.target.value)
+    }
     render() {
+        let inputs = [{
+            name: `Image`,
+            type: `url`
+        }, {
+            name: `Text`,
+            type: `text`
+        }]
         return (
             <div className="text-inputs">
-                <label>Image</label>
-                <input type="url" onChange={this.inputHandler} name="image"></input>
-                <label>Text</label>
-                <input type="text" onChange={this.inputHandler} name="text"></input>
+                {inputs.map(anInput => {
+                    return (
+                        <span key={anInput.name}>
+                            <label>{anInput.name}</label>
+                            <input
+                                type={anInput.type}
+                                onChange={this.inputHandler}
+                                name={anInput.name}
+                            />
+                        </span>
+                    )
+                })}
             </div>
         )
     }
