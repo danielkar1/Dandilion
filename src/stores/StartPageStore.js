@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
 
-class LoginStore {
+class StartPageStore {
     @observable LoginData = {
         Name: {
             type: 'text',
@@ -18,4 +18,4 @@ class LoginStore {
     }
  }
 
-export default new LoginStore
+export default new StartPageStore
