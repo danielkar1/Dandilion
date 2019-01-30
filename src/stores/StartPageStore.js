@@ -18,4 +18,4 @@ class StartPageStore {
     }
  }
 
-export default new StartPageStore
+export default new StartPageStore()

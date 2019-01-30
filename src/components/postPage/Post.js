@@ -3,6 +3,10 @@ import { observer } from 'mobx-react';
 import TextInput from './TextInput'
 import CheckInputs from './CheckInputs'
 import Poster from './Poster';
+import '../../styles/Post.css'
+
+
+
 
 @observer
 class Post extends Component {

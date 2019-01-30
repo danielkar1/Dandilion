@@ -1,8 +1,10 @@
-#root{
+/* #root{
   background-color: rgb(78, 78, 47);
   height: 100vh;
-}
+} */
 .App{
   text-align: center;
-  color:whitesmoke;
+  background-color: #f9eccc;
+  font-family: 'Bitter', serif;
+  height: 100vh
 }

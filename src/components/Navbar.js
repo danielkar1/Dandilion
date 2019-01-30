@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/Navbar.css'
 
 
 
@@ -7,9 +8,9 @@ class Navbar extends Component {
     render() {
       return (
         <div className="navbar">
-            <span><Link to="/post">Post</Link></span>
-            <span><Link to="/profile">Profile</Link></span>
-            <span><Link to="/login">Log-in</Link></span>
+            <Link to="/post">Post</Link>
+            <Link to="/profile">Profile</Link>
+            <Link to="/startPage">Log-in</Link>
         </div>
       );
     }
