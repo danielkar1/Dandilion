@@ -9,4 +9,4 @@ class PostStore {
     }
 }
 
-export default new PostStore
+export default new PostStore()

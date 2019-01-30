@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client'
+import { inject, observer } from 'mobx-react';
 
 const API_URL = 'http://127.0.0.1:8080'
 const socket = io(API_URL)
 
+@inject(`ProfileStore`)
+@observer
 class TwitterButton extends Component {
     constructor() {
         super()
@@ -13,10 +16,12 @@ class TwitterButton extends Component {
         }
         this.popup = null
     }
+
     componentDidMount() {
         socket.on('user', user => {
             this.popup.close()
-            this.setState({ user })
+            console.log(user)
+            this.props.ProfileStore.clientInternalIdstorage(user._id)
         })
     }
     checkPopup() {
@@ -28,9 +33,6 @@ class TwitterButton extends Component {
             }
         }, 1000)
     }
-    // Launches the popup on the server and passes along the socket id so it 
-    // can be used to send back user data to the appropriate socket on 
-    // the connected client.
     openPopup() {
         const width = 600, height = 600
         const left = (window.innerWidth / 2) - (width / 2)
@@ -42,48 +44,23 @@ class TwitterButton extends Component {
           height=${height}, top=${top}, left=${left}`
         )
     }
-    // Kicks off the processes of opening the popup on the server and listening 
-    // to the popup. It also disables the login button so the user can not 
-    // attempt to login to the provider twice.
     startAuth() {
-        if (!this.state.disabled) {
-            this.popup = this.openPopup()
-            this.checkPopup()
-            this.setState({ disabled: 'disabled' })
-        }
-    }
-    closeCard() {
-        this.setState({ user: {} })
+        this.popup = this.openPopup()
+        this.checkPopup()
     }
     render() {
-        const { name, photo } = this.state.user
-        const { disabled } = this.state
+        // const { name, photo } = this.state.user
+        // const { disabled } = this.state
         return (
-        <div className={'container'}>
-            {/* Show the user if it exists. Otherwise show the login button */}
-            {name
-                ? <div className={'card'}>
-                    <img src={photo} alt={name} />
-                    <div
-                        name={'times-circle'}
-                        className={'close'}
-                        onClick={this.closeCard.bind(this)}
-                    />
-                    <h4>{`@${name}`}</h4>
-                </div>
-                : <div className={'button'}>
-                    <button
-                        onClick={this.startAuth.bind(this)}
-                        className={`twitter ${disabled}`}
-                    >
-                        <div
-                            name={'twitter'}
-                        />button
-          </button>
-                </div>
-            }
-        </div>
-        )}
+            <div className={'button'}>
+                <button
+                    onClick={this.startAuth.bind(this)}
+                >
+                    button
+                </button>
+            </div>
+        )
+    }
 }
 
 export default TwitterButton;

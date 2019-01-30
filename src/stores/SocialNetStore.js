@@ -12,4 +12,4 @@ class SocialNetworks{
     }
  }
 
-export default new SocialNetworks
+export default new SocialNetworks()

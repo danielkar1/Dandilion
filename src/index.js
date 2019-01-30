@@ -7,11 +7,13 @@ import { Provider } from 'mobx-react';
 import PostStore from './stores/PostStore';
 import SocialNetStore from './stores/SocialNetStore'
 import ProfileStore from './stores/ProfileStore'
+import StartPageStore from './stores/StartPageStore'
 
 const stores = {
     PostStore,
     SocialNetStore,
-    ProfileStore
+    ProfileStore,
+    StartPageStore
 }
 
 ReactDOM.render(

@@ -9,7 +9,7 @@ class Navbar extends Component {
         <div className="navbar">
             <span><Link to="/post">Post</Link></span>
             <span><Link to="/profile">Profile</Link></span>
-            {/* <span><Link to="/login"/>login</span> */}
+            <span><Link to="/login">Log-in</Link></span>
         </div>
       );
     }

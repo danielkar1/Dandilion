@@ -1,8 +1,10 @@
 import { action, observable } from 'mobx'
 
 class ProfileStore {
-    @observable user = {}
-    @observable disabled = ''
+    @observable internalId = ``
+    @action clientInternalIdstorage = (Id)=>{
+        this.internalId = Id
+    }
 }
 
-export default new ProfileStore;
+export default new ProfileStore()

@@ -26,7 +26,8 @@ router.get('/twitter/callback', twitterAuth, (req, res) => {
    res.end()
 })
 
-router.post(`/twitter/post`, (req, res) => {
+router.post(`/twitter/post`,async (req, res) => {
+   // let userKeys = await 
    let currentUser = new Twitter({
       consumer_key: TWITTER_CONFIG.consumerKey,
       consumer_secret: TWITTER_CONFIG.consumerSecret,
