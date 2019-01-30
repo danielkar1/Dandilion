@@ -16,6 +16,7 @@ class TwitterButton extends Component {
         }
         this.popup = null
     }
+
     componentDidMount() {
         socket.on('user', user => {
             this.popup.close()
