@@ -31,7 +31,6 @@
     "express-session": "^1.15.6",
     "fb": "^2.0.0",
     "file-loader": "2.0.0",
-    "font-awesome": "^4.7.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
     "html-webpack-plugin": "4.0.0-alpha.2",

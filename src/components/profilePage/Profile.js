@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client'
-import FontAwesome from '@fortawesome/fontawesome-free'
 const API_URL = 'http://127.0.0.1:8080'
 const socket = io(API_URL)
 
@@ -65,7 +64,7 @@ class Profile extends Component {
           {name
             ? <div className={'card'}>
               <img src={photo} alt={name} />
-              <FontAwesome
+              <div
                 name={'times-circle'}
                 className={'close'}
                 onClick={this.closeCard.bind(this)}
@@ -77,9 +76,9 @@ class Profile extends Component {
                 onClick={this.startAuth.bind(this)}
                 className={`twitter ${disabled}`}
               >
-                {/* <FontAwesome
+                <div
                   name={'twitter'}
-                />button */}
+                />button
             </button>
             </div>
           }

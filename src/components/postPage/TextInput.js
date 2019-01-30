@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react';
 @observer
 class TextInput extends Component {
     inputHandler = (e) => {
-        this.props.postStore.handleInput(e.target.name, e.target.value)   
+        this.props.PostStore.handleInput(e.target.name, e.target.value)   
       }
     render() {
         return (
