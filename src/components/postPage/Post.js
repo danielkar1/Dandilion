@@ -4,33 +4,35 @@ import TextInput from './TextInput'
 import CheckInputs from './CheckInputs'
 import Axios from 'axios';
 import io from 'socket.io-client'
-import FontAwesome from '@fortawesome/fontawesome-free'
-import PopulateDb from '../PopulateDb';
+import PostStore from '../../stores/PostStore'
+// import ProfileStore from '../../stores/ProfileStore'
 const API_URL = 'http://127.0.0.1:8080'
 const socket = io(API_URL)
 
+// @inject(`PostStore`,`ProfileStore`)
+@inject('PostStore')
 @observer
 class Post extends Component {
   clickFunc = () => {
-    let user = this.state.user
+    let user = this.props.ProfileStore.user
     let url = `${API_URL}/twitter/post?socketId=${socket.id}`
+    console.log(url)
+    console.log(user)
+    console.log(this.props.PostStore)
     Axios.post(url, {
       accessToken: user.accessToken,
       refreshToken: user.refreshToken,
-      text: `this is diffrent text`
+      text: this.props.PostStore.TextInput,
+      img: this.props.PostStore.imageInput
     })
       .then(res => console.log(res))
   }
   render() {
-    const { name, photo } = this.state.user
-    const { disabled } = this.state
     return (
       <div className="post">
         <TextInput />
         <CheckInputs />
-       
-        <button onClick={this.clickFunc}> post </button>
-        <button>Post</button>
+        <button onClick={this.clickFunc}> Post </button>
       </div>
     )
   }

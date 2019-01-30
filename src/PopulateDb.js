@@ -1,34 +1,30 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://danielkar1:12345678@fs-bootcamp.cqc0oq2maxqm.us-west-2.rds.amazonaws.com/danielkar1_db')
-import React, { Component } from 'react';
-import { observer, inject } from 'mobx-react';
-import { action } from 'mobx';
 
-
-@observer
-class PopulateDb extends  Component {
-    @observeble userId
-    @observable accessToken
-    @observable accessTokenSecret
-    @observable UserSocialCounter=this.GettableSize()
-   @action insertNewUserToDb=(password,name)=>{
+class PopulateDb  {
+constructor(){
+    this.UserSocialCounter= this.GetTableSize
+}
+    insertNewUserToDb(password,name){
     sequelize
     .query(`INSERT INTO User VALUES(null,${password},${name})`)
     .then(function (result) {
         console.log(result)
-
+        this.insertTokenToDb
     })
     }
 
-  @action  insertTokenToDb=()=>{
+    insertTokensToDb(accessToken,accessTokenSecret,TwitterId){
+        console.log(accessToken)
     sequelize
-    .query(`INSERT INTO Twitter VALUES(null,'1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg','DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb')`)
+    .query(`INSERT INTO Twitter VALUES(null,${TwitterId},'${accessToken}','${accessTokenSecret}')`)
     .then(function (result) {
+        console.log("you got here")
         console.log(result)
     })
     }
 
-   @action insetIntoUserNetworkTable=()=>{
+    insetIntoUserNetworkTable(){
     sequelize
     .query(`INSERT INTO User_SocialNetwork VALUES(${this.UserSocialCounter},${this.UserSocialCounter})`)
     .then(function (result) {
@@ -37,7 +33,7 @@ class PopulateDb extends  Component {
     })
     }
 
-    @action GetExcsitingClientAccessTokens= (userId,SocielNetworkType)=>{
+     GetExcsitingClientAccessTokens(userId,SocielNetworkType){
      sequelize
     .query(`SELECT accessToken,accessTokenSecret FROM User_SocialNetwork,User,${SocielNetworkType} WHERE User_SocialNetwork.User_id=${userId}`)
     .then(function (result) {
@@ -48,7 +44,7 @@ class PopulateDb extends  Component {
     })
 
 }
-    @action getUserId=(password,name)=>{
+      getUserId(password,name){
         sequelize
         .query(`SELECT User_id FROM  User WHERE
             User.password= ${password} AND
@@ -60,7 +56,7 @@ class PopulateDb extends  Component {
             this.GetAccessTokens(result)
         })
     }
-     @action GettableSize=()=>{
+     GetTableSize(){
          sequelize
          .query(`SELECT COUNT(User_id)
          FROM User`)
@@ -68,13 +64,18 @@ class PopulateDb extends  Component {
                  this.UserSocialCounter= result
              })
      }   
-
+     CheckIfExsict(name){
+         console.log(name)
+         sequelize
+         .query(`SELECT COUNT(name) FROM User WHERE name = '${name}'`)
+         .then(function(result){
+             return result
+             
+         })
+     }
     }
 
-
-const userId=1
-const SocielNetworkType= 'Twitter'
-GetAccessTokens(userId,SocielNetworkType)
+const sqlOperations=new PopulateDb()
     
+module.exports = sqlOperations
 
-export default PopulateDb

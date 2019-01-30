@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import TextInput from './TextInput'
+import SocialNetStore from '../../stores/SocialNetStore';
+@inject("SocialNetStore")
 
 @observer
 class CheckInputs extends Component {
-  
-    render() {
-      return (
-        <div className="checkbox-inputs">
-        </div>
-      );
+    handleChange =(e) => {
+        this.props.SocialNetStore.checkboxHandler(e.target.name)
     }
-  }
-  
-  export default CheckInputs;
+    render() {
+        const socialNetsArr = Object.keys(SocialNetStore.networks)
+        return (
+            <div className="checkbox-inputs">
+                {socialNetsArr.map((s, index) => {
+                   return (
+                    <div key={index} className="social-net">
+                        <input onChange={this.handleChange} type="checkbox" name={s}></input>
+                        <label>{s}</label>
+                    </div>)
+                })}
+    
+            </div>
+        );
+    }
+}
+
+export default CheckInputs;

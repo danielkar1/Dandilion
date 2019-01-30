@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-@inject("postStore")
+@inject("PostStore")
 
 @observer
 class TextInput extends Component {
     inputHandler = (e) => {
-        this.props.postStore.handleInput(e.target.name, e.target.value)   
+        this.props.PostStore.handleInput(e.target.name, e.target.value)   
       }
     render() {
         return (
