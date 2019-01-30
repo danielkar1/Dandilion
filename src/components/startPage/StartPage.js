@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import StartPageStore from '../../stores/StartPageStore'
 import { inject } from 'mobx-react';
 // import '../styles/Login.css'
+
 @inject("StartPageStore")
 
 
