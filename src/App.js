@@ -67,7 +67,7 @@ export default class App extends Component {
     this.setState({ user: {} })
   }
 
-  clickFunc = () => {
+  clickFunc = () => {//not working yet
     Axios.post(`/twitter/post`,{name: `Boby`})
       .then(res=>console.log(res))
   }

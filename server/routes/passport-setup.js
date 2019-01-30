@@ -2,7 +2,9 @@ const passport = require(`passport`)
 const Twitter = require(`twitter`)
 const { Strategy: TwitterStrategy } = require('passport-twitter')
 const CONSTS = require(`../../CONSTS`)
-const User = require(`../modules/User`)
+const User = require(`../modules/Users`)
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 let TWITTER_CONFIG = CONSTS.TWITTER_CONFIG
 
@@ -37,6 +39,7 @@ const addSocketIdToSession = (req, res, next) => {
     // console.log(req)
     next()
 }
+
 
 module.exports = {
     addSocketIdToSession,
