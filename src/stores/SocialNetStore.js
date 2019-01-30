@@ -8,6 +8,7 @@ class SocialNetworks{
     }
     @action checkboxHandler = (name) => {
         this.networks[name] = !this.networks[name]
+        console.log(this.networks[name])
     }
  }
 
