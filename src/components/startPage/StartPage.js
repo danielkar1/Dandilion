@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
-import LoginStore from './../../stores/LoginStore'
+import StartPageStore from '../../stores/StartPageStore'
 import { inject } from 'mobx-react';
 // import '../styles/Login.css'
-@inject("LoginStore")
+@inject("StartPageStore")
 
 
-class Login extends Component {
+class StartPage extends Component {
     handleChange = (e) => {
-        this.props.LoginStore.changeLoginData(e.target.name, e.target.value)
+        this.props.StartPageStore.changeLoginData(e.target.name, e.target.value)
     }
     render() {
-        const inputSettings = this.props.LoginStore.LoginData
+        const inputSettings = this.props.StartPageStore.LoginData
         return (
             <div>
-            {Object.keys(LoginStore.LoginData).map((d, index) =>{
+            {Object.keys(StartPageStore.LoginData).map((d, index) =>{
                 return (
                     <div key={index}>
                         <label>{d}</label>
@@ -27,4 +27,4 @@ class Login extends Component {
         )
     }
 }
-export default Login
+export default StartPage
