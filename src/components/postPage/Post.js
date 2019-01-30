@@ -4,7 +4,6 @@ import TextInput from './TextInput'
 import CheckInputs from './CheckInputs'
 import Axios from 'axios';
 import io from 'socket.io-client'
-import FontAwesome from '@fortawesome/fontawesome-free'
 const API_URL = 'http://127.0.0.1:8080'
 const socket = io(API_URL)
 
@@ -21,14 +20,11 @@ class Post extends Component {
       .then(res => console.log(res))
   }
   render() {
-    const { name, photo } = this.state.user
-    const { disabled } = this.state
     return (
       <div className="post">
         <TextInput />
         <CheckInputs />
-        <button onClick={this.clickFunc}> post </button>
-        <button>Post</button>
+        <button onClick={this.clickFunc}> Post </button>
       </div>
     )
   }
