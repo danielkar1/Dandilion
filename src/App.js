@@ -68,8 +68,14 @@ export default class App extends Component {
   }
 
   clickFunc = () => {
-    Axios.post(`/twitter/post`,{name: `Boby`})
-      .then(res=>console.log(res))
+    let user = this.state.user
+    let url =`${API_URL}/twitter/post?socketId=${socket.id}`
+    Axios.post(url, {
+      accessToken: user.accessToken,
+      refreshToken: user.refreshToken,
+      text: `this is diffrent text`
+    })
+      .then(res => console.log(res))
   }
   render() {
     const { name, photo } = this.state.user
