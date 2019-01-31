@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import Axios from 'axios'
 import io from 'socket.io-client'
+// import Inputs from './Inputs'
 // import { BrowserRouter as Router, Route,Link, Redirect } from 'react-router-dom'
 
 const API_URL = 'http://127.0.0.1:8080'
@@ -23,7 +24,6 @@ class StartPage extends Component {
             name: StartPageData.name.value
         })
             .then(Id => {
-                console.log(`sadas`)
                 this.props.ProfileStore.clientInternalIdstorage(Id)
                 this.props.StartPageStore.resetValues()
                
@@ -37,20 +37,19 @@ class StartPage extends Component {
         return (
             <div>
                 {Object.keys(StartPageData).map((d, index) => {
-                    return (
-                        <div key={index}>
-                            <label>{d}</label>
-                            <input
-                                type={StartPageData[d].type}
-                                name={d}
-                                onChange={this.handleChange}
-                                placeholder={StartPageData[d].placeholder}
-                            >
-                            </input>
-                        </div>
-                    )
-                })}
-                <label></label>
+                return (
+                    <div key={index}>
+                        <label>{d}</label>
+                        <input
+                            type={StartPageData[d].type}
+                            name={d}
+                            onChange={this.handleChange}
+                            placeholder={StartPageData[d].placeholder}
+                        >
+                        </input>
+                    </div>
+                )
+            })}
                 <button onClick={this.login}>Login</button>
             </div>
         )
