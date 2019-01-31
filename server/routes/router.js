@@ -45,7 +45,8 @@ router.post(`/twitter/post`,async (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-   sqlOperations.getUserId(req.body.passowrd,req.body.name) 
+   console.log(res.body.password.value)
+   sqlOperations.getUserId(req.body.password.value,req.body.name.value) 
    .then ((id)=>{
       console.log(id)
       res.send(id)

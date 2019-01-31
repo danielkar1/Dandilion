@@ -16,11 +16,11 @@ class StartPageStore {
     @action changeLoginData (name, value) {
         this.LoginData[name].value = value
     }
-    @action resetValues (){
-        this.LoginData.map(input=>{
-            [input].value = ``
-        })
-    }
+    // @action resetValues (){
+    //     this.LoginData.map(input=>{
+    //         [input].value = ``
+    //     })
+    // }
  }
 
 export default new StartPageStore()

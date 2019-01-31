@@ -16,17 +16,16 @@ class StartPage extends Component {
     }
     login = () => {
         let LoginData = this.props.StartPageStore.LoginData
-        console.log(this.props.StartPageStore.LoginData.password)
+        console.log(this.props.StartPageStore.LoginData.password.value)
         let url = `${API_URL}/login?socketId=${socket.id}`
         console.log(LoginData)
-        Axios.post(url, {
-            password: LoginData.password.value,
-            name: LoginData.name.value
+        Axios.post(url, {LoginData
         })
             .then(Id => {
                 console.log(`sadas`)
                 ProfileStore.clientInternalIdstorage(Id)
                 this.props.StartPageStore.resetValues()
+               
             })
     }
     render() {

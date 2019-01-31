@@ -44,16 +44,17 @@ constructor(){
     })
 
 }
-      getUserId(password,name){
+      getUserId(LoginData){
+          console.log(LoginData.password.value)
         sequelize
-        .query(`SELECT User_id FROM  User WHERE
-            User.password= ${password} AND
-            User.name= ${name}`)
-        .then(function(result){
+        .query(`SELECT id FROM  User WHERE
+            passwordToApp= "${password}" AND
+           name= ${name}`)
+        .then(function(result,User_id){
             result = JSON.parse(JSON.stringify(result[0]))
             console.log(result)
-            this.userId=result
-            this.GetAccessTokens(result)
+            
+            
         })
     }
      GetTableSize(){
