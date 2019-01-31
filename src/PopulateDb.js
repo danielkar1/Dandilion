@@ -1,5 +1,6 @@
 const CONSTS = require(`../CONSTS`)
 const Sequelize = require('sequelize')
+const Post=require('../server/modules/Scheme')
 //put in your db in CONSTS file
 const sequelize = new Sequelize(`mysql://${CONSTS.dbConfig.name}:${CONSTS.dbConfig.password}@fs-bootcamp.cqc0oq2maxqm.us-west-2.rds.amazonaws.com/${CONSTS.dbConfig.dbName}`)
 
@@ -83,6 +84,17 @@ class PopulateDb {
 }
 
 const sqlOperations = new PopulateDb()
+sqlOperations.GetExcsitingClientAccessTokens("1","Twitter")
+
 
 module.exports = sqlOperations
 
+
+// testPost= new Post({
+//     postId: 13579,
+//     userIdkey: 1,
+//     text: "Test",
+//     socialNetwork: ["Twitter"]
+// })
+
+// testPost.save()
