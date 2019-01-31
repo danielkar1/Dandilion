@@ -35,15 +35,16 @@ class PopulateDb {
             })
     }
 
-    GetExcsitingClientAccessTokens(userId, SocielNetworkType) {
-        sequelize
+    async GetExcsitingClientAccessTokens(userId, SocielNetworkType) {
+        let result = await sequelize
             .query(`SELECT accessToken,accessTokenSecret FROM User_SocialNetwork,User,${SocielNetworkType} WHERE User_SocialNetwork.User_id=${userId}`)
-            .then(function (result) {
-                results = JSON.parse(JSON.stringify(result[0]))
-                this.accessToken = results[0].accessToken
-                this.accessTokenSecret = results[0].accessTokenSecret
-                console.log(accessTokenSecret)
-            })
+            
+                let results = JSON.parse(JSON.stringify(result[0]))
+                let accessToken = results[0].accessToken
+                let accessTokenSecret = results[0].accessTokenSecret
+                console.log(accessToken)
+                return { accessToken: accessToken, accessTokenSecret: accessTokenSecret }
+            
 
     }
     getUserId(password, name) {

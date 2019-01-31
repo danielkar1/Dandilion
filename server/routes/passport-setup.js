@@ -24,7 +24,7 @@ passport.use(new TwitterStrategy(
         // User.findOne({ profile: profile })
         //     .then(user => {
         //     })
-        cb(null, user)
+        cb(null, profile)
     })
 )
 

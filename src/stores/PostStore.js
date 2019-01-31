@@ -1,8 +1,8 @@
 import { action, observable } from 'mobx'
 
 class PostStore {
-    @observable imageInput
-    @observable textInput
+    @observable Image = ``
+    @observable Text = ``
     @action handleInput = (name, value) => {
         this[name] = value
         console.log(this[name])

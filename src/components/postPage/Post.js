@@ -10,7 +10,6 @@ import '../../styles/Post.css'
 
 @observer
 class Post extends Component {
-  
   render() {
     return (
       <div className="post">

@@ -27,12 +27,14 @@ router.get('/twitter/callback', twitterAuth, (req, res) => {
 })
 
 router.post(`/twitter/post`, async (req, res) => {
-   // let userKeys = await 
+   console.log(req.body)
+   let userKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `Twitter`)
+   console.log(userKeys)
    let currentUser = new Twitter({
       consumer_key: TWITTER_CONFIG.consumerKey,
       consumer_secret: TWITTER_CONFIG.consumerSecret,
-      access_token_key: req.body.accessToken,
-      access_token_secret: req.body.refreshToken
+      access_token_key: userKeys.accessToken,
+      access_token_secret: userKeys.accessTokenSecret
    })
    currentUser.post(`statuses/update`, { status: req.body.text })
       .then((res) => {
@@ -59,9 +61,9 @@ router.post(`/signup`, (req, res) => {
    let name = req.body.name
    sqlOperations.insertNewUserToDb(password, name)
    sqlOperations.getUserId(password, name)
-   .then(id=>{
-      res.send(id)
-   })
+      .then(id => {
+         res.send(id)
+      })
 })
 
 module.exports = router
