@@ -26,6 +26,7 @@ class StartPage extends Component {
                 console.log(`sadas`)
                 this.props.ProfileStore.clientInternalIdstorage(Id)
                 this.props.StartPageStore.resetValues()
+               
             })
     }
     oparate = () => {

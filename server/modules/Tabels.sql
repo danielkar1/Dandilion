@@ -1,4 +1,4 @@
-USE AlonRR_db;
+Use danielkar1_db;
 
 -- CREATE TABLE User(
 --     id INT NOT NULL AUTO_INCREMENT NULL PRIMARY KEY,
@@ -21,6 +21,19 @@ USE AlonRR_db;
 -- );
 
 
+
+-- INSERT INTO User VALUES(null,'1234','daniel')
+  -- SELECT id FROM  User WHERE
+  -- passwordToApp= 1234 AND
+  -- name= 'daniel'
+  
+  
+  
+  
+  
+  
+  
+  
 -- DROP TABLE User_SocialNetwork;
 -- DROP TABLE User;
 -- DROP TABLE Twitter;
