@@ -2,10 +2,8 @@ USE AlonRR_db;
 
 -- CREATE TABLE User(
 --     id INT NOT NULL AUTO_INCREMENT NULL PRIMARY KEY,
---     passwordToApp INT,
+--     password VARCHAR(50),
 --     name VARCHAR(50)
-    
-    
 -- );
 
 -- CREATE TABLE Twitter(
@@ -13,8 +11,6 @@ USE AlonRR_db;
 --     Twitter_id INT,
 --     accessToken VARCHAR(150),
 --     accessTokenSecret VARCHAR(150)
-    
- 
 -- );
 
 -- CREATE TABLE  User_SocialNetwork(
@@ -25,6 +21,6 @@ USE AlonRR_db;
 -- );
 
 
--- DROP TABLE User_SocialNetwork
+-- DROP TABLE User_SocialNetwork;
 -- DROP TABLE User;
 -- DROP TABLE Twitter;

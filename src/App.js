@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { observer} from 'mobx-react';
+import { observer } from 'mobx-react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Post from './components/postPage/Post';
@@ -15,9 +15,10 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <Route path="/post" exact render={({ match }) => <Post />}/>
-          <Route path="/profile" exact render={({ match }) => <Profile/>}/>
-          <Route path="/login" exact render={({match})=> <StartPage/>}/>
+          <Route path="/post" exact render={({ match }) => <Post />} />
+          <Route path="/profile" exact render={({ match }) => <Profile />} />
+          <Route path="/login" exact render={({ match }) => <StartPage />} />
+          <Route path="/signup" exact render={({ match }) => <StartPage />} />
         </div>
       </Router>
     );

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import StartPageStore from '../../stores/StartPageStore'
-import ProfileStore from '../../stores/ProfileStore'
 import { inject, observer } from 'mobx-react'
 import Axios from 'axios'
 import io from 'socket.io-client'
+// import { BrowserRouter as Router, Route,Link, Redirect } from 'react-router-dom'
 
 const API_URL = 'http://127.0.0.1:8080'
 const socket = io(API_URL)
@@ -12,32 +11,41 @@ const socket = io(API_URL)
 @observer
 class StartPage extends Component {
     handleChange = (e) => {
-        this.props.StartPageStore.changeLoginData(e.target.name, e.target.value)
+        this.props.StartPageStore.changeStartPageData(e.target.name, e.target.value)
     }
     login = () => {
-        let LoginData = this.props.StartPageStore.LoginData
-        console.log(this.props.StartPageStore.LoginData.password)
+        let StartPageData = this.props.StartPageStore.StartPageData
+        console.log(this.props.StartPageStore.StartPageData.password)
         let url = `${API_URL}/login?socketId=${socket.id}`
-        console.log(LoginData)
+        console.log(StartPageData)
         Axios.post(url, {
-            password: LoginData.password.value,
-            name: LoginData.name.value
+            password: StartPageData.password.value,
+            name: StartPageData.name.value
         })
             .then(Id => {
                 console.log(`sadas`)
-                ProfileStore.clientInternalIdstorage(Id)
+                this.props.ProfileStore.clientInternalIdstorage(Id)
                 this.props.StartPageStore.resetValues()
             })
     }
+    oparate = () => {
+
+    }
     render() {
-        const inputSettings = this.props.StartPageStore.LoginData
+        const StartPageData = this.props.StartPageStore.StartPageData
         return (
             <div>
-                {Object.keys(StartPageStore.LoginData).map((d, index) => {
+                {Object.keys(StartPageData).map((d, index) => {
                     return (
                         <div key={index}>
                             <label>{d}</label>
-                            <input type={inputSettings[d].type} name={d} onKeyPress={this.handleChange} placeholder={inputSettings[d].placeholder}></input>
+                            <input
+                                type={StartPageData[d].type}
+                                name={d}
+                                onChange={this.handleChange}
+                                placeholder={StartPageData[d].placeholder}
+                            >
+                            </input>
                         </div>
                     )
                 })}

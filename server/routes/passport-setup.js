@@ -1,10 +1,10 @@
 const passport = require(`passport`)
-const Twitter = require(`twitter`)
+// const Twitter = require(`twitter`)
 const { Strategy: TwitterStrategy } = require('passport-twitter')
 const CONSTS = require(`../../CONSTS`)
-const User = require(`../modules/Users`)
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+// const User = require(`../modules/Users`)
+// const mongoose = require('mongoose')
+// const Schema = mongoose.Schema
 const sqlOperations = require(`../../src/PopulateDb`)
 let TWITTER_CONFIG = CONSTS.TWITTER_CONFIG
 
@@ -23,8 +23,8 @@ passport.use(new TwitterStrategy(
 
         // User.findOne({ profile: profile })
         //     .then(user => {
-        //         cb(null, user)
         //     })
+        cb(null, user)
     })
 )
 
