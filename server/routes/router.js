@@ -35,6 +35,7 @@ router.post(`/twitter/post`, async (req, res) => {
       access_token_secret: req.body.refreshToken
    })
    currentUser.post(`statuses/update`, { status: req.body.text })
+    
       .then((res) => {
          console.log(`posted`)
       })
