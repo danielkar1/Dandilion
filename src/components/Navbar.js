@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/Navbar.css'
+import { observer, inject } from 'mobx-react';
 
 
-
+@inject(`StartPageStore`)
+@observer
 class Navbar extends Component {
-    render() {
-      return (
-        <div className="navbar">
-            <span><Link to="/post">Post</Link></span>
-            <span><Link to="/profile">Profile</Link></span>
-            <span><Link to="/login">Log-in</Link></span>
-        </div>
-      );
-    }
+  locationChange = e => {
+    this.props.StartPageStore.updateLocation(e)
   }
-  
-  export default Navbar
+  render() {
+    return (
+      <div className="navbar">
+        <Link to="/post">Post</Link>
+        <Link to="/profile">Profile</Link>
+        <Link to="/startPage" onclick={this.locationChange}>Log-in</Link>
+      </div>
+    );
+  }
+}
+
+export default Navbar

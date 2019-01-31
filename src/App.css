@@ -1,8 +1,41 @@
-#root{
+/* #root{
   background-color: rgb(78, 78, 47);
   height: 100vh;
-}
+} */
 .App{
   text-align: center;
-  color:whitesmoke;
+  background-color: #DCDDD9;
+  font-family: 'Bitter', serif;
+  height: 100vh
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: repeat(3, 10%);
+  background-color: #000000;
+  height: 60px;
+  justify-content: left;
+  justify-self: left;
+  align-items: center;
+  /* color: #754668; */
+}
+
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  height: 100%;
+  display: grid;
+  align-items: center;
+
+}
+
+.navbar a:hover {
+  background-color: #413c3c
+}
+
+.input-div input {
+  background-color: rgb(230, 236, 240);
+  border-radius: 9999px;
+  border: solid 0px rgb(230, 236, 240); 
 }

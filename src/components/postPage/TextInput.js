@@ -19,14 +19,14 @@ class TextInput extends Component {
             <div className="text-inputs">
                 {inputs.map(anInput => {
                     return (
-                        <span key={anInput.name}>
+                        <div key={anInput.name} className="input-div">
                             <label>{anInput.name}</label>
                             <input
                                 type={anInput.type}
                                 onChange={this.inputHandler}
                                 name={anInput.name}
                             />
-                        </span>
+                        </div>
                     )
                 })}
             </div>
