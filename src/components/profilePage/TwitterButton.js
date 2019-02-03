@@ -46,8 +46,6 @@ class TwitterButton extends Component {
         this.checkPopup()
     }
     render() {
-        // const { name, photo } = this.state.user
-        // const { disabled } = this.state
         return (
             <div className={'button'}>
                 <button

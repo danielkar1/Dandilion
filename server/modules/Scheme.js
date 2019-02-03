@@ -12,7 +12,7 @@ let postSchema= new Schema({
 
 })
 
-const Post = mongoose.model("posts", postSchema)
+const Post = mongoose.model(`posts`, postSchema)
 
 module.exports= Post
 

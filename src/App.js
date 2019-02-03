@@ -17,8 +17,8 @@ class App extends Component {
           <Navbar />
           <Route path="/post" exact render={({ match }) => <Post />} />
           <Route path="/profile" exact render={({ match }) => <Profile />} />
-          <Route path="/login" exact render={({ match }) => <StartPage />} />
-          <Route path="/startPage" exact render={({ match }) => <StartPage />} />
+          <Route path="/login" exact render={({ match }) => <StartPage loginPage={true}/>} />
+          <Route path="/signup" exact render={({ match }) => <StartPage loginPage={false}/>} />
         </div>
       </Router>
     );

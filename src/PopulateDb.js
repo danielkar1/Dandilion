@@ -1,6 +1,6 @@
 const CONSTS = require(`../CONSTS`)
 const Sequelize = require('sequelize')
-const Post = require('../server/modules/Scheme')
+const Post = require('../server/modules/Scheme')//future 
 //put in your db in CONSTS file
 const sequelize = new Sequelize(`mysql://${CONSTS.dbConfig.name}:${CONSTS.dbConfig.password}@fs-bootcamp.cqc0oq2maxqm.us-west-2.rds.amazonaws.com/${CONSTS.dbConfig.dbName}`)
 
@@ -33,7 +33,7 @@ class PopulateDb {
                 this.UserSocialCounter++
             })
     }
-    async GetExcsitingClientAccessTokens(userId, SocielNetworkType) {
+    async GetExcsitingClientAccessTokens(userId, SocielNetworkType) {//spelling
         let result = await sequelize
             .query(`SELECT accessToken,accessTokenSecret FROM User_SocialNetwork,User,${SocielNetworkType} WHERE User_SocialNetwork.User_id=${userId}`)
         let results = JSON.parse(JSON.stringify(result[0]))
@@ -63,7 +63,7 @@ class PopulateDb {
                 this.UserSocialCounter = result
             })
     }
-    CheckIfExsict(name) {
+    CheckIfExsict(name) {//spelling
         console.log(name)
         sequelize
             .query(`SELECT COUNT(name) FROM User WHERE name = '${name}'`)

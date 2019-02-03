@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import SocialNetStore from '../../stores/SocialNetStore';
-@inject("SocialNetStore")
 
+@inject("SocialNetStore")
 @observer
 class CheckInputs extends Component {
-    handleChange =(e) => {
+    handleChange = (e) => {
         this.props.SocialNetStore.checkboxHandler(e.target.name)
     }
     render() {
@@ -13,13 +13,13 @@ class CheckInputs extends Component {
         return (
             <div className="checkbox-inputs">
                 {socialNetsArr.map((s, index) => {
-                   return (
-                    <div key={index} className="social-net">
-                        <input onChange={this.handleChange} type="checkbox" name={s}></input>
-                        <label>{s}</label>
-                    </div>)
+                    return (
+                        <div key={index} className="social-net">
+                            <input onChange={this.handleChange} type="checkbox" name={s}></input>
+                            <label>{s}</label>
+                        </div>)
                 })}
-    
+
             </div>
         );
     }
