@@ -22,7 +22,6 @@ class StartPageButton extends Component {
             })
     }
     render() {
-        // console.log(this.props.location.pathname)
         return (
             <button onClick={this.oparate}>{this.props.StartPageStore.location}</button>
         )

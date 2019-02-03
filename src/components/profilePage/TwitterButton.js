@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client'
 import { inject, observer } from 'mobx-react';
+import Axios from 'axios';
 
 const API_URL = 'http://127.0.0.1:8080'
 const socket = io(API_URL)
@@ -16,11 +17,21 @@ class TwitterButton extends Component {
         }
         this.popup = null
     }
+    // Object { accessToken: "1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg", refreshToken: "DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb", profile: {…}, socialNetwork: "twitter" } TwitterButton.js:23
+
     componentDidMount() {
         socket.on('user', user => {
             this.popup.close()
-            console.log(user)
-            this.props.ProfileStore.clientInternalIdstorage(user._id)
+            let socialData = {
+                internalId: this.props.ProfileStore.internalId,
+                accessToken: user.accessToken,
+                refreshToken: user.refreshToken,
+                socialNetwork: user.socialNetwork,
+                socialNetworkId: user.profile.id
+            }
+            console.log(socialData)
+            // Axios.post(`/save`,socialData)
+            // this.props.ProfileStore.clientInternalIdstorage(user._id)
         })
     }
     checkPopup() {

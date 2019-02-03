@@ -75,7 +75,7 @@ class PopulateDb {
 }
 
 const sqlOperations = new PopulateDb()
-sqlOperations.GetExcsitingClientAccessTokens("1", "Twitter")
+// sqlOperations.GetExcsitingClientAccessTokens("1", "Twitter")
 
 
 module.exports = sqlOperations

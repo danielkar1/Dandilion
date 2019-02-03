@@ -48,6 +48,7 @@
     "mysql2": "^1.6.4",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
     "passport-twitter": "^1.0.4",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
