@@ -24,7 +24,7 @@ class StartPageStore {
         })
     }
     @action updateLocation(location) {
-        this.location = location
+        this.location = location ? `Log-in` : `Register`
     }
 }
 
