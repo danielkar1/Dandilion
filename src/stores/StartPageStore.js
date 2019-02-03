@@ -13,18 +13,17 @@ class StartPageStore {
             value: ''
         }
     }
-    @observable location = ``
+    @observable isSignedUp = false;
     @action changeStartPageData (name, value) {
-        this.StartPageData[name].value = value
-        console.log(this.StartPageData[name].value)
+        this.StartPageData[name].value = value;
     }
-    // @action resetValues (){
-    //     this.StartPageData.map(input=>{
-    //         [input].value = ``
-    //     })
-    // }
+    @action resetValues (){
+        this.StartPageData.map(input=>{
+            [input].value = ``
+        })
+    }
     @action updateLocation (location){
-        // this.location = location
+            this.isSignedUp = true;
     }
  }
 

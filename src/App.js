@@ -6,6 +6,7 @@ import Post from './components/postPage/Post';
 import Profile from './components/profilePage/Profile'
 import Navbar from './components/Navbar'
 import StartPage from './components/startPage/StartPage'
+import MainPostPage from './components/mainPost/MainPostPage';
 
 
 @observer
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/profile" exact render={({ match }) => <Profile />} />
           <Route path="/login" exact render={({ match }) => <StartPage />} />
           <Route path="/startPage" exact render={({ match }) => <StartPage />} />
+          <Route path="/mainPost" exact render= {({ match }) => <MainPostPage />} />
         </div>
       </Router>
     );

@@ -8,12 +8,14 @@ import PostStore from './stores/PostStore';
 import SocialNetStore from './stores/SocialNetStore'
 import ProfileStore from './stores/ProfileStore'
 import StartPageStore from './stores/StartPageStore'
+import MainPostPageStore from './stores/MainPostPageStore'
 
 const stores = {
     PostStore,
     SocialNetStore,
     ProfileStore,
-    StartPageStore
+    StartPageStore,
+    MainPostPageStore
 }
 
 ReactDOM.render(
