@@ -14,18 +14,18 @@ class StartPageStore {
         }
     }
     @observable location = ``
-    @action changeStartPageData (name, value) {
+    @action changeStartPageData(name, value) {
         this.StartPageData[name].value = value
         console.log(this.StartPageData[name].value)
     }
-    // @action resetValues (){
-    //     this.StartPageData.map(input=>{
-    //         [input].value = ``
-    //     })
-    // }
-    @action updateLocation (location){
-        // this.location = location
+    @action resetValues() {
+        this.StartPageData.map(input => {
+            [input].value = ``
+        })
     }
- }
+    @action updateLocation(location) {
+        this.location = location
+    }
+}
 
 export default new StartPageStore()

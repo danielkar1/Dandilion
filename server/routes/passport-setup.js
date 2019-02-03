@@ -14,7 +14,7 @@ passport.use(new TwitterStrategy(
     TWITTER_CONFIG,
     (accessToken, refreshToken, profile, cb) => {
         profile = JSON.parse(JSON.stringify(profile))
-        name = profile.displayName
+        let name = profile.displayName
         TwitterId = profile.id
         console.log(name)
         sqlOperations.CheckIfExsict(name) ? null : sqlOperations.insertTokensToDb(accessToken, refreshToken, TwitterId)

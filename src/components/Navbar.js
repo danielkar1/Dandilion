@@ -8,6 +8,7 @@ import { observer, inject } from 'mobx-react';
 @observer
 class Navbar extends Component {
   locationChange = e => {
+    console.log(e.targt)
     this.props.StartPageStore.updateLocation(e)
   }
   render() {
@@ -15,7 +16,8 @@ class Navbar extends Component {
       <div className="navbar">
         <Link to="/post">Post</Link>
         <Link to="/profile">Profile</Link>
-        <Link to="/startPage" onClick={this.locationChange}>Log-in</Link>
+        <Link to="/login" onClick={this.locationChange}>Log-in</Link>
+        <Link to="/signup" onClick={this.locationChange}>Sign-up</Link>
       </div>
     );
   }

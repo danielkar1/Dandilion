@@ -15,7 +15,7 @@ class Post extends Component {
       <div className="post">
         <TextInput />
         <CheckInputs />
-        <Poster/>
+        <Poster />
       </div>
     )
   }
