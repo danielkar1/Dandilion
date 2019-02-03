@@ -19,7 +19,6 @@ router.get(`/`, function (req, res) {
 
 router.get('/twitter', addSocketIdToSession, twitterAuth)
 
-
 router.get('/twitter/callback', twitterAuth, (req, res) => {
    io.in(req.session.socketId).emit('user', req.user)
    console.log(`twitter callback sec`)
@@ -29,7 +28,6 @@ router.get('/twitter/callback', twitterAuth, (req, res) => {
 router.post(`/twitter/post`, async (req, res) => {
    console.log(req.body)
    let userKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `Twitter`)
-   console.log(userKeys)
    let currentUser = new Twitter({
       consumer_key: TWITTER_CONFIG.consumerKey,
       consumer_secret: TWITTER_CONFIG.consumerSecret,
@@ -37,7 +35,6 @@ router.post(`/twitter/post`, async (req, res) => {
       access_token_secret: userKeys.accessTokenSecret
    })
    currentUser.post(`statuses/update`, { status: req.body.text })
-    
       .then((res) => {
          console.log(`posted`)
       })
@@ -46,8 +43,7 @@ router.post(`/twitter/post`, async (req, res) => {
       })
    res.end()
 })
-
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res) => {//req.body={password: string , name: string }
    console.log(req.body)
    let id = await sqlOperations.getUserId(req.body.password, req.body.name)
    console.log(`${id} here`)
@@ -56,7 +52,6 @@ router.post('/login', async (req, res) => {
    //    res.send(id)
    // })
 })
-
 router.post(`/signup`, (req, res) => {
    let password = req.body.password
    let name = req.body.name
