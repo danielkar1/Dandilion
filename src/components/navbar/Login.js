@@ -9,11 +9,12 @@ class Login extends Component {
   
   render() {
     return (
-      <div className="login-div">
-        <Inputs />
-        <StartPageButton />
-      </div>
-    );
+     
+      <div id="loginContainer" >
+      <div><Inputs /></div>
+        <div> <StartPageButton /></div>
+        </div>
+    )  
   }
 }
 

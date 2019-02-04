@@ -8,11 +8,15 @@ class MainPostPageStore {
     }
    
     @action  getPosts= async () => {
-     let postlist = await Axios.get('http://localhost:3000/posts')
+     let postlist = await Axios.get('http://localhost:8080/posts')
         this.Postlist=postlist
-
+        console.log(this.Postlist)
         
     }
 }
 
+let test= new MainPostPageStore()
+test.getPosts()
+
 export default new MainPostPageStore()
+
