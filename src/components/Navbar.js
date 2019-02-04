@@ -13,7 +13,6 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar">
-        <Link to="/post">Post</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/startPage" onClick={this.locationChange}>Log-in</Link>
       </div>
