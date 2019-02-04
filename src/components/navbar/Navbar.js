@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Navbar.css'
 import { observer, inject } from 'mobx-react';
+import Login from './Login'
 
-@inject(`StartPageStore`)
 @observer
 class Navbar extends Component {
-  locationChange = e => {
-    console.log(e.targt)
-    this.props.StartPageStore.updateLocation(e)
-  }
+  
   render() {
     return (
       <div className="navbar">
+        <Link to="/mainPost">Main Post</Link>
         <Link to="/profile">Profile</Link>
-        <Link to="/login" onClick={this.locationChange}>Log-in</Link>
-        <Link to="/signup" onClick={this.locationChange}>Sign-up</Link>
+        {/* <Link to="/login" onClick={this.locationChange}>Log-in</Link> */}
+        <Login />
+        <Link to="/signup" >Sign-up</Link>
+
       </div>
     );
   }
