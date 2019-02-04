@@ -22,13 +22,8 @@ constructor(){
 
  getUsers=async ()=>{
     let url = `${API_URL}/posts?socketId=${socket.id}`
-    let response=await Axios.get(url, {
+    let response = await Axios.get(`${url}/posts`)
   
-})
-    .then(Id => {
-        this.props.ProfileStore.clientInternalIdstorage(Id)
-        this.props.StartPageStore.resetValues()
-    })
 }
 //   componentDidMount= async()=> {
 
