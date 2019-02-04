@@ -5,7 +5,7 @@ class ProfileStore {
     @observable internalId = ``
     @action clientInternalIdstorage = (Id)=>{
         // this.internalId = Id
-        console.log(Id)
+        console.log("sup")
     }
 }
 

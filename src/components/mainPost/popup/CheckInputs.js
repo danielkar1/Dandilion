@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import SocialNetStore from '../../stores/SocialNetStore';
+import SocialNetStore from '../../../stores/SocialNetStore';
 @inject("SocialNetStore")
 
 @observer

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Post from './components/postPage/Post';
+import Post from './components/mainPost/popup/Post';
 import Profile from './components/profilePage/Profile'
 import Navbar from './components/Navbar'
 import StartPage from './components/startPage/StartPage'
