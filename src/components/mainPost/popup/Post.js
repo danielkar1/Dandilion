@@ -4,9 +4,6 @@ import TextInput from './TextInput'
 import CheckInputs from './CheckInputs'
 import Poster from './Poster';
 
-
-
-
 @observer
 class Post extends Component {
   render() {
@@ -14,7 +11,7 @@ class Post extends Component {
       <div className="post">
         <TextInput />
         <CheckInputs />
-        <Poster/>
+        <Poster />
       </div>
     )
   }

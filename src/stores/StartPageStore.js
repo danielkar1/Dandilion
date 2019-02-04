@@ -13,18 +13,19 @@ class StartPageStore {
             value: ''
         }
     }
-    @observable isSignedUp = false;
-    @action changeStartPageData (name, value) {
-        this.StartPageData[name].value = value;
+    @observable location = ``
+    @action changeStartPageData(name, value) {
+        this.StartPageData[name].value = value
+        console.log(this.StartPageData[name].value)
     }
-    @action resetValues (){
-        this.StartPageData.map(input=>{
+    @action resetValues() {
+        this.StartPageData.map(input => {
             [input].value = ``
         })
     }
-    @action updateLocation (location){
-            this.isSignedUp = true;
+    @action updateLocation(location) {
+        this.location = location ? `Log-in` : `Register`
     }
- }
+}
 
 export default new StartPageStore()

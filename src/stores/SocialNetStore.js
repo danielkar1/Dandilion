@@ -1,6 +1,6 @@
-import { action, observable } from 'mobx';
+import { action, observable, computed } from 'mobx';
 
-class SocialNetworks{
+class SocialNetStore {
     @observable networks = {
         facebook: false,
         twitter: false,
@@ -8,8 +8,15 @@ class SocialNetworks{
     }
     @action checkboxHandler = (name) => {
         this.networks[name] = !this.networks[name]
-        console.log(this.networks[name])
+    }
+    @computed get networksUsed(){
+        let networkArray = Object.keys(this.networks).map(network => {
+            if (this.networks[network]) {
+                return network
+            }
+        })
+        return networkArray
     }
  }
 
-export default new SocialNetworks()
+export default new SocialNetStore()

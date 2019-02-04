@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import io from 'socket.io-client'
-import { observer, inject } from 'mobx-react';
-const API_URL = 'http://127.0.0.1:8080'
-const socket = io(API_URL)
+import { observer, inject } from 'mobx-react'
+import test_URL from '../../../test_URL'
 
-@inject(`PostStore`, `ProfileStore`)
+const API_URL = test_URL 
+const socket = io.connect(API_URL)
+
+@inject(`PostStore`, `ProfileStore`, `SocialNetStore`)
 @observer
 class Poster extends Component {
     clickFunc = () => {
         let id = 1
         let url = `${API_URL}/twitter/post?socketId=${socket.id}`
         let clientInput = {
+            networks: this.props.SocialNetStore.networksUsed,
             id: id,
             text: this.props.PostStore.Text,
             img: this.props.PostStore.Image
         }
-        console.log(this.props.PostStore)
-        Axios.post(url,clientInput)
-            .then(res => console.log(res))
+        Axios.post(url, clientInput)
+            .then(res => {
+                this.props.StartPageStore.resetValues()
+            })
     }
     render() {
         return (
