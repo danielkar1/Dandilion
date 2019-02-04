@@ -48,7 +48,7 @@ class StartPage extends Component {
     render() {
         const StartPageData = this.props.StartPageStore.StartPageData
         return (
-            <div>
+            <div id="login">
                 <Inputs/>
                 <StartPageButton/>
             </div>

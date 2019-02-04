@@ -6,7 +6,7 @@ const Twitter = require(`twitter`)
 const io = Socket.io
 const mongoose = require(`mongoose`)
 const CONSTS = require(`../../CONSTS`)
-mongoose.connect('mongodb://localhost:27017/one-click-post', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:3000/Posts', { useNewUrlParser: true });
 const sqlOperations = require(`../../src/PopulateDb`)
 let TWITTER_CONFIG = CONSTS.TWITTER_CONFIG
 let addSocketIdToSession = passportstuff.addSocketIdToSession
@@ -60,6 +60,15 @@ router.post(`/signup`, (req, res) => {
       .then(id => {
          res.send(id)
       })
+})
+
+router.get(`/posts`, function(req,res){
+   console.log("1")
+   Posts.find({})
+   .exec(function (err, results){
+       console.log(results)
+       res.send(results)
+   })
 })
 
 module.exports = router

@@ -9,6 +9,8 @@ const server = Socket.server
 const app = Socket.app
 app.use(express.json())
 app.use(passport.initialize())
+const mongoose=require('mongoose')
+mongoose.connect('mongodb://localhost/Posts', { uslNewUrlParser : true})
 
 app.use(cors({
     origin: 'http://localhost:3000'

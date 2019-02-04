@@ -8,34 +8,30 @@ class PopulateDb {
     constructor() {
         this.UserSocialCounter = this.GetTableSize
     }
-    insertNewUserToDb(password, name) {
-        sequelize
+    async insertNewUserToDb(password, name) {
+        let  newUser =await sequelize
             .query(`INSERT INTO User VALUES(null,${password},${name})`)
-            .then(function (result) {
-                console.log(result)
-                this.insertTokenToDb
-            })
+            
+                return newUser
     }
-    insertTokensToDb(accessToken, accessTokenSecret, TwitterId) {
-        console.log(accessToken)
-        sequelize
-            .query(`INSERT INTO Twitter VALUES(null,${TwitterId},'${accessToken}','${accessTokenSecret}')`)
-            .then(function (result) {
-                console.log("you got here")
-                console.log(result)
-            })
+    async insertTokensToDb(internalID, socialNetWorkName, accessToken, accessTokenSecret, TwitterId) {
+       let tokensTOdb= await sequelize
+            .query(`INSERT INTO SocialNetworkData VALUES(null,${internalID},${socialNetWorkName},${TwitterId},'${accessToken}','${accessTokenSecret}')`)
+                return tokensTOdb
     }
-    insetIntoUserNetworkTable() {
-        sequelize
-            .query(`INSERT INTO User_SocialNetwork VALUES(${this.UserSocialCounter},${this.UserSocialCounter})`)
-            .then(function (result) {
-                console.log(result)
-                this.UserSocialCounter++
-            })
-    }
-    async GetExcsitingClientAccessTokens(userId, SocielNetworkType) {
+    // insetIntoUserNetworkTable() {
+    //     sequelize
+    //         .query(`INSERT INTO User_SocialNetwork VALUES(${this.UserSocialCounter},${this.UserSocialCounter})`)
+    //         .then(function (result) {
+    //             console.log(result)
+    //             // this.UserSocialCounter++
+    //         })
+    // }
+    async GetExcsitingClientAccessTokens(userId, SocialNetwork_NAME) {
         let result = await sequelize
-            .query(`SELECT accessToken,accessTokenSecret FROM User_SocialNetwork,User,${SocielNetworkType} WHERE User_SocialNetwork.User_id=${userId}`)
+            .query(`SELECT SocialNetworkToken,SocialNetworkTokenSecret FROM SocialNetworkData WHERE
+             User_id= ${userId} AND
+             SocialNetwork_NAME= ${SocialNetwork_NAME}`)
         let results = JSON.parse(JSON.stringify(result[0]))
         let accessToken = results[0].accessToken
         let accessTokenSecret = results[0].accessTokenSecret
@@ -50,19 +46,17 @@ class PopulateDb {
                 User.name='${name}'`
             )
         result = JSON.parse(JSON.stringify(result[0]))
-        console.log(result)
-        console.log(`done getUserId`)
-        this.userId = result
-        this.GetAccessTokens(result)
+        return result
+      
     }
-    GetTableSize() {
-        sequelize
-            .query(`SELECT COUNT(User_id)
-         FROM User`)
-            .then(function (result) {
-                this.UserSocialCounter = result
-            })
-    }
+    // GetTableSize() { // We may need it
+    //     sequelize
+    //         .query(`SELECT COUNT(User_id)
+    //      FROM User`)
+    //         .then(function (result) {
+    //             this.UserSocialCounter = result
+    //         })
+    // }
     CheckIfExsict(name) {
         console.log(name)
         sequelize
@@ -75,17 +69,19 @@ class PopulateDb {
 }
 
 const sqlOperations = new PopulateDb()
-sqlOperations.GetExcsitingClientAccessTokens("1", "Twitter")
+
 
 
 module.exports = sqlOperations
 
+// let post2= new Post({
 
-// testPost= new Post({
-//     postId: 13579,
-//     userIdkey: 1,
-//     text: "Test",
+//     postId: 2,
+//     userIdkey: "2",
+//     text: "Second post",
 //     socialNetwork: ["Twitter"]
+
 // })
 
+// post2.save()
 // testPost.save()
