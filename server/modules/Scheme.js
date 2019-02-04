@@ -5,9 +5,10 @@ const Schema=mongoose.Schema
 
 let postSchema= new Schema({
 
-    postId: Number,
+    
     userIdkey: String,
     text: String,
+    img: String,
     socialNetwork: []
 
 })

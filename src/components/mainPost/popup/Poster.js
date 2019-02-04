@@ -12,7 +12,7 @@ const socket = io.connect(API_URL)
 class Poster extends Component {
     clickFunc = () => {
         let id = 1
-        let url = `${API_URL}/twitter/post?socketId=${socket.id}`
+        let url = `${API_URL}/post?socketId=${socket.id}`
         let clientInput = {
             networks: this.props.SocialNetStore.networksUsed,
             id: id,
