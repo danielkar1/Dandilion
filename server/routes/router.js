@@ -76,7 +76,7 @@ router.get(`/posts`, function(req,res){
    })
 })
 
-router.get(`/posts`,function(req,res){
+router.post(`/posts`,function(req,res){
    let post=req.body
 
    let post2= new Post({
@@ -87,10 +87,9 @@ router.get(`/posts`,function(req,res){
     socialNetwork: ["Twitter"] //get the checked social networks
 
 })
-
 post2.save()
-
-
 })
+
+
 
 module.exports = router
