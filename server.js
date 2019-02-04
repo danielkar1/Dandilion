@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(passport.initialize())
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'https://localhost:3000'
 }))
 
 app.use(session({

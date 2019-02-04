@@ -18,7 +18,7 @@ passport.use(new FacebookStrategy(
 
 const addSocketIdToSession = (req, res, next) => {
     req.session.socketId = req.query.socketId
-    console.log(req)
+    // console.log(req)
     next()
 }
 

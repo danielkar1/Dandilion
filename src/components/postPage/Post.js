@@ -5,9 +5,6 @@ import CheckInputs from './CheckInputs'
 import Poster from './Poster';
 import '../../styles/Post.css'
 
-
-
-
 @observer
 class Post extends Component {
   render() {

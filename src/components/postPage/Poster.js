@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Axios from 'axios';
 import io from 'socket.io-client'
 import { observer, inject } from 'mobx-react';
-const API_URL = 'http://127.0.0.1:8080'
-const socket = io(API_URL)
+const API_URL = 'https://127.0.0.1:8080'
+const socket = io.connect(API_URL)
 
 @inject(`PostStore`, `ProfileStore`, `SocialNetStore`)
 @observer

@@ -1,13 +1,29 @@
 const socketio = require('socket.io')
-const http = require('http')
+const https = require('https')
 const express = require('express')
 const app = express()
+const fs = require(`fs`)
+const http = require(`http`)
+const CONSTS = require('../../CONSTS.js')
+const createServer = require(`auto-sni`)
 
-class Socket{
-    constructor(app){
+class Socket {
+    constructor(app) {
         this.app = app
-        this.server = http.createServer(app)
-        this.io = socketio(this.server)
+        this.server = createServer({ 
+            email: CONSTS.autosniCONFIG.email, 
+            domains: [CONSTS.domain], 
+            agreeTos: true 
+        }, app)
+        //     , {
+        //     key: CONSTS.httpsCONFIG.key,
+        //     cert: CONSTS.httpsCONFIG.cert,
+        //     ca: CONSTS.httpsCONFIG.ca,
+        //     requestCert: false,
+        //     rejectUnauthorized: false
+        // }
+        // )
+        this.io = socketio.listen(this.server)
     }
 }
 const socket = new Socket(app)
