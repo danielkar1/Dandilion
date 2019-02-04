@@ -62,15 +62,13 @@ class PopulateDb {
         sequelize
             .query(`SELECT COUNT(name) FROM User WHERE name = '${name}'`)
             .then(function (result) {
-                return result
+              console.log(result)
 
             })
     }
 }
 
 const sqlOperations = new PopulateDb()
-
-
 
 module.exports = sqlOperations
 
@@ -84,4 +82,3 @@ module.exports = sqlOperations
 // })
 
 // post2.save()
-// testPost.save()

@@ -72,4 +72,21 @@ router.get(`/posts`, function(req,res){
    })
 })
 
+router.get(`/posts`,function(req,res){
+   let post=req.body
+
+   let post2= new Post({
+    postId:post.id,
+    userIdkey: post.id,
+    text: post.text,
+    img: post.img,
+    socialNetwork: ["Twitter"] //get the checked social networks
+
+})
+
+post2.save()
+
+
+})
+
 module.exports = router

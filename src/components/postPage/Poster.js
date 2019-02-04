@@ -4,6 +4,7 @@ import io from 'socket.io-client'
 import { observer, inject } from 'mobx-react';
 const API_URL = 'http://127.0.0.1:8080'
 const socket = io(API_URL)
+// const Posts = require('../../../server/modules/Scheme')
 
 @inject(`PostStore`, `ProfileStore`)
 @observer
@@ -19,7 +20,8 @@ class Poster extends Component {
         console.log(this.props.PostStore)
         Axios.post(url,clientInput)
             .then(res => console.log(res))
-    }
+            Axios.post(`http://localhost:8080/post`,clientInput)
+    }         
     render() {
         return (
             <button
