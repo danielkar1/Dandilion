@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import Inputs from './Inputs';
 import StartPageButton from './StartPageButton';
 
@@ -14,9 +14,9 @@ class StartPage extends Component {
     }
     render() {
         return (
-            <div>
-                <Inputs />
-                <StartPageButton />
+            <div id="login">
+                <Inputs/>
+                <StartPageButton/>
             </div>
         )
     }

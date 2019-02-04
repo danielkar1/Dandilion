@@ -6,43 +6,30 @@ Use AlonRR_db;
 --     name VARCHAR(50)
 -- );
 
--- CREATE TABLE Twitter(
---     id INT NOT NULL AUTO_INCREMENT NULL PRIMARY KEY,
---     Twitter_id INT,
---     accessToken VARCHAR(150),
---     accessTokenSecret VARCHAR(150)
--- );
 
--- CREATE TABLE  User_SocialNetwork(
+
+-- CREATE TABLE SocialNetworkData(
+--     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     User_id INT,
---     Twitter_id INT,
---    FOREIGN KEY(User_id) REFERENCES User(id),
---    FOREIGN KEY(Twitter_id) REFERENCES Twitter(id)
+--     SocialNetwork_NAME VARCHAR(25),
+--     SocialNetwork_id INT,
+--     SocialNetworkToken VARCHAR(150),
+--     SocialNetworkTokenSecret VARCHAR(150),
+--     FOREIGN KEY(User_id) REFERENCES User(id)
+
 -- );
 
 
+-- INSERT INTO User VALUES(null,'12345','daniel');
+-- INSERT INTO User VALUES(null,'123456','Alon');
+--  INSERT INTO SocialNetworkData VALUES(null,1,"Twitter",1220749249 ,'1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg','DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb');
+-- INSERT INTO SocialData VALUES(null,1532535667 ,'1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg','DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb',null,null,null);
 
--- INSERT INTO User VALUES(null,'1234','daniel')
--- INSERT INTO User VALUES(null,'1234','Alon');
--- INSERT INTO Twitter VALUES(null,1220749249 ,'1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg','DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb');
--- INSERT INTO User_SocialNetwork VALUES(1,1);
-
-
--- DELETE FROM AlonRR_db.Twitter ;
-
-  -- SELECT id FROM User WHERE
-  -- password= '1234' AND
-  -- name= 'daniel'
+  -- SELECT SocialNetworkToken,SocialNetworkTokenSecret FROM SocialNetworkData WHERE
+  -- User_id= 1;
+  
 
 
   
   
   
-  
-  
-  
-  
-  
--- DROP TABLE User_SocialNetwork;
--- DROP TABLE User;
--- DROP TABLE Twitter;

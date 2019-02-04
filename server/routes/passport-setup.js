@@ -5,7 +5,7 @@ const CONSTS = require(`../../CONSTS`)
 // const User = require(`../modules/Users`)
 // const mongoose = require('mongoose')
 // const Schema = mongoose.Schema
-const sqlOperations = require(`../../src/PopulateDb`)
+const sqlOperations = require(`../modules/PopulateDb`)
 let TWITTER_CONFIG = CONSTS.TWITTER_CONFIG
 
 const twitterAuth = passport.authenticate('twitter')

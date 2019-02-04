@@ -6,6 +6,7 @@ import Post from './components/postPage/Post';
 import Profile from './components/profilePage/Profile'
 import Navbar from './components/Navbar'
 import StartPage from './components/startPage/StartPage'
+import MainpostPage from './components/postPage/mainPostpage';
 
 
 @observer
