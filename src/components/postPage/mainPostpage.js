@@ -12,30 +12,26 @@ const socket = io(API_URL)
 // @inject(`PostStore`, `ProfileStore`)
 // @observer
 class MainpostPage extends Component {
-constructor(){
-    super()
-    this.state={
-        posts: [],
+    constructor() {
+        super()
+        this.state = {
+            posts: [],
+        }
     }
-}
 
 
- getUsers=async ()=>{
-    let url = `${API_URL}/posts?socketId=${socket.id}`
-    let response = await Axios.get(`${url}/posts`)
-  
-}
-//   componentDidMount= async()=> {
+    getUsers = async () => {
 
-//   // setState inside getUsers instead
-//     const response = await this.getUsers()
-   
-//     this.setState({ response : response.data })
-//   }
-    render(){
-        this.getUsers()
+        let response = await Axios.get(`http://localhost:8080/posts`)
+        this.setState({ posts: response.data })
+    }
+    componentDidMount = async () => {
+        await this.getUsers()
+    }
+    render() {
+
         console.log(this.state.posts)
-       return <div>we</div>
+        return <div>we</div>
     }
 
 }

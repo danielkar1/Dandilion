@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { observer } from 'mobx-react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
@@ -8,16 +7,11 @@ import Profile from './components/profilePage/Profile'
 import Navbar from './components/Navbar'
 import StartPage from './components/startPage/StartPage'
 import MainpostPage from './components/postPage/mainPostpage';
-=======
-import './App.css';
-import FBLogin from './components/login/FBLogin';
->>>>>>> 2ac7fd543a5e916be1b192f9b579a1be0a4e7f3e
 
 
 @observer
 class App extends Component {
   render() {
-<<<<<<< HEAD
     return (
       <Router>
         <div className="App">
@@ -30,9 +24,6 @@ class App extends Component {
         </div>
       </Router>
     );
-=======
-  <FBLogin/>
->>>>>>> 2ac7fd543a5e916be1b192f9b579a1be0a4e7f3e
   }
 }
 

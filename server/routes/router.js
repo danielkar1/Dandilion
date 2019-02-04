@@ -6,6 +6,7 @@ const Twitter = require(`twitter`)
 const io = Socket.io
 const mongoose = require(`mongoose`)
 const CONSTS = require(`../../CONSTS`)
+const Posts = require('../modules/Scheme')
 mongoose.connect('mongodb://localhost:3000/Posts', { useNewUrlParser: true });
 const sqlOperations = require(`../../src/PopulateDb`)
 let TWITTER_CONFIG = CONSTS.TWITTER_CONFIG
