@@ -16,11 +16,11 @@ passport.use(new FacebookStrategy(
     }
 ))
 
-const addSocketIdToSession = (req, res, next) => {
-    req.session.socketId = req.query.socketId
-    // console.log(req)
-    next()
-}
+// const addSocketIdToSession = (req, res, next) => {
+//     req.session.socketId = req.query.socketId
+//     // console.log(req)
+//     next()
+// }
 
 const Auth = {
     twitter: passport.authenticate('twitter'),
@@ -28,6 +28,6 @@ const Auth = {
 }
 
 module.exports = {
-    addSocketIdToSession,
+    // addSocketIdToSession,
     Auth
 }

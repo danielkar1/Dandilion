@@ -9,15 +9,15 @@ class PopulateDb {
         this.UserSocialCounter = this.GetTableSize
     }
     async insertNewUserToDb(password, name) {
-        let  newUser =await sequelize
+        let newUser = await sequelize
             .query(`INSERT INTO User VALUES(null,${password},${name})`)
-            
-                return newUser
+
+        return newUser
     }
     async insertTokensToDb(internalID, socialNetWorkName, accessToken, accessTokenSecret, TwitterId) {
-       let tokensTOdb= await sequelize
+        let tokensTOdb = await sequelize
             .query(`INSERT INTO SocialNetworkData VALUES(null,${internalID},${socialNetWorkName},${TwitterId},'${accessToken}','${accessTokenSecret}')`)
-                return tokensTOdb
+        return tokensTOdb
     }
     // insetIntoUserNetworkTable() {
     //     sequelize
@@ -29,10 +29,17 @@ class PopulateDb {
     // }
     async GetExcsitingClientAccessTokens(userId, SocialNetwork_NAME) {
         let result = await sequelize
-            .query(`SELECT SocialNetworkToken,SocialNetworkTokenSecret FROM SocialNetworkData WHERE
-             User_id= ${userId} AND
-             SocialNetwork_NAME= ${SocialNetwork_NAME}`)
+            .query(`
+                SELECT 
+                    SocialNetworkToken, 
+                    SocialNetworkTokenSecret
+                FROM 
+                    SocialNetworkData 
+                WHERE
+                    User_id= ${userId} AND
+                    SocialNetwork_NAME= '${SocialNetwork_NAME}'`)
         let results = JSON.parse(JSON.stringify(result[0]))
+        console.log(results)
         let accessToken = results[0].accessToken
         let accessTokenSecret = results[0].accessTokenSecret
         return { accessToken: accessToken, accessTokenSecret: accessTokenSecret }
@@ -47,7 +54,7 @@ class PopulateDb {
             )
         result = JSON.parse(JSON.stringify(result[0]))
         return result
-      
+
     }
     // GetTableSize() { // We may need it
     //     sequelize

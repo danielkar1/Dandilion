@@ -4,9 +4,9 @@ import Axios from 'axios';
 // import { observer, inject } from 'mobx-react';
 // const API_URL = 'http://127.0.0.1:8080'
 // const socket = io(API_URL)
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 const API_URL = 'http://127.0.0.1:8080'
-const socket = io(API_URL)
+// const socket = io(API_URL)
 
 
 // @inject(`PostStore`, `ProfileStore`)
