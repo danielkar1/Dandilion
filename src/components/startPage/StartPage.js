@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { observer, inject } from 'mobx-react'
-import Inputs from './Inputs';
+import { inject, observer } from 'mobx-react'
+import Axios from 'axios'
+import io from 'socket.io-client'
+import Inputs from './Inputs'
 import StartPageButton from './StartPageButton';
+// import { BrowserRouter as Router, Route,Link, Redirect } from 'react-router-dom'
 
 @inject(`StartPageStore`)
 @observer
@@ -15,8 +18,8 @@ class StartPage extends Component {
     render() {
         return (
             <div id="login">
-                <Inputs/>
-                <StartPageButton/>
+                <Inputs />
+                <StartPageButton />
             </div>
         )
     }
