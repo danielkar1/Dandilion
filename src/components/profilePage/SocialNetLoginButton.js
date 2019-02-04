@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import io from 'socket.io-client'
 import { inject, observer } from 'mobx-react';
 import Axios from 'axios';
+import test_URL from '../../test_URL'
 
-const API_URL = 'https://127.0.0.1:8080'
+const API_URL = test_URL
 const socket = io.connect(API_URL, {secure: true})
 
 @inject(`ProfileStore`)

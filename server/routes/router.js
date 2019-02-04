@@ -21,8 +21,8 @@ router.get(`/`, function (req, res) {
 //    res.end()
 // })
 // router.post(`/:socialnet`)
-router.get('/twitter', addSocketIdToSession, Auth.twitter)
-router.get('/facebook', addSocketIdToSession, Auth.facebook)
+router.get('/twitter', Auth.twitter)
+router.get('/facebook', Auth.facebook)
 
 router.get('/callback/twitter', Auth.twitter, (req, res) => {
    io.in(req.session.socketId).emit('user', req.user)

@@ -10,11 +10,13 @@ const createServer = require(`auto-sni`)
 class Socket {
     constructor(app) {
         this.app = app
-        this.server = createServer({ 
-            email: CONSTS.autosniCONFIG.email, 
-            domains: [CONSTS.domain], 
-            agreeTos: true 
-        }, app)
+        this.server = http.createServer(
+        //     { 
+        //     email: CONSTS.autosniCONFIG.email, 
+        //     domains: [CONSTS.domain], 
+        //     agreeTos: true 
+        // },
+         app)
         //     , {
         //     key: CONSTS.httpsCONFIG.key,
         //     cert: CONSTS.httpsCONFIG.cert,
@@ -23,7 +25,7 @@ class Socket {
         //     rejectUnauthorized: false
         // }
         // )
-        this.io = socketio.listen(this.server)
+        this.io = socketio(this.server)
     }
 }
 const socket = new Socket(app)
