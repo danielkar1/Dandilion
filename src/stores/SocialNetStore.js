@@ -8,7 +8,6 @@ class SocialNetStore {
     }
     @action checkboxHandler = (name) => {
         this.networks[name] = !this.networks[name]
-        // console.log(this.networks[name])
     }
     @computed get networksUsed(){
         let networkArray = Object.keys(this.networks).map(network => {
@@ -16,7 +15,6 @@ class SocialNetStore {
                 return network
             }
         })
-        console.log(networkArray)
         return networkArray
     }
  }

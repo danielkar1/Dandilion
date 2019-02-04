@@ -1,5 +1,5 @@
 const express = require('express')
-const passportstuff = require(`./passport-setup`)
+const { Auth, addSocketIdToSession } = require(`./passport-setup`)
 const router = express.Router()
 const Socket = require(`./socketIO-setup`)
 const Twitter = require(`twitter`)
@@ -10,22 +10,33 @@ const Posts = require('../modules/Scheme')
 mongoose.connect('mongodb://localhost:3000/Posts', { useNewUrlParser: true });
 const sqlOperations = require(`../modules/PopulateDb`)
 let TWITTER_CONFIG = CONSTS.TWITTER_CONFIG
-let addSocketIdToSession = passportstuff.addSocketIdToSession
-let twitterAuth = passportstuff.twitterAuth
-
 router.get(`/`, function (req, res) {
    console.log("server is sain")
    res.send("router is running")
 })
 
-router.get('/twitter', addSocketIdToSession, twitterAuth)
+// router.get('/:socialnet', addSocketIdToSession, Auth[req.params.socialnet])
 
-router.get('/callback/twitter', twitterAuth, (req, res) => {
+// router.get('/callback/:socialnet', Auth[req.params.socialnet], (req, res) => {
+//    io.in(req.session.socketId).emit('user', req.user)
+//    res.end()
+// })
+// router.post(`/:socialnet`)
+router.get('/twitter', Auth.twitter)
+router.get('/facebook', Auth.facebook)
+
+router.get('/callback/twitter', Auth.twitter, (req, res) => {
    io.in(req.session.socketId).emit('user', req.user)
    res.end()
 })
-
-router.post(`/twitter/post`, async (req, res) => {
+router.get('/callback/facebook', Auth.facebook, (req, res) => {
+   io.in(req.session.socketId).emit('user', req.user)
+   res.end()
+})
+router.post(`/save`, (req, res) => {
+//dbmethod for saving socialNet (req.body.socialData)
+})
+router.post(`/post`, async (req, res) => {//
    let userKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `Twitter`)
    let currentUser = new Twitter({
       consumer_key: TWITTER_CONFIG.consumerKey,
@@ -41,16 +52,12 @@ router.post(`/twitter/post`, async (req, res) => {
       })
    res.send(true)
 })
-router.post('/login', async (req, res) => {//req.body={ password: string , name: string }
+router.post('/log-in', async (req, res) => {//req.body={ password: string , name: string }
    let id = await sqlOperations.getUserId(req.body.password, req.body.name)
    console.log(`${id} here`)
-   // .then((id) => {
-   //    console.log(id)
-   //    res.send(id)
-   // })
    res.send(id)
 })
-router.post(`/signup`, (req, res) => {
+router.post(`/register`, (req, res) => {
    let password = req.body.password
    let name = req.body.name
    sqlOperations.insertNewUserToDb(password, name)
