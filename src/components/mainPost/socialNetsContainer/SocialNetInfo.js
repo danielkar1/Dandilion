@@ -5,9 +5,14 @@ import { inject, observer } from 'mobx-react'
 @observer
 class SocialNetInfo extends Component {
     getInfo =() => {
-       const socialData = this.props.MainPostPageStore.Postlist2.map((socialnet, index) => {
-
-        })
+       const socialData = Object.keys(this.props.MainPostPageStore.Postlist2)
+      //  .map((socialnet, index) => {
+      //     return (
+      //       <div key={index}>
+      //         <div>Likes: {</div>
+      //       </div>
+      //     )
+        // })
     }
     render() {
       return (

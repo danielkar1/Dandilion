@@ -4,6 +4,10 @@ class MainPostPageStore {
     @observable newPostPopUp = {
         visible: false
     }
+    @observable currentMainPost = ''
+    @observable checkCurrentMainPost () {
+        console.log(this.currentMainPost)
+    }
     // @observable Postlist2 = {    
     //     facebook: {
     //         Post1: {
