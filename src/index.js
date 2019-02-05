@@ -6,14 +6,12 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
 import PostStore from './stores/PostStore';
 import SocialNetStore from './stores/SocialNetStore'
-import ProfileStore from './stores/ProfileStore'
 import StartPageStore from './stores/StartPageStore'
 import MainPostPageStore from './stores/MainPostPageStore'
 
 const stores = {
     PostStore,
     SocialNetStore,
-    ProfileStore,
     StartPageStore,
     MainPostPageStore
 }

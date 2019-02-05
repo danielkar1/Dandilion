@@ -2,7 +2,7 @@ import React,{ Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
 
-@inject(`StartPageStore`, `ProfileStore`)
+@inject(`StartPageStore`)
 @observer
 class Inputs extends Component{
     createInputsArea = () => {

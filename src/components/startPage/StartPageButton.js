@@ -6,7 +6,7 @@ import test_URL from '../../test_URL'
 
 
 // const socket = io(test_URL)
-@inject(`StartPageStore`,`ProfileStore`)
+@inject(`StartPageStore`)
 @observer
 class StartPageButton extends Component {
     oparate = () => {
@@ -18,13 +18,13 @@ class StartPageButton extends Component {
             name: StartPageData.name.value
         })
             .then(Id => {
-                this.props.ProfileStore.clientInternalIdstorage(Id)
+                this.props.StartPageStore.clientInternalIdstorage(Id)
                 this.props.StartPageStore.resetValues()
             })
     }
     render() {
         return (
-            <button class="signInButton" onClick={this.oparate}>Login{this.props.StartPageStore.location}</button>
+            <button className="signInButton" onClick={this.oparate}>Login{this.props.StartPageStore.location}</button>
         )
     }
 }

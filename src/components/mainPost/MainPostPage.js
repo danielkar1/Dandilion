@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PostList from './PostList';
 import PopUp from './popup/PopUp';
-
+import Comments from './postsComments/Comments'
 import '../css/postpage.css';
-
 import CurrentPost from './CurrentPost'
 import SocialNetInfo from './socialNetsContainer/SocialNetInfo'
 import CurrentPostText from './CurrentPostText'
@@ -21,6 +20,7 @@ class MainPostPage extends Component {
                 <CurrentPostText />
                 <PostList />
                 <SocialNetInfo />
+                <Comments />
             </div>
         )
     }  

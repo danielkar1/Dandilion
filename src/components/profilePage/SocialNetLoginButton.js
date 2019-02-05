@@ -7,7 +7,7 @@ import test_URL from '../../test_URL'
 const API_URL = test_URL
 // const socket = io.connect(API_URL, {secure: true})
 
-@inject(`ProfileStore`)
+@inject(`StartPageStore`)
 @observer
 class SocialNetLoginButton extends Component {
     constructor() {
@@ -25,7 +25,7 @@ class SocialNetLoginButton extends Component {
             // console.log(user)
             // this.popup.close()
             // let socialData = {
-            //     internalId: this.props.ProfileStore.internalId,
+            //     internalId: this.props.StartPageStore.internalId,
             //     accessToken: user.accessToken,
             //     refreshToken: user.refreshToken,
             //     socialNetwork: user.socialNetwork,
@@ -33,7 +33,7 @@ class SocialNetLoginButton extends Component {
             // }
             // console.log(socialData)
             // Axios.post(`/save`,socialData)
-            // this.props.ProfileStore.clientInternalIdstorage(user._id)
+            // this.props.StartPageStore.clientInternalIdstorage(user._id)
         // })
     }
     checkPopup() {
