@@ -5,12 +5,16 @@ import { inject, observer } from 'mobx-react'
 @observer
 class PostList extends Component {
     createPostList = () =>{
-        return (this.props.MainPostPageStore.Postlist.map((post, index) =>{
+      const PostListData = this.props.MainPostPageStore.Postlist2
+        return Object.keys(PostListData).map((post, index) =>{
             return (
-                <div key={index}>{post}</div>
+                <div key={index} onClick={this.handleOnclick}>{post}</div> 
             )
         })
-    )}
+    }
+    handleOnclick =(e) => {
+      this.props.MainPostPageStore.currentMainPost = e.target.textContent
+    }
     render() {
       return (
         <div className="post-list">

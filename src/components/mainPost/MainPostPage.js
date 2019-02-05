@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PostList from './PostList';
 import PopUp from './popup/PopUp';
+import SocialNetsContainer from './socialNetsContainer/SocialNetsContainer'
+import CurrentPost from './CurrentPost'
 import { inject, observer } from 'mobx-react'
 
 @inject(`MainPostPageStore`, `PostStore`) 
@@ -10,8 +12,9 @@ class MainPostPage extends Component {
         return (
             <div className="main-post">
                 <PopUp />
-                <div>Current Post:{this.props.MainPostPageStore.Postlist[4]}</div>
+                <CurrentPost />
                 <PostList />
+                <SocialNetsContainer />
             </div>
         )
     }  
