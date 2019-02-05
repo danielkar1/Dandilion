@@ -18,7 +18,7 @@ class PostList extends Component {
      this.props.MainPostPageStore.getPosts()
       return (
         <div className="post-list">
-          {/* {this.createPostList()} */}
+          {this.createPostList()}
         </div>
       );
     }

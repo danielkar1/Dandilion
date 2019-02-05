@@ -1,0 +1,95 @@
+
+body{
+    /* color: #fff;
+    font-family: 'Nunito Semibold';
+    text-align: center; */
+   
+}
+/* .add-post-popup{
+
+} */
+.PostPage-container{
+    display: grid;
+    /* margin-top: 10px; */
+    margin: 10px;
+    grid-template-columns: 1fr 3fr;
+    grid-auto-rows: minmax(150px, auto);
+    grid-column-gap: 5%;
+    padding-top: 15px; 
+    max-width: 960px;
+    margin: 0 auto;
+    border:black, solid, 2px;
+}
+.post-list{
+    display: grid;
+    /* grid-column: 1 / 2;  */
+    border:black, solid, 1px;
+    background: #fac24a;
+    grid-gap: 30px;
+    /* float:left; */
+    height: 80%;
+    overflow-y: auto; 
+    /* overflow-clip-box: auto; */
+
+    
+} 
+
+.post-list > div {
+    /* background-color: aqua; */
+}
+
+.post{
+    display: grid;
+    border: black, solid , 1px;
+    border-radius: 20%;
+    padding: 50px;
+    
+    background-color: #FF4D00;
+}
+.social-colums-container{ 
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 3%;
+    border: white groove 5px;
+    /* grid-auto-columns: minmax(150px, auto); */
+    /* /* grid-column: 2 / 4; */
+    /* grid-row: 2 / 4;  */
+    background: #e82b69;
+}
+.social-icons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-content: center;
+    align-items: start;
+    height: 100px;
+    grid-column: 1/6;  
+    border: white solid 1px;
+    background-color: #4abdac;
+}
+.icon{
+    border:white groove 5px;
+    border-radius: 10%;
+}
+.social-analytics-table{
+    border:white groove 5px;
+    border-radius: 10%;
+    align-items: end;
+}
+
+/* #content > *{
+    padding: 10px;
+}
+header{
+    grid-column: span 3;
+    background: #3bbced;
+}
+
+
+nav{
+    grid-column: 1 / 2;
+    background: #8ae348;
+}
+footer{
+    grid-column: span 3;
+    background: #a56dda;
+} */
