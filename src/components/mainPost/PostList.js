@@ -10,7 +10,9 @@ class PostList extends Component {
       const PostListData = this.props.MainPostPageStore.Postlist2
         return Object.keys(PostListData).map((post, index) =>{
             return (
-                <div key={index} onClick={this.handleOnclick}>{post}</div> 
+                <div key={index} onClick={this.handleOnclick}>{post}
+                  <div>Post Text: {PostListData[post].Text}</div>
+                </div> 
             )
         })
     }

@@ -1,8 +1,12 @@
 import { action, observable } from 'mobx';
 import Axios from 'axios';
+// import RootStore from './RootStore';
 
 
 class MainPostPageStore {
+    // constructor (rootStore) {
+    //     this.rootStore = rootStore
+    // }
 
     @observable Postlist = []
 
@@ -23,6 +27,10 @@ class MainPostPageStore {
         twitter: "fab fa-twitter-square",
         instagram: "fab fa-instagram",
         linkdin: "fab fa-linkedin"
+    }
+
+    @action addPost = (text, socialNets) =>{
+
     }
 
     @observable Postlist2 = {
