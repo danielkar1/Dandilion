@@ -14,9 +14,12 @@ class StartPageStore {
         }
     }
     @observable location = ``
+
+    @observable internalId = ``
+
     @action changeStartPageData(name, value) {
         this.StartPageData[name].value = value
-        console.log(this.StartPageData[name].value)
+        // console.log(this.StartPageData[name].value)
     }
     @action resetValues() {
         this.StartPageData.map(input => {

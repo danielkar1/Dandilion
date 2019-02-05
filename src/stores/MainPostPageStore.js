@@ -1,5 +1,7 @@
 import { action, observable } from 'mobx';
 import Axios from 'axios';
+
+
 class MainPostPageStore {
 
     @observable Postlist = []

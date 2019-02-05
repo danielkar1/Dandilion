@@ -6,7 +6,7 @@ import test_URL from '../../../test_URL'
 
 // const socket = io(test_URL)
 
-@inject(`PostStore`, `ProfileStore`, `SocialNetStore`)
+@inject(`PostStore`, `StartPageStore`, `SocialNetStore`)
 @observer
 class Poster extends Component {
     clickFunc = () => {

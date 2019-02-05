@@ -9,7 +9,7 @@
 // const socket = io(API_URL)
 
 
-// // @inject(`PostStore`, `ProfileStore`)
+// // @inject(`PostStore`, `StartPageStore`)
 // // @observer
 // class MainpostPage extends Component {
 //     constructor() {
