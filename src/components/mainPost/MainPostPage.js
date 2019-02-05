@@ -11,7 +11,7 @@ class MainPostPage extends Component {
         return (
             <div className="main-post">
                 <PopUp />
-                <div>Current Post:{this.props.MainPostPageStore.Postlist[4]}</div>
+                {/* <div>Current Post:{this.props.MainPostPageStore.Postlist[4]}</div> */}
                 <PostList />
                 <SocialNetsContainer />
             </div>
