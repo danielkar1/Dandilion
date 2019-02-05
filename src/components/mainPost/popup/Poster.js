@@ -6,7 +6,7 @@ import test_URL from '../../../test_URL'
 
 // const socket = io(test_URL)
 
-@inject(`PostStore`, `StartPageStore`, `SocialNetStore`)
+@inject(`PostStore`, `StartPageStore`, `SocialNetStore`, `MainPostPageStore`)
 @observer
 class Poster extends Component {
     clickFunc = () => {
@@ -23,8 +23,13 @@ class Poster extends Component {
         Axios.post(url, clientInput)
             .then(res => {
                 // this.props.PostStore.resetValues()
+                this.props.PostStore.deletInput()
+                this.closeModal()
             })
             .catch(err=>console.log(err))
+    }
+    closeModal = () => {
+        this.props.MainPostPageStore.newPostPopUp.visible = false;
     }
     render() {
         return (
