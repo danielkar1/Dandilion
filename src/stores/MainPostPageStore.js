@@ -1,6 +1,14 @@
 import { action, observable } from 'mobx';
-
+import Axios from 'axios';
 class MainPostPageStore {
+
+    @observable Postlist= []
+
+    @action  getPosts= async () => {
+     let postlist = await Axios.get('http://localhost:8080/posts')
+        this.Postlist=postlist
+        console.log(this.Postlist)
+
     @observable newPostPopUp = {
         visible: false
     }
@@ -144,10 +152,13 @@ class MainPostPageStore {
                         { id: "c32", text: "Rubber cheese manchego monterey jack. " }
                     ]
                 }
-            }
-            
+            } 
         }  
     }
 }
 
+let test= new MainPostPageStore()
+test.getPosts()
+
 export default new MainPostPageStore()
+

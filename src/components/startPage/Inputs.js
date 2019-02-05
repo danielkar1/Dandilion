@@ -9,8 +9,8 @@ class Inputs extends Component{
         const StartPageData = this.props.StartPageStore.StartPageData
         return Object.keys(StartPageData).map((inputProperty, index) => {
             return (
-                <div key={index}>
-                    <label>{inputProperty}</label>
+                <div className="login-div" key={index}>
+                    <label>{inputProperty}:</label>
                     <input type={StartPageData[inputProperty].type}
                     name={inputProperty}
                     placeholder={StartPageData[inputProperty].placeholder}

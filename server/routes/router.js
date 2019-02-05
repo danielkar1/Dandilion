@@ -77,6 +77,7 @@ router.get(`/posts`, function(req,res){
 })
 
 router.get(`/posts`,function(req,res){
+
    let post=req.body
 
    let post2= new Post({
@@ -92,5 +93,6 @@ post2.save()
 
 
 })
+
 
 module.exports = router

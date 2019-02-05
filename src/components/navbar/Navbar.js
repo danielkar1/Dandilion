@@ -12,8 +12,8 @@ class Navbar extends Component {
         <Link to="/mainPost">Main Post</Link>
         <Link to="/profile">Profile</Link>
         {/* <Link to="/login" onClick={this.locationChange}>Log-in</Link> */}
-        <Login />
         <Link to="/signup" >Sign-up</Link>
+       <div> <Login /> </div>
 
       </div>
     );
