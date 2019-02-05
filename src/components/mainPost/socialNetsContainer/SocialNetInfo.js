@@ -12,10 +12,10 @@ class SocialNetInfo extends Component {
   
       return socialNetsArr.map((socialNet, index)=> {
         return (
-          <div key={index} className={socialNet}>
-            <i className={this.props.MainPostPageStore.socialNetImg[socialNet]}></i>
-            <div className="likes">Likes: {socialNetsLoc[socialNet].Likes}</div>
-            <div className="shares">Shares: {socialNetsLoc[socialNet].Shares}</div>
+          <div key={index} className="social-analytics-table" id={socialNet}>
+           <div> <i className={this.props.MainPostPageStore.socialNetImg[socialNet]}></i></div>
+            <div className="ingament-info">Likes: {socialNetsLoc[socialNet].Likes}</div>
+            <div className="ingament-info">Shares: {socialNetsLoc[socialNet].Shares}</div>
             <div>Comments: { socialNetsLoc[socialNet].comments.length}</div>
           </div>
         )
@@ -23,7 +23,7 @@ class SocialNetInfo extends Component {
     }
     render() {
       return (
-        <div className="social-net-info">
+        <div className="social-colums-container">
             {this.getInfo()}
         </div>
       )

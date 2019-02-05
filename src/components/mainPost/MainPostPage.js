@@ -8,19 +8,20 @@ import CurrentPost from './CurrentPost'
 import SocialNetInfo from './socialNetsContainer/SocialNetInfo'
 import CurrentPostText from './CurrentPostText'
 import { inject, observer } from 'mobx-react'
-
+import './../css/postpage.css'
 @inject(`MainPostPageStore`, `PostStore`) 
 @observer
 class MainPostPage extends Component {
     
     render() {
         return (
-            <div className="main-post">
-                <PopUp />
-                <CurrentPost />
-                <CurrentPostText />
-                <PostList />
-                <SocialNetInfo />
+            <div className="PostPage-container">
+            <div> <PostList /> </div>
+            <div className="main-social"> <SocialNetInfo /></div>
+                {/* <CurrentPost />
+                <CurrentPostText /> */}
+               
+                
             </div>
         )
     }  
