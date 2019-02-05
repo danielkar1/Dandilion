@@ -2,18 +2,18 @@ import { action, observable } from 'mobx';
 import Axios from 'axios';
 class MainPostPageStore {
 
-    @observable Postlist= []
+    @observable Postlist = []
 
-    @action  getPosts= async () => {
-     let postlist = await Axios.get('http://localhost:8080/posts')
-        this.Postlist=postlist
+    @action getPosts = async () => {
+        let postlist = await Axios.get('http://localhost:8080/posts')
+        this.Postlist = postlist
         console.log(this.Postlist)
-
+    }
     @observable newPostPopUp = {
         visible: false
     }
     @observable currentMainPost = 'Post1'
-    @observable checkCurrentMainPost () {
+    @observable checkCurrentMainPost() {
         console.log(this.currentMainPost)
     }
     @observable socialNetImg = {
@@ -23,15 +23,15 @@ class MainPostPageStore {
         linkdin: "fab fa-linkedin"
     }
 
-    @observable Postlist2 ={
+    @observable Postlist2 = {
         Post1: {
             Text: "First post!",
-            SocialNets:{
+            SocialNets: {
                 facebook: {
                     id: "facebookP1",
                     Likes: 50,
                     Shares: 3,
-                    comments:  [
+                    comments: [
                         { id: "c1", text: "First comment on first post!" },
                         { id: "c2", text: "Second comment on first post!!" },
                         { id: "c3", text: "Third comment on first post!!!" }
@@ -68,7 +68,7 @@ class MainPostPageStore {
             Text: "Aw man, I wanted to be first",
             SocialNets: {
                 facebook: {
-                    id:  "facebookP2",
+                    id: "facebookP2",
                     Likes: 27,
                     Shares: 1,
                     comments: [
@@ -76,33 +76,33 @@ class MainPostPageStore {
                         { id: "c10", text: "Yeah, believe in yourself!" },
                         { id: "c11", text: "Haha second place what a joke." }
                     ]
-                 },
-                 twitter: {
-                     id:  "twitterP2",
-                     Likes: 15,
-                     Shares: 1,
-                     comments: [
-                            { id: "c12", text: "Nobody cares" },
-                            { id: "c13", text: "Boring"}
-                     ]
-                 },
-                 instagram: {
-                     id: "instagramP2",
-                     Likes: 23,
-                     Shares: 0,
-                     comments: [
-                            { id: "c14", text: "Pudding jelly beans muffin." },
-                            { id: "c15", text: "Donut gingerbread donut macaroon."},
-                            { id: "c16", text: "Bear claw I love lemon drops." },
-                            { id: "c17", text: "Croissant macaroon I love pastry croissant bonbon."}
-                     ]
-                 },
-                 linkdin: {
-                     id: "linkdinP2",
-                     Likes: 5,
-                     Shares: 1,
-                     comments: [
-                            { id: "c18", text: "Sugar plum sweet muffin soufflé." }
+                },
+                twitter: {
+                    id: "twitterP2",
+                    Likes: 15,
+                    Shares: 1,
+                    comments: [
+                        { id: "c12", text: "Nobody cares" },
+                        { id: "c13", text: "Boring" }
+                    ]
+                },
+                instagram: {
+                    id: "instagramP2",
+                    Likes: 23,
+                    Shares: 0,
+                    comments: [
+                        { id: "c14", text: "Pudding jelly beans muffin." },
+                        { id: "c15", text: "Donut gingerbread donut macaroon." },
+                        { id: "c16", text: "Bear claw I love lemon drops." },
+                        { id: "c17", text: "Croissant macaroon I love pastry croissant bonbon." }
+                    ]
+                },
+                linkdin: {
+                    id: "linkdinP2",
+                    Likes: 5,
+                    Shares: 1,
+                    comments: [
+                        { id: "c18", text: "Sugar plum sweet muffin soufflé." }
                     ]
                 }
             }
@@ -111,7 +111,7 @@ class MainPostPageStore {
             Text: "Brownie sweet roll topping liquorice jelly-o tiramisu chocolate bar candy canes",
             SocialNets: {
                 facebook: {
-                    id:  "facebookP3",
+                    id: "facebookP3",
                     Likes: 132,
                     Shares: 15,
                     comments: [
@@ -123,12 +123,12 @@ class MainPostPageStore {
                     ]
                 },
                 twitter: {
-                    id:  "twitterP3",
+                    id: "twitterP3",
                     Likes: 76,
                     Shares: 7,
                     comments: [
                         { id: "c24", text: "I love cheese, especially smelly cheese manchego." },
-                        { id: "c25", text: "Dolcelatte ricotta cheesecake."}
+                        { id: "c25", text: "Dolcelatte ricotta cheesecake." }
                     ]
                 },
                 instagram: {
@@ -137,11 +137,11 @@ class MainPostPageStore {
                     Shares: 22,
                     comments: [
                         { id: "c26", text: "Pudding jelly beans muffin." },
-                        { id: "c27", text: "Donut gingerbread donut macaroon."},
+                        { id: "c27", text: "Donut gingerbread donut macaroon." },
                         { id: "c28", text: "Babybel cut the cheese croque monsieur." },
-                        { id: "c29", text: "Monterey jack."},
+                        { id: "c29", text: "Monterey jack." },
                         { id: "c30", text: "Feta babybel port-salut cheeseburger the big cheese airedale goat stilton." },
-                        { id: "c31", text: "Jarlsberg danish fontina melted cheese babybel.."}
+                        { id: "c31", text: "Jarlsberg danish fontina melted cheese babybel.." }
                     ]
                 },
                 linkdin: {
@@ -152,12 +152,12 @@ class MainPostPageStore {
                         { id: "c32", text: "Rubber cheese manchego monterey jack. " }
                     ]
                 }
-            } 
-        }  
+            }
+        }
     }
 }
 
-let test= new MainPostPageStore()
+let test = new MainPostPageStore()
 test.getPosts()
 
 export default new MainPostPageStore()
