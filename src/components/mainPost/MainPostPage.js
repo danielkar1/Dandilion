@@ -9,29 +9,30 @@ class MainPostPage extends Component {
     
     render() {
         return (
-            <div class="PostPage-container">
+            <div className="PostPage-container">
               
-                <div class="post-list"><PostList />posts list +   <button><PopUp /></button>
-                    <div class="post">post one</div>
-                    <div class="post">post two</div>
-                    <div class="post">post three</div>
-                    <div class="post">post four</div>
-                    <div class="post">post five</div>
+                <div className="post-list"><PostList />posts list +   <button><PopUp /></button>
+                    <div className="post">post one</div>
+                    <div className="post">post two</div>
+                    <div className="post">post three</div>
+                    <div className="post">post four</div>
+                    <div className="post">post five</div>
                 </div>
-
-                <div class="social-colums-container">
+                <div className="main">
                 
-                 <div class="social-icons">
-                 <i class="icon">icon1</i>
-                 <i class="icon">icon2</i>
-                 <i class="icon">icon3</i>
-                 <i class="icon">icon4</i> 
+                 <div className="social-icons">
+                 <i className="icon">icon1</i>
+                 <i className="icon">icon2</i>
+                 <i className="icon">icon3</i>
+                 <i className="icon">icon4</i> 
                  </div>
-                 <div class="social-analytics-table">Facebook</div>
-                 <div class="social-analytics-table">Twitter</div>
-                 <div class="social-analytics-table">Instagram</div>
-                 <div class="social-analytics-table">Linkdin</div>
+                <div className="social-colums-container">
+                 <div className="social-analytics-table">Facebook</div>
+                 <div className="social-analytics-table">Twitter</div>
+                 <div className="social-analytics-table">Instagram</div>
+                 <div className="social-analytics-table">Linkdin</div>
 
+                </div>
                 </div>
             </div>
         )
