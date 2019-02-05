@@ -15,14 +15,12 @@ class MainPostPage extends Component {
     
     render() {
         return (
-
             <div className="main-post">
                 <PopUp />
                 <CurrentPost />
                 <CurrentPostText />
                 <PostList />
                 <SocialNetInfo />
-
             </div>
         )
     }  

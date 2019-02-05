@@ -11,8 +11,8 @@ class Login extends Component {
     return (
      
       <div id="loginContainer" >
-      <div><Inputs /></div>
-        <div> <StartPageButton /></div>
+     <div> <Inputs /></div>
+     <span> <StartPageButton /> </span>
         </div>
     )  
   }

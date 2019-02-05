@@ -4,7 +4,12 @@
 } */
 .App{
   text-align: center;
-  background-color: #dfdce3;
+  background-color:floralwhite;
+  background:-moz-linear-gradient(top, rgb(70, 207, 70) 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top,rgb(45, 194, 45)10%, #f6f6f6 100%);
+	background:-o-linear-gradient(top,rgb(85, 151, 85)50%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top,rgb(70, 207, 70) 20%, #f6f6f6 100%);
+	/* background:linear-gradient(to bottom, #ffffff 25%, #f6f6f6 100%); */
   font-family: 'Bitter', serif;
   height: 100vh
 }
@@ -47,6 +52,7 @@
 }
 .signInButton {
   display: grid;
+  grid-column: 1/9;
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
