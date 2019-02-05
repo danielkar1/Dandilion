@@ -12,7 +12,7 @@ class StartPageButton extends Component {
     oparate = () => {
         let StartPageStore = this.props.StartPageStore
         let StartPageData = StartPageStore.StartPageData
-        let url = `${test_URL}/${StartPageStore.location}`
+        let url = `${test_URL}/log-in`
         Axios.post(url, {
             password: StartPageData.password.value,
             name: StartPageData.name.value
