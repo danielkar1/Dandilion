@@ -9,10 +9,7 @@ class SocialNetInfo extends Component {
       const currentPost = this.props.MainPostPageStore.currentMainPost
       const socialNetsLoc = this.props.MainPostPageStore.Postlist2[currentPost].SocialNets
       const socialNetsArr = Object.keys(socialNetsLoc)
-      console.log(socialNetsArr)
-      console.log(currentPost)
-      console.log(socialNetsLoc.facebook.comments[1].text)
-      // console.log(this.props.MainPostPageStore.Postlist2)
+  
       return socialNetsArr.map((socialNet, index)=> {
         return (
           <div key={index} className={socialNet}>
