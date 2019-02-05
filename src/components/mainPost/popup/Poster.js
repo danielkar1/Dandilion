@@ -22,7 +22,7 @@ class Poster extends Component {
         // console.log(clientInput)
         Axios.post(url, clientInput)
             .then(res => {
-                this.props.StartPageStore.resetValues()
+                // this.props.PostStore.resetValues()
             })
             .catch(err=>console.log(err))
     }

@@ -22,12 +22,18 @@ passport.use(new FacebookStrategy(
 //     next()
 // }
 
-const Auth = {
-    twitter: passport.authenticate('twitter'),
-    facebook: passport.authenticate(`facebook`)
+const authenticate_media = function(media, user_id){
+
+    const Auth = {
+        twitter: passport.authenticate('twitter', {callbackURL: `http://127.0.0.1:8080/callback/twitter?u_id=${user_id}`}),
+        facebook: passport.authenticate(`facebook`)
+    }   
+
+    Auth[media]
 }
+
 
 module.exports = {
     // addSocketIdToSession,
-    Auth
+    authenticate_media
 }
