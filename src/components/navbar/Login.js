@@ -12,10 +12,10 @@ class Login extends Component {
     return (
      
     <div id="loginContainer" >
-      {this.props.StartPageStore.internalId} ? 
-      <div> <Inputs /></div>
-      <span> <StartPageButton /> </span> : 
-      <HelloUser />
+      {this.props.StartPageStore.internalId ?  
+      <HelloUser /> : 
+      <div> <Inputs />
+      <span> <StartPageButton /> </span></div>}
     </div>
     )  
   }
