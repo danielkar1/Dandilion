@@ -2,41 +2,28 @@ const express = require('express')
 const { Auth, addUidtoSession } = require(`./passport-setup`)
 const router = express.Router()
 const Twitter = require(`twitter`)
-const mongoose = require(`mongoose`)
-const CONSTS = require(`../../CONSTS`)
 const { TWITTER_CONFIG } = require(`../../CONSTS`)
 const Posts = require('../modules/Scheme')
-mongoose.connect('mongodb://localhost:3000/Posts', { useNewUrlParser: true });
 const sqlOperations = require(`../modules/PopulateDb`)
 
 router.get(`/`, function (req, res) {
    console.log("server is sain")
    res.send("router is running")
 })
-
 router.get('/twitter', addUidtoSession, Auth.twitter)
 router.get('/facebook', addUidtoSession, Auth.facebook)
-
 router.get('/callback/twitter', Auth.twitter, (req, res) => {
    const { accessToken, refreshToken, socialNetwork, profile } = req.user
-   console.log(req.user)
    sqlOperations.insertTokensToDb(req.session.u_id, `'${socialNetwork}'`, accessToken, refreshToken, profile.id)
    res.end()
 })
 router.get('/callback/facebook', Auth.facebook, (req, res) => {
+   const { accessToken, refreshToken, socialNetwork, profile } = req.user
+   sqlOperations.insertTokensToDb(req.session.u_id, `'${socialNetwork}'`, accessToken, refreshToken, profile.id)
    res.end()
 })
-router.post(`/save`, (req, res) => {
-   //dbmethod for saving socialNet (req.body.socialData)
-})
 router.post(`/post`, async (req, res) => {//
-   console.log(req.body)
-   // let userKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `Twitter`)
-   let userKeys = {
-      accessToken: 'vM1YWwAAAAAA9ZKAAAABaL0fZRE',
-      accessTokenSecret: '4mPlyeqjIzH7p9ZXvQCxbSduLQCOuq2t'
-   }
-   console.log(userKeys)
+   let userKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `Twitter`)
    let currentUser = new Twitter({
       consumer_key: TWITTER_CONFIG.consumerKey,
       consumer_secret: TWITTER_CONFIG.consumerSecret,
@@ -45,18 +32,19 @@ router.post(`/post`, async (req, res) => {//
    })
    currentUser.post(`statuses/update`, { status: req.body.text })
       .then((res) => {
+         sqlOperations.savepost(res)
       })
       .catch(err => {
          throw err
       })
    res.send(true)
 })
-router.post('/log-in', async (req, res) => {//req.body={ password: string , name: string }
+router.post('/log-in', async (req, res) => {
    let id = await sqlOperations.getUserId(req.body.password, req.body.name)
-   // console.log(`${id} here`)
+   console.log(id)
    res.send(id)
 })
-router.post(`/register`, (req, res) => {
+router.post(`/register`, async (req, res) => {
    let password = req.body.password
    let name = req.body.name
    sqlOperations.insertNewUserToDb(password, name)

@@ -1,6 +1,8 @@
 const CONSTS = require(`../../CONSTS`)
 const Sequelize = require('sequelize')
 const Post = require('./Scheme')//future 
+const mongoose = require(`mongoose`)
+mongoose.connect('mongodb://localhost:3000/Posts', { useNewUrlParser: true });
 //put in your db in CONSTS file
 const sequelize = new Sequelize(`mysql://${CONSTS.dbConfig.name}:${CONSTS.dbConfig.password}@fs-bootcamp.cqc0oq2maxqm.us-west-2.rds.amazonaws.com/${CONSTS.dbConfig.dbName}`)
 
@@ -19,14 +21,6 @@ class PopulateDb {
             .query(`INSERT INTO SocialNetworkData VALUES(null,${internalID},${socialNetWorkName},${socialNetworkId},'${accessToken}','${accessTokenSecret}')`)
         return tokensTOdb
     }
-    // insetIntoUserNetworkTable() {
-    //     sequelize
-    //         .query(`INSERT INTO User_SocialNetwork VALUES(${this.UserSocialCounter},${this.UserSocialCounter})`)
-    //         .then(function (result) {
-    //             console.log(result)
-    //             // this.UserSocialCounter++
-    //         })
-    // }
     async GetExcsitingClientAccessTokens(userId, SocialNetwork_NAME) {
         let result = await sequelize
             .query(`
@@ -39,39 +33,36 @@ class PopulateDb {
                     User_id= ${userId} AND
                     SocialNetwork_NAME= '${SocialNetwork_NAME}'`)
         let results = JSON.parse(JSON.stringify(result[0]))
-        console.log(results)
-        let accessToken = results[0].accessToken
-        let accessTokenSecret = results[0].accessTokenSecret
-        return { accessToken: accessToken, accessTokenSecret: accessTokenSecret }
+        return {
+            accessToken: results[0].SocialNetworkToken,
+            accessTokenSecret: results[0].SocialNetworkTokenSecret
+        }
     }
     async getUserId(password, name) {
         let result = await sequelize
-            .query(`SELECT id 
-            FROM User 
+            .query(`
+            SELECT 
+                id 
+            FROM
+                User 
             WHERE
                 User.password='${password}' AND
                 User.name='${name}'`
             )
         result = JSON.parse(JSON.stringify(result[0]))
-        return result
-
+        return result[0]
     }
-    // GetTableSize() { // We may need it
-    //     sequelize
-    //         .query(`SELECT COUNT(User_id)
-    //      FROM User`)
-    //         .then(function (result) {
-    //             this.UserSocialCounter = result
-    //         })
-    // }
     CheckIfExsict(name) {
         console.log(name)
         sequelize
             .query(`SELECT COUNT(name) FROM User WHERE name = '${name}'`)
             .then(function (result) {
                 return result
-
             })
+    }
+    savepost(text,img){
+        let newpost =new Post(text)
+        newpost.save()
     }
 }
 
