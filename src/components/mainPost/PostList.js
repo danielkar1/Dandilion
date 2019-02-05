@@ -7,12 +7,15 @@ import { observable } from 'mobx';
 class PostList extends Component {
   
     createPostList = () =>{
-        // return (this.props.MainPostPageStore.Postlist.map((post, index) =>{
-        //     return (
-        //         <div key={index}>{post}</div>
-        //     )
-        // })
-        // console.log(this.props.MainPostPageStore.Postlist)
+      const PostListData = this.props.MainPostPageStore.Postlist2
+        return Object.keys(PostListData).map((post, index) =>{
+            return (
+                <div key={index} onClick={this.handleOnclick}>{post}</div> 
+            )
+        })
+    }
+    handleOnclick =(e) => {
+      this.props.MainPostPageStore.currentMainPost = e.target.textContent
     }
     render() {
      this.props.MainPostPageStore.getPosts()

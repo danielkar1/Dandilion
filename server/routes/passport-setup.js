@@ -6,19 +6,18 @@ const CONSTS = require(`../../CONSTS`)
 passport.use(new TwitterStrategy(
     CONSTS.TWITTER_CONFIG,
     (accessToken, refreshToken, profile, cb) => {
-        cb(null, {accessToken, refreshToken, profile, socialNetwork:`twitter`})
+        cb(null, { accessToken, refreshToken, profile, socialNetwork: `twitter` })
     }
 ))
 passport.use(new FacebookStrategy(
     CONSTS.FACEBOOK_CONFIG,
     (accessToken, refreshToken, profile, cb) => {
-        cb(null, {accessToken, refreshToken, profile, socialNetwork:`facebook`})
+        cb(null, { accessToken, refreshToken, profile, socialNetwork: `facebook` })
     }
 ))
 
-const addSocketIdToSession = (req, res, next) => {
-    req.session.socketId = req.query.socketId
-    // console.log(req)
+const addUidtoSession = (req, res, next) => {
+    req.session.u_id = req.query.u_id
     next()
 }
 
@@ -28,6 +27,6 @@ const Auth = {
 }
 
 module.exports = {
-    addSocketIdToSession,
-    Auth
+    Auth,
+    addUidtoSession
 }
