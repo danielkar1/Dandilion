@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 import SocialNetsImg from './SocialNetsImg'
+import SocialNetInfo from './SocialNetInfo'
 
 @observer
 class SocialNetsContainer extends Component {
@@ -9,6 +10,7 @@ class SocialNetsContainer extends Component {
       return (
         <div className="social-nets-container">
             <SocialNetsImg />
+            <SocialNetInfo />
         </div>
       )
     }
