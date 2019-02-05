@@ -11,12 +11,12 @@ class PopulateDb {
     async insertNewUserToDb(password, name) {
         let newUser = await sequelize
             .query(`INSERT INTO User VALUES(null,${password},${name})`)
-
+        console.log(newUser)
         return newUser
     }
-    async insertTokensToDb(internalID, socialNetWorkName, accessToken, accessTokenSecret, TwitterId) {
+    async insertTokensToDb(internalID, socialNetWorkName, accessToken, accessTokenSecret, socialNetworkId) {
         let tokensTOdb = await sequelize
-            .query(`INSERT INTO SocialNetworkData VALUES(null,${internalID},${socialNetWorkName},${TwitterId},'${accessToken}','${accessTokenSecret}')`)
+            .query(`INSERT INTO SocialNetworkData VALUES(null,${internalID},${socialNetWorkName},${socialNetworkId},'${accessToken}','${accessTokenSecret}')`)
         return tokensTOdb
     }
     // insetIntoUserNetworkTable() {

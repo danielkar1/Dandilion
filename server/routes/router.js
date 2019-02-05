@@ -1,80 +1,31 @@
 const express = require('express')
-const { authenticate_media } = require(`./passport-setup`)
+const { Auth, addUidtoSession } = require(`./passport-setup`)
 const router = express.Router()
-// const Socket = require(`./socketIO-setup`)
 const Twitter = require(`twitter`)
-// const io = Socket.io
 const mongoose = require(`mongoose`)
 const CONSTS = require(`../../CONSTS`)
 const { TWITTER_CONFIG } = require(`../../CONSTS`)
 const Posts = require('../modules/Scheme')
 mongoose.connect('mongodb://localhost:3000/Posts', { useNewUrlParser: true });
 const sqlOperations = require(`../modules/PopulateDb`)
+
 router.get(`/`, function (req, res) {
    console.log("server is sain")
    res.send("router is running")
 })
 
-// router.get('/:socialnet', addSocketIdToSession, Auth[req.params.socialnet])
+router.get('/twitter', addUidtoSession, Auth.twitter)
+router.get('/facebook', addUidtoSession, Auth.facebook)
 
-// router.get('/callback/:socialnet', Auth[req.params.socialnet], (req, res) => {
-//    io.in(req.session.socketId).emit('user', req.user)
-//    res.end()
-// })
-// router.post(`/:socialnet`)
-const passport = require(`passport`)
-const { Strategy: TwitterStrategy } = require('passport-twitter')
-
-passport.use(`twitter`, new TwitterStrategy(
-   CONSTS.TWITTER_CONFIG,
-   (accessToken, refreshToken, profile, cb) => {
-      cb(null, { accessToken, refreshToken, profile, socialNetwork: `twitter` })
-   }
-))
-
-router.get('/twitter', function (req, res, next) {
-   // const { u_id } = req.query
-   req.session.u_id = req.query.u_id
-   // const state = 696912
-   // u_id ? Buffer.from(JSON.stringify({ u_id })).toString('base64') : null
-   console.log( req.session.u_id)
-   const authenticator = passport.authenticate('twitter')
-   authenticator(req, res, next)
-   // passport.use(`twitter`, new TwitterStrategy(TWITTER_CONFIG, (aT, rT, p, cb) => {
-   //    console.log(at)
-   //    console.log(rT)
-   //    console.log(p)
-   //    console.log(cb)
-   // }))
-   // passport.authenticate(
-   //    'twitter', (
-   //       { callbackURL: `http://127.0.0.1:8080/callback/twitter?u_id=${req.params.u_id}` }
-   //    )
-   // )(req, res, next)
-   // authenticate_media(`twitter`, req.params.u_id)
+router.get('/callback/twitter', Auth.twitter, (req, res) => {
+   const { accessToken, refreshToken, socialNetwork, profile } = req.user
+   console.log(req.user)
+   sqlOperations.insertTokensToDb(req.session.u_id, `'${socialNetwork}'`, accessToken, refreshToken, profile.id)
+   res.end()
 })
-// router.get('/facebook', Auth.facebook)
-
-router.get('/callback/twitter', passport.authenticate(
-   'twitter'), (req, res) => {
-      const { state } = req.query
-      // const { u_id } = JSON.parse(Buffer.from(state, 'base64').toString())
-      // authenticate_media(`twitter`,req.query.u_id)
-      // io.in(req.session.socketId).emit('user', req.user)
-
-      // {
-      //    callbackURL: "http://127.0.0.1:8080/callback/twitter",
-      //    successRedirect: '/#upload', failureRedirect: '/#upload'
-      // })
-      console.log(`callback`)
-      console.log(req)
-      // console.log(u_id)
-      res.end()
-   })
-// router.get('/callback/facebook', Auth.facebook, (req, res) => {
-//    // io.in(req.session.socketId).emit('user', req.user)
-//    res.end()
-// })
+router.get('/callback/facebook', Auth.facebook, (req, res) => {
+   res.end()
+})
 router.post(`/save`, (req, res) => {
    //dbmethod for saving socialNet (req.body.socialData)
 })

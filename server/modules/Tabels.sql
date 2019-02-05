@@ -20,7 +20,7 @@ Use AlonRR_db;
 -- );
 
 
--- INSERT INTO User VALUES(null,'12345','daniel');
+-- INSERT INTO User VALUES(null,'2222','daniel');
 -- INSERT INTO User VALUES(null,'123456','Alon');
 --  INSERT INTO SocialNetworkData VALUES(null,1,"Twitter",1220749249 ,'1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg','DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb');
 -- INSERT INTO SocialData VALUES(null,1532535667 ,'1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg','DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb',null,null,null);

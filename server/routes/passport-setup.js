@@ -6,34 +6,27 @@ const CONSTS = require(`../../CONSTS`)
 passport.use(new TwitterStrategy(
     CONSTS.TWITTER_CONFIG,
     (accessToken, refreshToken, profile, cb) => {
-        cb(null, {accessToken, refreshToken, profile, socialNetwork:`twitter`})
+        cb(null, { accessToken, refreshToken, profile, socialNetwork: `twitter` })
     }
 ))
 passport.use(new FacebookStrategy(
     CONSTS.FACEBOOK_CONFIG,
     (accessToken, refreshToken, profile, cb) => {
-        cb(null, {accessToken, refreshToken, profile, socialNetwork:`facebook`})
+        cb(null, { accessToken, refreshToken, profile, socialNetwork: `facebook` })
     }
 ))
 
-// const addSocketIdToSession = (req, res, next) => {
-//     req.session.socketId = req.query.socketId
-//     // console.log(req)
-//     next()
-// }
-
-const authenticate_media = function(media, user_id){
-
-    const Auth = {
-        twitter: passport.authenticate('twitter', {callbackURL: `http://127.0.0.1:8080/callback/twitter?u_id=${user_id}`}),
-        facebook: passport.authenticate(`facebook`)
-    }   
-
-    Auth[media]
+const addUidtoSession = (req, res, next) => {
+    req.session.u_id = req.query.u_id
+    next()
 }
 
+const Auth = {
+    twitter: passport.authenticate('twitter'),
+    facebook: passport.authenticate(`facebook`)
+}
 
 module.exports = {
-    // addSocketIdToSession,
-    authenticate_media
+    Auth,
+    addUidtoSession
 }
