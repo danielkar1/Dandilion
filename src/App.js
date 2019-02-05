@@ -6,7 +6,7 @@ import Profile from './components/profilePage/Profile'
 import Navbar from './components/navbar/Navbar'
 import StartPage from './components/startPage/StartPage'
 import MainPostPage from './components/mainPost/MainPostPage';
-
+import DevTools from 'mobx-react-devtools'
 
 @observer
 class App extends Component {
@@ -14,6 +14,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+        <DevTools/>
           <Navbar />
           <Route path="/profile" exact render={({ match }) => <Profile />} />
           <Route path="/startpage" exact render={({ match }) => <StartPage loginPage={false}/>} />
