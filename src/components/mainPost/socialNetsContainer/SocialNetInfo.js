@@ -13,7 +13,7 @@ class SocialNetInfo extends Component {
   
       return socialNetsArr.map((socialNet, index)=> {
         return (
-          <div key={index} className="social-analytics-table" id={socialNet}>
+          <div key={index} className="social-analytics-table card" id={socialNet}>
            <div> <i className={this.props.MainPostPageStore.socialNetImg[socialNet]}></i></div>
             <div className="ingament-info">Likes: {socialNetsLoc[socialNet].Likes}</div>
             <div className="ingament-info">Shares: {socialNetsLoc[socialNet].Shares}</div>

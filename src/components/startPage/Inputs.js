@@ -10,16 +10,16 @@ class Inputs extends Component{
         const StartPageData = this.props.StartPageStore.StartPageData
         return Object.keys(StartPageData).map((inputProperty, index) => {
             return (
-                <div className="login-div" key={index}>
-                    <label>{inputProperty}:</label>
-                    <input type={StartPageData[inputProperty].type}
+                    <input class="login-input" type={StartPageData[inputProperty].type}
                     name={inputProperty}
                     placeholder={StartPageData[inputProperty].placeholder}
                     onChange={this.handleChange}
                     >
                     </input>
-                </div>
-            )
+                )
+                // <div className="login-div" key={index}>
+                    {/* <label>{inputProperty}:</label> */}
+                {/* </div> */}
         })
     }
     handleChange = (e) => {
@@ -33,10 +33,11 @@ class Inputs extends Component{
 
     render () {
         const idea = 'check'
+        // <div className="start-page-inputs">
         return (
-        <div className="start-page-inputs">{this.createInputsArea()} </div>
+        this.createInputsArea()
         )
-        
+        // </div>
     }
 }
 

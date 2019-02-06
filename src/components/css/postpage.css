@@ -42,7 +42,7 @@ body{
     border: black, solid , 1px;
     border-radius: 5px;
     padding: 10%;
-    background-color: #f78733;  
+    background-color:  #6077ab;  
     
 }
 .main-social{
@@ -59,18 +59,18 @@ body{
 .social-colums-container{ 
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    background-color: #1D3461;;
-    
+    /* background-color: rgb(239, 239, 240); */
+    /* box-shadow: 0px 3px 5px -1px rgba(0,0,0, 0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,  0.12); */
     flood-opacity: 0.5;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     grid-gap: 3%;
-    height: 70%;    
-    margin: 5%;
+    /* height: 70%;     */
+    /* margin: 5%; */
     /* grid-auto-columns: minmax(150px, auto); */
     /* /* grid-column: 2 / 4; */
     /* grid-row: 2 / 4;  */
     /* background: #605F5E; */
-    border-radius: 10%;
+    /* border-radius: 10%; */
     
 }
 .social-icons{
@@ -104,10 +104,10 @@ body{
     
 }
 .ingament-info{
-    color: white;
+    color: black;
     border-bottom: black groove 1px;
     font-size: 18px;
-    text-transform: uppercase
+    text-transform:capitalize;
 }
 
 .current-post{
@@ -117,14 +117,17 @@ body{
     padding: 10%;
 }
 
+.login-input{
+   border-radius:  5px;
+}
+
 .popupPost{
     background: #637aad;
     height: 100%;
 }
 .myButton {  
-    border-top-right-radius: 20%;
-    border-top-left-radius: 20%;
-
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 4px;
 	-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
 	box-shadow:inset 0px 1px 0px 0px #7a8eb9;
@@ -135,8 +138,8 @@ body{
 	background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
 	background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
-    background-color: #637aad;
-    border: 1px solid #314179;
+    background-color:#637aad;
+    border: 1px solid #1d3461;
 	
 	display:inline-block;
 	cursor:pointer;
@@ -162,23 +165,9 @@ body{
 	top:1px;
 }
 
-
-/* #content > *{
-    padding: 10px;
+.card {
+    padding: 12px;
+    background-color: #efefef;
+    border-radius: 4px;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0, 0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0, 0.12);
 }
-header{
-    grid-column: span 3;
-    background: #3bbced;
-}
-
-
-nav{
-    grid-column: 1 / 2;
-    background: #8ae348;
-}
-footer{
-    grid-column: span 3;
-    background: #a56dda;
-} */
-
-  

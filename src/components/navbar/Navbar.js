@@ -9,9 +9,10 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar">
-        <Link to="/mainPost">Main Post</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/signup" >Sign-up</Link>
+          <Link to="/mainPost">Main Post</Link>
+          <Link to="/profile">Profile</Link>
+          <Link to="/signup" >Sign-up</Link>
+        <div className="spacer"></div>
         <div> <Login /> </div>
       </div>
     );
