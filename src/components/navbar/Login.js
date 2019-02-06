@@ -7,19 +7,20 @@ import HelloUser from './HelloUser'
 @inject(`StartPageStore`)
 @observer
 class Login extends Component {
-  
   render() {
     return (
-     
-    <div id="loginContainer" >
-      {this.props.StartPageStore.internalId ?  
-      <HelloUser /> : 
-      <div> <Inputs />
-      <span> <StartPageButton /> </span></div>}
-    </div>
-    )  
-  }
-}
-
-export default Login
-
+      <div id="loginContainer" >
+        {this.props.StartPageStore.internalId ?
+          <HelloUser /> :
+          <div>
+            <Inputs />
+            <span> <StartPageButton location='login'/> </span>
+          </div>
+            }
+      </div>
+    )
+        }
+      }
+      
+      export default Login
+      

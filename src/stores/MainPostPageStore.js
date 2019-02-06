@@ -29,9 +29,9 @@ class MainPostPageStore {
         instagram: "fab fa-instagram",
         linkdin: "fab fa-linkedin"
     }
-    @computed get findLastPostNum () {
+    @computed get findLastPostNum() {
         const postArr = Object.keys(this.Postlist2)
-        return postArr.length +1
+        return postArr.length + 1
     }
 
     @observable addPost = (text, socialNets) => {
@@ -39,19 +39,19 @@ class MainPostPageStore {
         socialNets = socialNets.filter(n => n)
         // console.log(socialNets)
         const lastPostNum = this.findLastPostNum
-        let newthing ={}
+        let newthing = {}
         socialNets.map(socialNet => {
-            newthing[socialNet]= {
+            newthing[socialNet] = {
                 id: `${socialNet}P${lastPostNum}`,
                 Likes: 0,
                 Shares: 0,
                 comments: []
             }
-        }) 
+        })
         console.log(newthing)
         this.Postlist2[`Post${lastPostNum}`] = {
             Text: text,
-            SocialNets: newthing 
+            SocialNets: newthing
         }
 
     }
@@ -59,10 +59,10 @@ class MainPostPageStore {
         let likesSum = 0
         let socialNets = this.Postlist2[postName].SocialNets
         let socialNetsArray = Object.keys(socialNets)
-        
-        socialNetsArray.forEach( socialNet => 
-                likesSum += socialNets[socialNet].Likes
-            )
+
+        socialNetsArray.forEach(socialNet =>
+            likesSum += socialNets[socialNet].Likes
+        )
         return likesSum
     }
     @action findMostLikedPost = () => {
@@ -70,7 +70,7 @@ class MainPostPageStore {
         let mostLikedPost = ''
         let maxLikesSum = -Infinity
         const posts = Object.keys(this.Postlist2)
-        let stats= posts.map(post =>{return {[post]: this.findTotalLikesOfPost(post)}})
+        let stats = posts.map(post => { return { [post]: this.findTotalLikesOfPost(post) } })
         return stats
         //  this.findTotalLikesOfPost()
         // console.log(posts)
