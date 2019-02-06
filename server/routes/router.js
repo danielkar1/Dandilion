@@ -1,11 +1,10 @@
 const express = require('express')
-const { Auth, addUidtoSession } = require(`./passport-setup`)
-const router = express.Router()
-const Twitter = require(`twitter`)
-const { TWITTER_CONFIG } = require(`../../CONSTS`)
-const Posts = require('../modules/Scheme')
-const sqlOperations = require(`../modules/PopulateDb`)
 const request = require(`request`)
+const Twitter = require(`twitter`)
+const router = express.Router()
+const sqlOperations = require(`../modules/PopulateDb`)
+const { Auth, addUidtoSession } = require(`./passport-setup`)
+const { TWITTER_CONFIG } = require(`../../CONSTS`)
 
 router.get(`/`, function (req, res) {
    console.log("server is sain")
@@ -30,7 +29,7 @@ router.get('/callback/linkedin', Auth.linkedin, (req, res) => {
    sqlOperations.insertTokensToDb(req.session.u_id, `'${socialNetwork}'`, accessToken, refreshToken, profile.id)
    res.end()
 })
-router.post(`/post`, async (req, res) => {//https://api.linkedin.com/v2/ugcPosts w/ {Request Body}
+router.post(`/post`, async (req, res) => {
    let twitterKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `twitter`)
    let linkedinKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `linkedin`)
    let currentUser = new Twitter({
@@ -69,7 +68,7 @@ router.post(`/post`, async (req, res) => {//https://api.linkedin.com/v2/ugcPosts
          console.log(err)
       }
       else {
-         console.log(res)
+         sqlOperations.savepost(res)
       }
    })
    let poster = {

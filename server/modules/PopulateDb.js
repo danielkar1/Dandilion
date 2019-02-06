@@ -1,9 +1,8 @@
 const CONSTS = require(`../../CONSTS`)
 const Sequelize = require('sequelize')
-const Post = require('./Scheme')//future 
+const Post = require('./Scheme')
 const mongoose = require(`mongoose`)
-mongoose.connect('mongodb://localhost:3000/Posts', { useNewUrlParser: true })
-//put in your db in CONSTS file
+mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost:3000/Posts', { useNewUrlParser: true })
 const sequelize = new Sequelize(`mysql://${CONSTS.dbConfig.name}:${CONSTS.dbConfig.password}@fs-bootcamp.cqc0oq2maxqm.us-west-2.rds.amazonaws.com/${CONSTS.dbConfig.dbName}`)
 
 class PopulateDb {
@@ -51,37 +50,15 @@ class PopulateDb {
                 User 
             WHERE
                 User.password='${password}' AND
-                User.name='${name}'`
-            )
+                User.name='${name}'`)
         result = JSON.parse(JSON.stringify(result[0]))
         return result[0]
-    }
-    CheckIfExsict(name) {
-        console.log(name)
-        sequelize
-            .query(`SELECT COUNT(name) FROM User WHERE name = '${name}'`)
-            .then(function (result) {
-                return result
-            })
     }
     savepost(post, img) {
         let newpost = new Post({ post: post })
         newpost.save()
     }
 }
-
 const sqlOperations = new PopulateDb()
 
 module.exports = sqlOperations
-
-// let post2= new Post({
-
-//     postId: 2,
-//     userIdkey: "2",
-//     text: "Second post",
-//     socialNetwork: ["Twitter"]
-
-// })
-
-// post2.save()
-// testPost.save()

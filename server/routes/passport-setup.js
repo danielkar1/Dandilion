@@ -2,7 +2,6 @@ const passport = require(`passport`)
 const { Strategy: TwitterStrategy } = require('passport-twitter')
 const { Strategy: FacebookStrategy } = require('passport-facebook')
 const { Strategy: LinkedInStrategy } = require(`passport-linkedin-oauth2`)
-
 const CONSTS = require(`../../CONSTS`)
 
 passport.use(new TwitterStrategy(
@@ -20,9 +19,6 @@ passport.use(new FacebookStrategy(
 passport.use(new LinkedInStrategy(
     CONSTS.LINKEDIN_CONFIG,
     (accessToken, refreshToken, profile, cb) => {
-        console.log(accessToken)
-        console.log(refreshToken)
-        console.log(profile)
         cb(null, { accessToken, refreshToken, profile, socialNetwork: `linkedin` })
     }
 ))
@@ -33,7 +29,7 @@ const addUidtoSession = (req, res, next) => {
 }
 
 const Auth = {
-    twitter: passport.authenticate('twitter'),
+    twitter: passport.authenticate(`twitter`),
     facebook: passport.authenticate(`facebook`),
     linkedin: passport.authenticate(`linkedin`),
 }
