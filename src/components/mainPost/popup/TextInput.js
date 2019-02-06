@@ -30,7 +30,7 @@ class TextInput extends Component {
         }]
         return (
             <div className="text-inputs">
-                    <EmojiPicker onEmojiClick={this.handleEmoji}/>
+                    {/* <EmojiPicker onEmojiClick={this.handleEmoji}/> */}
                 {inputs.map(anInput => {
                     return (
                         <div key={anInput.name} className="input-div">

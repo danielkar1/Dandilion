@@ -11,17 +11,15 @@ class Login extends Component {
     return (
       <div id="loginContainer" >
         {this.props.StartPageStore.internalId ?
-            <HelloUser /> : <>
+          <HelloUser /> : <>
             <Inputs />
-            <StartPageButton location='login'/>
-            </>
-          }
-    {/* // </div> */}
-          {/* // <div className= "inputs-"> */}
+            <StartPageButton location='login' />
+          </>
+        }
       </div>
     )
   }
 }
-      
-      export default Login
-      
+
+export default Login
+

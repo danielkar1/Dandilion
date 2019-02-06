@@ -22,7 +22,7 @@ passport.serializeUser((user, cb) => cb(null, user))
 passport.deserializeUser((obj, cb) => cb(null, obj))
 
 app.use(`/`, api)
-
-app.listen(8080, () => {
+const PORT = 8080
+app.listen(process.env.PORT || PORT, () => {
     console.log('Working on port 8080')
 })

@@ -5,12 +5,7 @@ import PostList from '../components/mainPost/PostList';
 
 
 class MainPostPageStore {
-    // constructor (rootStore) {
-    //     this.rootStore = rootStore
-    // }
-
     @observable Postlist = []
-
     @action getPosts = async () => {
         let postlist = await Axios.get('http://localhost:8080/posts')
         this.Postlist = postlist
@@ -20,6 +15,9 @@ class MainPostPageStore {
         visible: false
     }
     @observable currentMainPost = 'Post1'
+    @action updateCurrentPost(post){
+        this.currentMainPost = post
+    }
     @observable checkCurrentMainPost() {
         console.log(this.currentMainPost)
     }
@@ -27,17 +25,14 @@ class MainPostPageStore {
         facebook: "fab fa-facebook-square",
         twitter: "fab fa-twitter-square",
         instagram: "fab fa-instagram",
-        linkdin: "fab fa-linkedin"
+        linkedin: "fab fa-linkedin"
     }
     @computed get findLastPostNum() {
         const postArr = Object.keys(this.Postlist2)
         return postArr.length + 1
     }
-
     @observable addPost = (text, socialNets) => {
-        console.log(text)
         socialNets = socialNets.filter(n => n)
-        // console.log(socialNets)
         const lastPostNum = this.findLastPostNum
         let newthing = {}
         socialNets.map(socialNet => {
@@ -48,7 +43,6 @@ class MainPostPageStore {
                 comments: []
             }
         })
-        console.log(newthing)
         this.Postlist2[`Post${lastPostNum}`] = {
             Text: text,
             SocialNets: newthing
@@ -59,7 +53,6 @@ class MainPostPageStore {
         let likesSum = 0
         let socialNets = this.Postlist2[postName].SocialNets
         let socialNetsArray = Object.keys(socialNets)
-
         socialNetsArray.forEach(socialNet =>
             likesSum += socialNets[socialNet].Likes
         )
@@ -72,24 +65,7 @@ class MainPostPageStore {
         const posts = Object.keys(this.Postlist2)
         let stats = posts.map(post => { return { [post]: this.findTotalLikesOfPost(post) } })
         return stats
-        //  this.findTotalLikesOfPost()
-        // console.log(posts)
-        // const socialNets = Object.keys(this.Postlist2.Post1.SocialNets)
-        // // console.log(socialNets)
-        // for (let post of posts) {
-        //     // console.log(post)
-        //     for (let socialNet of socialNets) {
-        //         // console.log(this.Postlist2.SocialNets[post])
-        //         likesSum += this.Postlist2[post].SocialNets[socialNet].Likes
-        //         if (maxLikesSum < likesSum) {
-        //             maxLikesSum = likesSum
-        //             mostLikedPost = this.Postlist2[post]
-        //         }
-        //     }
-        // }
-        // return mostLikedPost
     }
-
     @observable Postlist2 = {
         Post1: {
             Text: "First post!",
@@ -123,8 +99,8 @@ class MainPostPageStore {
                         { id: "c8", text: "Booo!" },
                     ]
                 },
-                linkdin: {
-                    id: "linkdinP1",
+                linkedin: {
+                    id: "linkedinP1",
                     Likes: 3,
                     Shares: 0,
                     comments: []
@@ -164,8 +140,8 @@ class MainPostPageStore {
                         { id: "c17", text: "Croissant macaroon I love pastry croissant bonbon." }
                     ]
                 },
-                linkdin: {
-                    id: "linkdinP2",
+                linkedin: {
+                    id: "linkedinP2",
                     Likes: 5,
                     Shares: 1,
                     comments: [
@@ -211,8 +187,8 @@ class MainPostPageStore {
                         { id: "c31", text: "Jarlsberg danish fontina melted cheese babybel.." }
                     ]
                 },
-                linkdin: {
-                    id: "linkdinP3",
+                linkedin: {
+                    id: "linkedinP3",
                     Likes: 27,
                     Shares: 5,
                     comments: [
