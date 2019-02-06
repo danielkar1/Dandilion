@@ -47,22 +47,25 @@ body{
 }
 .main-social{
     background: #4abdac;
-   
+    align-items: center;
+    border: fff92e groove 5px;
+    border-radius: 10%;
    
 }
 
 .social-colums-container{ 
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    margin-top: 10%;
+    margin-top: 30%;
     grid-gap: 3%;
     height: 50%;
+    
     border: grey groove 5px;
     /* grid-auto-columns: minmax(150px, auto); */
     /* /* grid-column: 2 / 4; */
     /* grid-row: 2 / 4;  */
     background: #fff92e;
-  
+    border-radius: 10%;
     
 }
 .social-icons{
@@ -91,6 +94,12 @@ body{
 .ingament-info{
     border-bottom: black groove 1px;
     
+}
+
+.current-post{
+    display:grid;
+    margin: 10%;
+    padding: 10%;
 }
 
 .myButton {  

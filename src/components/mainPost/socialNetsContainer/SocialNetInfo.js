@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
+import CurrentPost from '../CurrentPost';
 
 @inject(`MainPostPageStore`) 
 @observer
@@ -24,6 +25,7 @@ class SocialNetInfo extends Component {
     render() {
       return (
         <div className="social-colums-container">
+        
             {this.getInfo()}
         </div>
       )

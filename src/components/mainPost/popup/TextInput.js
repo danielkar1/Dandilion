@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import './../../../lib/css/emoji.css'
 @inject("PostStore")
 
 @observer
@@ -19,9 +20,10 @@ class TextInput extends Component {
             <div className="text-inputs">
                 {inputs.map(anInput => {
                     return (
-                        <div key={anInput.name} className="input-div">
+                        <div  key={anInput.name} className="input-div">
                             <label>{anInput.name}</label>
-                            <input
+                            <input 
+                                data-emojiable="true"
                                 type={anInput.type}
                                 onChange={this.inputHandler}
                                 name={anInput.name}

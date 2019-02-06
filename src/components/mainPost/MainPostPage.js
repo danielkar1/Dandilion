@@ -17,9 +17,14 @@ class MainPostPage extends Component {
         return (
             <div className="PostPage-container">
             <div> <PostList /> </div>
-            <div className="main-social"> <SocialNetInfo /></div>
-                {/* <CurrentPost />
-                <CurrentPostText /> */}
+            <div className="main-social"> 
+            <div class="current-post"><CurrentPost/></div>
+            <div><SocialNetInfo /> </div>
+            
+             </div> 
+           
+           
+                
                
                 
             </div>
