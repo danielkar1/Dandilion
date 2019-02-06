@@ -12,13 +12,13 @@ class StartPageButton extends Component {
     oparate = () => {
         let StartPageStore = this.props.StartPageStore
         let StartPageData = StartPageStore.StartPageData
-        let url = `${test_URL}/log-in`
+        let url = `${test_URL}/${this.props.location}`
         Axios.post(url, {
             password: StartPageData.password.value,
             name: StartPageData.name.value
         })
             .then(Id => {
-                this.props.StartPageStore.clientInternalIdstorage(Id)
+                this.props.StartPageStore.updateId(Id)
                 this.props.StartPageStore.resetValues()
             })
     }

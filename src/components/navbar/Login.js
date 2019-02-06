@@ -14,13 +14,13 @@ class Login extends Component {
           <HelloUser /> :
           <div>
             <Inputs />
-            <span> <StartPageButton location='login'/> </span>
+            <span> <StartPageButton location='login' /> </span>
           </div>
-            }
+        }
       </div>
     )
-        }
-      }
-      
-      export default Login
-      
+  }
+}
+
+export default Login
+

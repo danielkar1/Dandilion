@@ -27,7 +27,7 @@ class MainPostPageStore {
         facebook: "fab fa-facebook-square",
         twitter: "fab fa-twitter-square",
         instagram: "fab fa-instagram",
-        linkdin: "fab fa-linkedin"
+        linkedin: "fab fa-linkedin"
     }
     @computed get findLastPostNum() {
         const postArr = Object.keys(this.Postlist2)

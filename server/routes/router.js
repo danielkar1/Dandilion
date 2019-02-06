@@ -51,7 +51,7 @@ router.post(`/post`, async (req, res) => {//https://api.linkedin.com/v2/ugcPosts
       url: 'https://api.linkedin.com/v2/shares',
       headers: {
          'cache-control': 'no-cache',
-         Authorization: 'Bearer AQUYM3KLxBKP-jlbAmO7vTeRWbI4GK8iTC-BLfZVPxqcdRr4TsaDVDL_7d8f07uWCgmMEhtaThs_lebqSWAEpRYdWeCsBn9AGvQjfGJcXb22hHrW6cH-i6nc1hhvX3iV6YjZMZGhlywh_atNgIapCUq9atar2J27CObXzPBjtPW-A_zMEUp5p5bgk17ClJJsw0tVwbC0b0aFN_Qlf4Ur4V016VMQCDm-QyLgUUm4sz5H9af4LtKGeIC_sT2WMw9dPQCL2hiKIixvkc7sXUvvJ217MZYQylcIFQiwhTtjzB1EBX9oHndDkv-HWcj_04tzab6nl6e1aqHjmGWbSf-tFGExCb4hrA',
+         Authorization: `Bearer ${linkedinKeys}`,
          'Content-Type': 'application/json'
       },
       body: {
@@ -81,7 +81,7 @@ router.post(`/post`, async (req, res) => {//https://api.linkedin.com/v2/ugcPosts
    })
    res.send(true)
 })
-router.post('/log-in', async (req, res) => {
+router.post('/login', async (req, res) => {
    let id = await sqlOperations.getUserId(req.body.password, req.body.name)
    console.log(id)
    res.send(id)
@@ -116,11 +116,6 @@ router.post(`/register`, async (req, res) => {
 //     socialNetwork: ["Twitter"] //get the checked social networks
 // })
 
-
 // post2.save()
-
-
-// })
-
 
 module.exports = router

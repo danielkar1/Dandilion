@@ -11,7 +11,6 @@ class Navbar extends Component {
       <div className="navbar">
         <Link to="/mainPost">Main Post</Link>
         <Link to="/profile">Profile</Link>
-        <Link to="/signup" >Sign-up</Link>
         <div> <Login /> </div>
       </div>
     );

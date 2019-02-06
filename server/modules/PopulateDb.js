@@ -2,23 +2,27 @@ const CONSTS = require(`../../CONSTS`)
 const Sequelize = require('sequelize')
 const Post = require('./Scheme')//future 
 const mongoose = require(`mongoose`)
-mongoose.connect('mongodb://localhost:3000/Posts', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:3000/Posts', { useNewUrlParser: true })
 //put in your db in CONSTS file
 const sequelize = new Sequelize(`mysql://${CONSTS.dbConfig.name}:${CONSTS.dbConfig.password}@fs-bootcamp.cqc0oq2maxqm.us-west-2.rds.amazonaws.com/${CONSTS.dbConfig.dbName}`)
 
 class PopulateDb {
-    constructor() {
-        this.UserSocialCounter = this.GetTableSize
-    }
     async insertNewUserToDb(password, name) {
         let newUser = await sequelize
-            .query(`INSERT INTO User VALUES(null,${password},${name})`)
+            .query(`
+            INSERT INTO 
+                User 
+            VALUES(null,'${password}','${name}')`)
+        console.log(`newuser`)
         console.log(newUser)
         return newUser
     }
     async insertTokensToDb(internalID, socialNetWorkName, accessToken, accessTokenSecret, socialNetworkId) {
         let tokensTOdb = await sequelize
-            .query(`INSERT INTO SocialNetworkData VALUES(null,${internalID},${socialNetWorkName},'${socialNetworkId}','${accessToken}','${accessTokenSecret}')`)
+            .query(`
+            INSERT INTO 
+                SocialNetworkData 
+            VALUES(null,${internalID},${socialNetWorkName},'${socialNetworkId}','${accessToken}','${accessTokenSecret}')`)
         return tokensTOdb
     }
     async GetExcsitingClientAccessTokens(userId, SocialNetwork_NAME) {
@@ -60,15 +64,13 @@ class PopulateDb {
                 return result
             })
     }
-    savepost(post,img){
-        let newpost =new Post({post:post})
+    savepost(post, img) {
+        let newpost = new Post({ post: post })
         newpost.save()
     }
 }
 
 const sqlOperations = new PopulateDb()
-
-
 
 module.exports = sqlOperations
 

@@ -3,7 +3,7 @@ import { action, observable } from 'mobx'
 class PostStore {
     @observable Image = ``
     @observable Text = ``
-    @observable inputField=''
+    @observable inputField = ''
     @action handleInput = (name, value) => {
         this[name] = value
         console.log(this[name])
@@ -12,9 +12,6 @@ class PostStore {
         this.Image = ``
         this.Text = ``
     }
-   
-           
-   
 }
 
 export default new PostStore()
