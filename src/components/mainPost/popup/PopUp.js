@@ -15,7 +15,7 @@ class PopUp extends Component {
     render() {
         const popUpSettings = this.props.MainPostPageStore.newPostPopUp.visible
         return (
-            <div class="add-post-popup" >
+            <div className="add-post-popup" >
                 <div  onClick={() => this.openModal()}>Create New Post</div>
                 <Modal class="popup" visible={popUpSettings} width="400" height="300" effect="fadeInUp" onClickAway={() => this.closeModal()}>
                     <Post />
