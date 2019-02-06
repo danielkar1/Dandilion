@@ -15,6 +15,9 @@ class MainPostPageStore {
         visible: false
     }
     @observable currentMainPost = 'Post1'
+    @action updateCurrentPost(post){
+        this.currentMainPost = post
+    }
     @observable checkCurrentMainPost() {
         console.log(this.currentMainPost)
     }
@@ -29,9 +32,7 @@ class MainPostPageStore {
         return postArr.length + 1
     }
     @observable addPost = (text, socialNets) => {
-        console.log(text)
         socialNets = socialNets.filter(n => n)
-        // console.log(socialNets)
         const lastPostNum = this.findLastPostNum
         let newthing = {}
         socialNets.map(socialNet => {
@@ -42,7 +43,6 @@ class MainPostPageStore {
                 comments: []
             }
         })
-        console.log(newthing)
         this.Postlist2[`Post${lastPostNum}`] = {
             Text: text,
             SocialNets: newthing
@@ -53,7 +53,6 @@ class MainPostPageStore {
         let likesSum = 0
         let socialNets = this.Postlist2[postName].SocialNets
         let socialNetsArray = Object.keys(socialNets)
-
         socialNetsArray.forEach(socialNet =>
             likesSum += socialNets[socialNet].Likes
         )
@@ -100,8 +99,8 @@ class MainPostPageStore {
                         { id: "c8", text: "Booo!" },
                     ]
                 },
-                linkdin: {
-                    id: "linkdinP1",
+                linkedin: {
+                    id: "linkedinP1",
                     Likes: 3,
                     Shares: 0,
                     comments: []
@@ -141,8 +140,8 @@ class MainPostPageStore {
                         { id: "c17", text: "Croissant macaroon I love pastry croissant bonbon." }
                     ]
                 },
-                linkdin: {
-                    id: "linkdinP2",
+                linkedin: {
+                    id: "linkedinP2",
                     Likes: 5,
                     Shares: 1,
                     comments: [
@@ -188,8 +187,8 @@ class MainPostPageStore {
                         { id: "c31", text: "Jarlsberg danish fontina melted cheese babybel.." }
                     ]
                 },
-                linkdin: {
-                    id: "linkdinP3",
+                linkedin: {
+                    id: "linkedinP3",
                     Likes: 27,
                     Shares: 5,
                     comments: [
