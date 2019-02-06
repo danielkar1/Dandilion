@@ -1,0 +1,207 @@
+import { action, observable, computed } from 'mobx';
+import Axios from 'axios';
+import PostList from '../components/mainPost/PostList';
+// import RootStore from './RootStore';
+
+
+class MainPostPageStore {
+    @observable Postlist = []
+    @action getPosts = async () => {
+        let postlist = await Axios.get('http://localhost:8080/posts')
+        this.Postlist = postlist
+        console.log(this.Postlist)
+    }
+    @observable newPostPopUp = {
+        visible: false
+    }
+    @observable currentMainPost = 'Post1'
+    @action updateCurrentPost(post){
+        this.currentMainPost = post
+    }
+    @observable checkCurrentMainPost() {
+        console.log(this.currentMainPost)
+    }
+    @observable socialNetImg = {
+        facebook: "fab fa-facebook-square",
+        twitter: "fab fa-twitter-square",
+        instagram: "fab fa-instagram",
+        linkedin: "fab fa-linkedin"
+    }
+    @computed get findLastPostNum() {
+        const postArr = Object.keys(this.Postlist2)
+        return postArr.length + 1
+    }
+    @observable addPost = (text, socialNets) => {
+        socialNets = socialNets.filter(n => n)
+        const lastPostNum = this.findLastPostNum
+        let newthing = {}
+        socialNets.map(socialNet => {
+            newthing[socialNet] = {
+                id: `${socialNet}P${lastPostNum}`,
+                Likes: 0,
+                Shares: 0,
+                comments: []
+            }
+        })
+        this.Postlist2[`Post${lastPostNum}`] = {
+            Text: text,
+            SocialNets: newthing
+        }
+
+    }
+    findTotalLikesOfPost = (postName) => {
+        let likesSum = 0
+        let socialNets = this.Postlist2[postName].SocialNets
+        let socialNetsArray = Object.keys(socialNets)
+        socialNetsArray.forEach(socialNet =>
+            likesSum += socialNets[socialNet].Likes
+        )
+        return likesSum
+    }
+    @action findMostLikedPost = () => {
+        let likesSum = 0
+        let mostLikedPost = ''
+        let maxLikesSum = -Infinity
+        const posts = Object.keys(this.Postlist2)
+        let stats = posts.map(post => { return { [post]: this.findTotalLikesOfPost(post) } })
+        return stats
+    }
+    @observable Postlist2 = {
+        Post1: {
+            Text: "First post!",
+            SocialNets: {
+                facebook: {
+                    id: "facebookP1",
+                    Likes: 50,
+                    Shares: 3,
+                    comments: [
+                        { id: "c1", text: "First comment on first post!" },
+                        { id: "c2", text: "Second comment on first post!!" },
+                        { id: "c3", text: "Third comment on first post!!!" }
+                    ]
+                },
+                twitter: {
+                    id: "twitterP1",
+                    Likes: 22,
+                    Shares: 1,
+                    comments: [
+                        { id: "c4", text: "Yesssss!" },
+                        { id: "c5", text: "No!!!!!!!" },
+                        { id: "c6", text: "Wohh!" }
+                    ]
+                },
+                instagram: {
+                    id: "instagramP1",
+                    Likes: 53,
+                    Shares: 4,
+                    comments: [
+                        { id: "c7", text: "Yesssss!" },
+                        { id: "c8", text: "Booo!" },
+                    ]
+                },
+                linkedin: {
+                    id: "linkedinP1",
+                    Likes: 3,
+                    Shares: 0,
+                    comments: []
+                }
+            }
+        },
+        Post2: {
+            Text: "Aw man, I wanted to be first",
+            SocialNets: {
+                facebook: {
+                    id: "facebookP2",
+                    Likes: 27,
+                    Shares: 1,
+                    comments: [
+                        { id: "c9", text: "Don't wory second poster, you'll be first one day." },
+                        { id: "c10", text: "Yeah, believe in yourself!" },
+                        { id: "c11", text: "Haha second place what a joke." }
+                    ]
+                },
+                twitter: {
+                    id: "twitterP2",
+                    Likes: 15,
+                    Shares: 1,
+                    comments: [
+                        { id: "c12", text: "Nobody cares" },
+                        { id: "c13", text: "Boring" }
+                    ]
+                },
+                instagram: {
+                    id: "instagramP2",
+                    Likes: 23,
+                    Shares: 0,
+                    comments: [
+                        { id: "c14", text: "Pudding jelly beans muffin." },
+                        { id: "c15", text: "Donut gingerbread donut macaroon." },
+                        { id: "c16", text: "Bear claw I love lemon drops." },
+                        { id: "c17", text: "Croissant macaroon I love pastry croissant bonbon." }
+                    ]
+                },
+                linkedin: {
+                    id: "linkedinP2",
+                    Likes: 5,
+                    Shares: 1,
+                    comments: [
+                        { id: "c18", text: "Sugar plum sweet muffin soufflé." }
+                    ]
+                }
+            }
+        },
+        Post3: {
+            Text: "Brownie sweet roll topping liquorice jelly-o tiramisu chocolate bar candy canes",
+            SocialNets: {
+                facebook: {
+                    id: "facebookP3",
+                    Likes: 132,
+                    Shares: 15,
+                    comments: [
+                        { id: "c19", text: "Topping topping marzipan tiramisu." },
+                        { id: "c20", text: "Chocolate donut cookie donut jelly-o!" },
+                        { id: "c21", text: "Liquorice marzipan muffin." },
+                        { id: "c22", text: "Gummi bears dragée cheesecake" },
+                        { id: "c23", text: "Apple pie carrot cake liquorice." }
+                    ]
+                },
+                twitter: {
+                    id: "twitterP3",
+                    Likes: 76,
+                    Shares: 7,
+                    comments: [
+                        { id: "c24", text: "I love cheese, especially smelly cheese manchego." },
+                        { id: "c25", text: "Dolcelatte ricotta cheesecake." }
+                    ]
+                },
+                instagram: {
+                    id: "instagramP3",
+                    Likes: 92,
+                    Shares: 22,
+                    comments: [
+                        { id: "c26", text: "Pudding jelly beans muffin." },
+                        { id: "c27", text: "Donut gingerbread donut macaroon." },
+                        { id: "c28", text: "Babybel cut the cheese croque monsieur." },
+                        { id: "c29", text: "Monterey jack." },
+                        { id: "c30", text: "Feta babybel port-salut cheeseburger the big cheese airedale goat stilton." },
+                        { id: "c31", text: "Jarlsberg danish fontina melted cheese babybel.." }
+                    ]
+                },
+                linkedin: {
+                    id: "linkedinP3",
+                    Likes: 27,
+                    Shares: 5,
+                    comments: [
+                        { id: "c32", text: "Rubber cheese manchego monterey jack. " }
+                    ]
+                }
+            }
+        }
+    }
+}
+
+let test = new MainPostPageStore()
+test.getPosts()
+
+export default new MainPostPageStore()
+

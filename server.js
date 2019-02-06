@@ -3,10 +3,8 @@ const session = require('express-session')
 const cors = require('cors')
 const passport = require(`passport`)
 const CONSTS = require(`./CONSTS`)
-const Socket = require(`./server/routes/socketIO-setup`)
 const express = require('express')
-const server = Socket.server
-const app = Socket.app
+const app = express()
 app.use(express.json())
 app.use(passport.initialize())
 
@@ -15,7 +13,7 @@ app.use(cors({
 }))
 
 app.use(session({
-    secret: CONSTS.sessionSecret ,
+    secret: CONSTS.sessionSecret,
     resave: true,
     saveUninitialized: true
 }))
@@ -23,8 +21,8 @@ app.use(session({
 passport.serializeUser((user, cb) => cb(null, user))
 passport.deserializeUser((obj, cb) => cb(null, obj))
 
-app.use(`/`,api)
-
-server.listen(8080, () => {
+app.use(`/`, api)
+const PORT = 8080
+app.listen(process.env.PORT || PORT, () => {
     console.log('Working on port 8080')
 })

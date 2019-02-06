@@ -1,41 +1,152 @@
-/* #root{
-  background-color: rgb(78, 78, 47);
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+#root{
+  /* background-color: rgb(78, 78, 47); */
   height: 100vh;
-} */
+}
 .App{
   text-align: center;
-  background-color: #DCDDD9;
+  background-color:#C6C5B9;   
+
+  background:-moz-linear-gradient(top, rgb(70, 207, 70) 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top,rgb(45, 194, 45)10%, #f6f6f6 100%);
+	background:-o-linear-gradient(top,rgb(85, 151, 85)50%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top,rgb(70, 207, 70) 20%, #f6f6f6 100%);
+	/* background:linear-gradient(to bottom, #ffffff 25%, #f6f6f6 100%); */
   font-family: 'Bitter', serif;
   height: 100vh
 }
-
+  /* Nav bar css */
 .navbar {
-  display: grid;
-  grid-template-columns: repeat(3, 10%);
-  background-color: #000000;
+  /* display: grid;
+  grid-template-columns:1fr 1fr 1fr 6fr;
+  background-color: #1D3461;
+ 
   height: 60px;
   justify-content: left;
   justify-self: left;
-  align-items: center;
-  /* color: #754668; */
+  align-items: center; */
+  display: flex;
+    /* grid-template-columns: 1fr 1fr 1fr 6fr; */
+    background-color: #1D3461;
+    height: 60px;
+    /* align-items: center; */
+    /* justify-self: left; */
+    /* align-items: center; */
+    justify-content: center;
+    /* color: #754668; */
+    justify-items: center;
+    justify-self: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+ 
 }
 
+#inputfield{
+  border: #DCDDD9, solid, 1px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
 
+#loginContainer{
+  display: flex;
+  justify-content: space-between;
+  width: 49vw;
+  /* grid-template-columns: 2fr,1fr,1fr; */
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.start-page-inputs{
+  display:grid;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  grid-column-gap: 5px;
+  margin-left: 30vw;
+  /* grid-template-rows: 1fr,1fr; */
+  grid-template-columns:1fr 1fr 2fr;
+  align-items: center;
+  
+}
+.login-div{
+  display: flex;
+  justify-content: space-between;
+  width: 34vw;
+
+}
+.signInButton {
+  
+  /* grid-column: 1/9; */
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	align-items: left;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:5px 5px;
+	text-decoration:none;
+  text-shadow:0px 1px 0px #ffffff;
+  /* margin-bottom: 10vh; */
+  margin-left: 60vw;
+}
+.signInButton:hover {
+	/* background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+	background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0); */
+	background-color:#f78733;
+}
+.signInButton:active {
+	position:relative;
+	top:1px;
+}
 .navbar a {
   color: #fff;
   text-decoration: none;
   height: 100%;
   display: grid;
+  margin: 5px;
   align-items: center;
 
 }
 
 .navbar a:hover {
-  background-color: #413c3c
+  background-color: #c6c5b9;  
+  color: black;
+  /* height: 100%; */
 }
 
 .input-div input {
+  display: grid;
+  text-transform: capitalize;
   background-color: rgb(230, 236, 240);
   border-radius: 9999px;
   border: solid 0px rgb(230, 236, 240); 
 }
+
+
+  

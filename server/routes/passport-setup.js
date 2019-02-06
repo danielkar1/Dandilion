@@ -1,40 +1,40 @@
 const passport = require(`passport`)
-// const Twitter = require(`twitter`)
 const { Strategy: TwitterStrategy } = require('passport-twitter')
+const { Strategy: FacebookStrategy } = require('passport-facebook')
+const { Strategy: LinkedInStrategy } = require(`passport-linkedin-oauth2`)
 const CONSTS = require(`../../CONSTS`)
-// const User = require(`../modules/Users`)
-// const mongoose = require('mongoose')
-// const Schema = mongoose.Schema
-const sqlOperations = require(`../../src/PopulateDb`)
-let TWITTER_CONFIG = CONSTS.TWITTER_CONFIG
-
-const twitterAuth = passport.authenticate('twitter')
 
 passport.use(new TwitterStrategy(
-    TWITTER_CONFIG,
+    CONSTS.TWITTER_CONFIG,
     (accessToken, refreshToken, profile, cb) => {
-        profile = JSON.parse(JSON.stringify(profile))
-        name = profile.displayName
-        TwitterId = profile.id
-        console.log(name)
-        sqlOperations.CheckIfExsict(name) ? null : sqlOperations.insertTokensToDb(accessToken, refreshToken, TwitterId)
+        cb(null, { accessToken, refreshToken, profile, socialNetwork: `twitter` })
+    }
+))
+passport.use(new FacebookStrategy(
+    CONSTS.FACEBOOK_CONFIG,
+    (accessToken, refreshToken, profile, cb) => {
+        cb(null, { accessToken, refreshToken, profile, socialNetwork: `facebook` })
+    }
+))
+passport.use(new LinkedInStrategy(
+    CONSTS.LINKEDIN_CONFIG,
+    (accessToken, refreshToken, profile, cb) => {
+        cb(null, { accessToken, refreshToken, profile, socialNetwork: `linkedin` })
+    }
+))
 
-        // )[0][`COUNT(1)`]?
-
-        // User.findOne({ profile: profile })
-        //     .then(user => {
-        //     })
-        cb(null, profile)
-    })
-)
-
-const addSocketIdToSession = (req, res, next) => {
-    req.session.socketId = req.query.socketId
+const addUidtoSession = (req, res, next) => {
+    req.session.u_id = req.query.u_id
     next()
 }
 
+const Auth = {
+    twitter: passport.authenticate(`twitter`),
+    facebook: passport.authenticate(`facebook`),
+    linkedin: passport.authenticate(`linkedin`),
+}
 
 module.exports = {
-    addSocketIdToSession,
-    twitterAuth
+    Auth,
+    addUidtoSession
 }

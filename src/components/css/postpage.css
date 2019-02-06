@@ -1,0 +1,173 @@
+
+body{
+   /* color: #fff; */
+    font-family: 'Nunito Semibold';
+    text-align: center; 
+    background-color:#C6C5B9;   
+}
+
+
+.PostPage-container{
+    display: grid;
+    margin-top: 1000px;
+    /* margin: 10px; */
+    grid-template-columns: 1fr 3fr;
+   
+    /* grid-auto-rows: minmax(150px, auto); */
+    grid-column-gap: 5%;
+    padding-top: 15px; 
+    max-width: 960px;
+    margin: 0 auto;
+    border:black, solid, 2px;
+}
+.post-list{
+    display: grid;
+    grid-auto-columns: repeat(1fr,6);
+    /* grid-column: 1 / 2;  */
+    border:black, solid, 1px;
+    grid-gap: 5px;
+    /* float:left; */
+    height: 80%;
+    overflow-y: auto; 
+    /* overflow-clip-box: auto; */
+
+    
+} 
+
+/* .post-list > div {
+    background-color: aqua; */
+/* } */
+
+.post{
+    display: grid;
+    border: black, solid , 1px;
+    border-radius: 5px;
+    padding: 10%;
+    background-color:  #6077ab;  
+    
+}
+.main-social{
+    display: grid;
+    
+   
+    /* background: #4abdac; */
+    align-items: center;
+    border: fff92e groove 5px;
+    border-radius: 10%;
+   
+}
+
+.social-colums-container{ 
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    /* background-color: rgb(239, 239, 240); */
+    /* box-shadow: 0px 3px 5px -1px rgba(0,0,0, 0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,  0.12); */
+    flood-opacity: 0.5;
+    /* border-radius: 5px; */
+    grid-gap: 3%;
+    /* height: 70%;     */
+    /* margin: 5%; */
+    /* grid-auto-columns: minmax(150px, auto); */
+    /* /* grid-column: 2 / 4; */
+    /* grid-row: 2 / 4;  */
+    /* background: #605F5E; */
+    /* border-radius: 10%; */
+    
+}
+.social-icons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-content: center;
+    align-items: start;
+    
+    height: 100px;
+    /* grid-column: 1/6;   */
+    /* border: white solid 1px; */
+    
+}
+.fab fa-instagram{
+    color: #C6C5B9;   
+
+}
+.icon{
+    border:white groove 5px;
+    /* border-radius: 10%; */
+}
+.social-analytics-table{
+    /* border: palevioletred solid  5px; */
+    
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin:8%;
+    align-content: center; 
+    align-items: end;
+   
+    
+}
+.ingament-info{
+    color: black;
+    border-bottom: black groove 1px;
+    font-size: 18px;
+    text-transform:capitalize;
+}
+
+.current-post{
+    /* display:grid;
+    margin: 10%;
+    padding: 10%; */
+}
+
+.login-input{
+   border-radius:  5px;
+}
+
+.popupPost{
+    background: #637aad;
+    height: 100%;
+}
+.myButton {  
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 4px;
+	-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
+	background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-o-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
+    background-color:#637aad;
+    border: 1px solid #1d3461;
+	
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:6px 12px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5972a7), color-stop(1, #637aad));
+	background:-moz-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:-webkit-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:-o-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:-ms-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:linear-gradient(to bottom, #5972a7 5%, #637aad 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5972a7', endColorstr='#637aad',GradientType=0);
+	background-color:#5972a7;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.card {
+    padding: 12px;
+    background-color: #efefef;
+    border-radius: 4px;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0, 0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0, 0.12);
+}

@@ -6,18 +6,19 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
 import PostStore from './stores/PostStore';
 import SocialNetStore from './stores/SocialNetStore'
-import ProfileStore from './stores/ProfileStore'
 import StartPageStore from './stores/StartPageStore'
+import MainPostPageStore from './stores/MainPostPageStore'
+import RootStore from './stores/RootStore'
 
 const stores = {
     PostStore,
     SocialNetStore,
-    ProfileStore,
-    StartPageStore
+    StartPageStore,
+    MainPostPageStore
 }
 
 ReactDOM.render(
-    <Provider {...stores}>
+    <Provider {...stores} >
         <App />
     </Provider>
     , document.getElementById('root')

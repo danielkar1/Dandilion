@@ -1,31 +1,33 @@
-import React,{ Component } from 'react'
+import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
+import StartPageButton from './StartPageButton';
 
-@inject(`StartPageStore`, `ProfileStore`)
+@inject(`StartPageStore`)
 @observer
-class Inputs extends Component{
+class Inputs extends Component {
+    createInputsArea = () => {
+        const StartPageData = this.props.StartPageStore.StartPageData
+        return Object.keys(StartPageData).map((inputProperty, index) => {
+            return (
+                    <input class="login-input" 
+                    type={StartPageData[inputProperty].type}
+                    name={inputProperty}
+                    placeholder={StartPageData[inputProperty].placeholder}
+                    onChange={this.handleChange}
+                    >
+                    </input>
+                )
+                // <div className="login-div" key={index}>
+                    {/* <label>{inputProperty}:</label> */}
+                {/* </div> */}
+        })
+    }
     handleChange = (e) => {
         this.props.StartPageStore.changeStartPageData(e.target.name, e.target.value)
     }
     render () {
-        const StartPageData = this.props.StartPageStore.StartPageData
         return (
-        <div className="start-page-inputs">
-            {Object.keys(StartPageData).map((d, index) => {
-                return (
-                    <div key={index}>
-                        <label>{d}</label>
-                        <input
-                            type={StartPageData[d].type}
-                            name={d}
-                            onChange={this.handleChange}
-                            placeholder={StartPageData[d].placeholder}
-                        >
-                        </input>
-                    </div>
-                )
-            })}
-        </div>
+        this.createInputsArea()
         )
     }
 }
