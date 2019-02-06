@@ -5,13 +5,13 @@ import { inject, observer } from 'mobx-react'
 @inject(`MainPostPageStore`, `StartPageStore`)
 @observer
 class Profile extends Component {
-  socialNetworks=()=>{
-    let networks = [`facebook`,`twitter`, `instagram`, `linkdin`]
-    return networks.map((network, index)=>{
-      return(
+  socialNetworks = () => {
+    let networks = [`facebook`, `twitter`, `instagram`, `linkedin`]
+    return networks.map((network, index) => {
+      return (
         <div key={index}>
-          <SocialNetLoginButton network={network}/>
-          <i className={this.props.MainPostPageStore.socialNetImg[network]}></i>
+          <i className={this.props.MainPostPageStore.socialNetImg[network]} />
+          <SocialNetLoginButton network={network} />
         </div>
       )
     })

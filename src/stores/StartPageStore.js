@@ -15,20 +15,21 @@ class StartPageStore {
     }
     @observable socialNetsLoginStatus = {
         facebook: false,
-        twitter: true,
+        twitter: false,
         instagram: false,
-        linkdin: true
+        linkedin: false
     }
     @observable location = ``
-
     @observable internalId = ``
-
+    @action updateId(Id){
+        this.internalId = Id
+    }
     @action changeStartPageData(name, value) {
         this.StartPageData[name].value = value
         // console.log(this.StartPageData[name].value)
     }
     @action resetValues() {
-        this.StartPageData.map(input => {
+        Object.keys(this.StartPageData).map(input => {
             [input].value = ``
         })
     }
