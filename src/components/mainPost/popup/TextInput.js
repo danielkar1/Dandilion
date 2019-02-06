@@ -12,10 +12,10 @@ class TextInput extends Component {
         this.props.PostStore.handleInput(e.target.name, e.target.value)
     }
 
-    // handleEmoji(emojiId, emojiData) {
-    //     console.log(emojiData)
-    //     console.log(emojiId)
-    //     // let emojiPic = jsemoji.replace_colons(':${emoji.name}:')
+    handleEmoji(emojiId, emojiData) {
+        console.log(emojiData)
+        console.log(emojiId)
+        // let emojiPic = jsemoji.replace_colons(':${emoji.name}:')
        
     }
 
