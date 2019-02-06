@@ -1,10 +1,15 @@
-/* #root{
-  background-color: rgb(78, 78, 47);
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+#root{
+  /* background-color: rgb(78, 78, 47); */
   height: 100vh;
-} */
+}
 .App{
   text-align: center;
-  background-color:floralwhite;
+  background-color:#C6C5B9;   
+
   background:-moz-linear-gradient(top, rgb(70, 207, 70) 5%, #f6f6f6 100%);
 	background:-webkit-linear-gradient(top,rgb(45, 194, 45)10%, #f6f6f6 100%);
 	background:-o-linear-gradient(top,rgb(85, 151, 85)50%, #f6f6f6 100%);
@@ -17,18 +22,20 @@
 .navbar {
   display: grid;
   grid-template-columns:1fr 1fr 1fr 6fr;
-  background-color: #4abdac ;
+  background-color: #1D3461;
+ 
   height: 60px;
   justify-content: left;
   justify-self: left;
   align-items: center;
-  border-bottom: #666666 groove 5px;
+ 
   /* color: #754668; */
 }
 
 #inputfield{
   border: #DCDDD9, solid, 1px;
-  
+  border-radius: 5px;
+  text-transform: uppercase;
 }
 
 #loginContainer{
@@ -39,6 +46,7 @@
 .start-page-inputs{
   display:grid;
   color: white;
+  text-transform: uppercase;
   font-size: 14px;
   grid-column-gap: 5px;
   margin-left: 30vw;
@@ -49,6 +57,9 @@
 }
 .login-div{
   margin-top: 20px;
+  border-radius: 25px;
+  text-transform: uppercase;
+
 }
 .signInButton {
   

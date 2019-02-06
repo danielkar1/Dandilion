@@ -15,9 +15,9 @@ class TextInput extends Component {
     // handleEmoji(emojiId, emojiData) {
     //     console.log(emojiData)
     //     console.log(emojiId)
-    //     let emojiPic = jsemoji.replace_colons(':${emoji.name}:')
-    //     inputField = this.props.PostStore.inputField + emojiPic;
-    // }
+    //     // let emojiPic = jsemoji.replace_colons(':${emoji.name}:')
+       
+    }
 
     render() {
         let inputs = [{
@@ -30,8 +30,8 @@ class TextInput extends Component {
         return (
             <div className="text-inputs">
                 {inputs.map(anInput => {
+                    {/* <EmojiPicker onEmojiClick={this.handleEmoji}/> */}
                     return (
-                        // <EmojiPicker onEmojiClick={this.handleEmoji}/>
                         <div key={anInput.name} className="input-div">
                             <label>{anInput.name}</label>
                             <input
@@ -40,7 +40,7 @@ class TextInput extends Component {
                                 onChange={this.inputHandler}
                                 value={this.props.PostStore[anInput.name]}
                                 name={anInput.name}
-                                // value={this.props.inputField}
+                            //  default-value={this.props.inputField}
                             />
                         </div>
                     )
