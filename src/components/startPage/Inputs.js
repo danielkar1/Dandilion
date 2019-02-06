@@ -2,7 +2,6 @@ import React,{ Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import StartPageButton from './StartPageButton';
 
-
 @inject(`StartPageStore`)
 @observer
 class Inputs extends Component{
@@ -25,18 +24,15 @@ class Inputs extends Component{
     handleChange = (e) => {
         this.props.StartPageStore.changeStartPageData(e.target.name, e.target.value)
     }
-
     check = () => {
         let obj = { name: 'moshiko', job: 'fic'}
         Object.keys(obj)
     }
-
     render () {
         const idea = 'check'
         return (
-        <div className="start-page-inputs">{this.createInputsArea()} <div  ><StartPageButton /></div></div>
-        )
-        
+        <div className="start-page-inputs">{this.createInputsArea()} <div  ><StartPageButton /></div></div
+        )   
     }
 }
 
