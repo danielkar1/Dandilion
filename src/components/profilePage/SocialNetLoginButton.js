@@ -18,24 +18,6 @@ class SocialNetLoginButton extends Component {
         }
         this.popup = null
     }
-    // Object { accessToken: "1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg", refreshToken: "DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb", profile: {…}, socialNetwork: "twitter" } SocialNetLoginButton.js:23
-
-    componentDidMount() {
-        // socket.on('user', user => {
-            // console.log(user)
-            // this.popup.close()
-            // let socialData = {
-            //     internalId: this.props.StartPageStore.internalId,
-            //     accessToken: user.accessToken,
-            //     refreshToken: user.refreshToken,
-            //     socialNetwork: user.socialNetwork,
-            //     socialNetworkId: user.profile.id
-            // }
-            // console.log(socialData)
-            // Axios.post(`/save`,socialData)
-            // this.props.StartPageStore.clientInternalIdstorage(user._id)
-        // })
-    }
     checkPopup() {
         const check = setInterval(() => {
             const { popup } = this
@@ -49,7 +31,7 @@ class SocialNetLoginButton extends Component {
         const width = 600, height = 600
         const left = (window.innerWidth / 2) - (width / 2)
         const top = (window.innerHeight / 2) - (height / 2)
-        const url = `${API_URL}/${this.props.network}?u_id=2`
+        const url = `${API_URL}/${this.props.network}?u_id=1`
         return window.open(url, '',
             `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${width}, height=${height}, top=${top}, left=${left}`
         )
