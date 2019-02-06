@@ -5,12 +5,7 @@ import PostList from '../components/mainPost/PostList';
 
 
 class MainPostPageStore {
-    // constructor (rootStore) {
-    //     this.rootStore = rootStore
-    // }
-
     @observable Postlist = []
-
     @action getPosts = async () => {
         let postlist = await Axios.get('http://localhost:8080/posts')
         this.Postlist = postlist
@@ -33,7 +28,6 @@ class MainPostPageStore {
         const postArr = Object.keys(this.Postlist2)
         return postArr.length + 1
     }
-
     @observable addPost = (text, socialNets) => {
         console.log(text)
         socialNets = socialNets.filter(n => n)
@@ -72,24 +66,7 @@ class MainPostPageStore {
         const posts = Object.keys(this.Postlist2)
         let stats = posts.map(post => { return { [post]: this.findTotalLikesOfPost(post) } })
         return stats
-        //  this.findTotalLikesOfPost()
-        // console.log(posts)
-        // const socialNets = Object.keys(this.Postlist2.Post1.SocialNets)
-        // // console.log(socialNets)
-        // for (let post of posts) {
-        //     // console.log(post)
-        //     for (let socialNet of socialNets) {
-        //         // console.log(this.Postlist2.SocialNets[post])
-        //         likesSum += this.Postlist2[post].SocialNets[socialNet].Likes
-        //         if (maxLikesSum < likesSum) {
-        //             maxLikesSum = likesSum
-        //             mostLikedPost = this.Postlist2[post]
-        //         }
-        //     }
-        // }
-        // return mostLikedPost
     }
-
     @observable Postlist2 = {
         Post1: {
             Text: "First post!",

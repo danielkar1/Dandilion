@@ -51,7 +51,7 @@ router.post(`/post`, async (req, res) => {//https://api.linkedin.com/v2/ugcPosts
       url: 'https://api.linkedin.com/v2/shares',
       headers: {
          'cache-control': 'no-cache',
-         Authorization: `Bearer ${linkedinKeys}`,
+         Authorization: `Bearer ${linkedinKeys.accessToken}`,
          'Content-Type': 'application/json'
       },
       body: {
