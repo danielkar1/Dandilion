@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import './../../../lib/css/emoji.css'
 import EmojiPicker from 'emoji-picker-react';
+// import JSEMOJI from 'emoji-js';
 import { observable } from 'mobx';
 @inject("PostStore")
 
@@ -16,7 +17,7 @@ class TextInput extends Component {
     //     console.log(emojiData)
     //     console.log(emojiId)
     //    let emojiPic = jsemoji.replace_colons(':${emoji.name}:')
-       
+    //    this.props.PostStore.text=this.props.PostStore.text+emojiPic
     // }
 
     render() {
@@ -29,8 +30,8 @@ class TextInput extends Component {
         }]
         return (
             <div className="text-inputs">
+                    <EmojiPicker onEmojiClick={this.handleEmoji}/>
                 {inputs.map(anInput => {
-                    {/* <EmojiPicker onEmojiClick={this.handleEmoji}/> */}
                     return (
                         <div key={anInput.name} className="input-div">
                             <label>{anInput.name}</label>
