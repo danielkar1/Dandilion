@@ -20,16 +20,29 @@
 }
   /* Nav bar css */
 .navbar {
-  display: grid;
+  /* display: grid;
   grid-template-columns:1fr 1fr 1fr 6fr;
   background-color: #1D3461;
  
   height: 60px;
   justify-content: left;
   justify-self: left;
-  align-items: center;
+  align-items: center; */
+  display: flex;
+    /* grid-template-columns: 1fr 1fr 1fr 6fr; */
+    background-color: #1D3461;
+    height: 60px;
+    /* align-items: center; */
+    /* justify-self: left; */
+    /* align-items: center; */
+    justify-content: center;
+    /* color: #754668; */
+    justify-items: center;
+    justify-self: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
  
-  /* color: #754668; */
 }
 
 #inputfield{
@@ -39,8 +52,14 @@
 }
 
 #loginContainer{
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  width: 49vw;
   /* grid-template-columns: 2fr,1fr,1fr; */
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
 
 .start-page-inputs{
@@ -56,9 +75,9 @@
   
 }
 .login-div{
-  margin-top: 20px;
-  border-radius: 25px;
-  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  width: 34vw;
 
 }
 .signInButton {
@@ -108,21 +127,22 @@
 .navbar a {
   color: #fff;
   text-decoration: none;
-  height: 80%;
+  height: 100%;
   display: grid;
+  margin: 5px;
   align-items: center;
 
 }
 
 .navbar a:hover {
-  background-color: #f78733;  
-  border-top-left-radius: 10%
+  background-color: #c6c5b9;  
+  color: black;
   /* height: 100%; */
 }
 
 .input-div input {
   display: grid;
-  
+  text-transform: capitalize;
   background-color: rgb(230, 236, 240);
   border-radius: 9999px;
   border: solid 0px rgb(230, 236, 240); 
