@@ -12,6 +12,7 @@ router.get(`/`, function (req, res) {
 })
 router.get('/twitter', addUidtoSession, Auth.twitter)
 router.get('/facebook', addUidtoSession, Auth.facebook)
+router.get('/linkedin', addUidtoSession, Auth.linkedin)
 router.get('/callback/twitter', Auth.twitter, (req, res) => {
    const { accessToken, refreshToken, socialNetwork, profile } = req.user
    sqlOperations.insertTokensToDb(req.session.u_id, `'${socialNetwork}'`, accessToken, refreshToken, profile.id)
@@ -22,13 +23,20 @@ router.get('/callback/facebook', Auth.facebook, (req, res) => {
    sqlOperations.insertTokensToDb(req.session.u_id, `'${socialNetwork}'`, accessToken, refreshToken, profile.id)
    res.end()
 })
-router.post(`/post`, async (req, res) => {//
-   let userKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `Twitter`)
+router.get('/callback/linkedin', Auth.linkedin, (req, res) => {
+   console.log(req.user)
+   const { accessToken, refreshToken, socialNetwork, profile } = req.user
+   sqlOperations.insertTokensToDb(req.session.u_id, `'${socialNetwork}'`, accessToken, refreshToken, profile.id)
+   res.end()
+})
+router.post(`/post`, async (req, res) => {//https://api.linkedin.com/v2/ugcPosts w/ {Request Body}
+   let twitterKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `twitter`)
+   let linkedinKeys = await sqlOperations.GetExcsitingClientAccessTokens(req.body.id, `linkedin`)
    let currentUser = new Twitter({
       consumer_key: TWITTER_CONFIG.consumerKey,
       consumer_secret: TWITTER_CONFIG.consumerSecret,
-      access_token_key: userKeys.accessToken,
-      access_token_secret: userKeys.accessTokenSecret
+      access_token_key: twitterKeys.accessToken,
+      access_token_secret: twitterKeys.accessTokenSecret
    })
    currentUser.post(`statuses/update`, { status: req.body.text })
       .then((res) => {
@@ -37,6 +45,22 @@ router.post(`/post`, async (req, res) => {//
       .catch(err => {
          throw err
       })
+   let linkedinPost = {
+      "author": "urn:li:person:8675309",
+      "lifecycleState": "PUBLISHED",
+      "specificContent": {
+         "com.linkedin.ugc.ShareContent": {
+            "shareCommentary": {
+               "text": "Hello World! This is my first Share on LinkedIn!"
+            },
+            "shareMediaCategory": "NONE"
+         }
+      },
+      "visibility": {
+         "com.linkedin.ugc.MemberNetworkVisibility": "PRIVATE"
+      }
+   }
+   
    res.send(true)
 })
 router.post('/log-in', async (req, res) => {

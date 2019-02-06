@@ -5,7 +5,7 @@ import SocialNetLoginButton from './SocialNetLoginButton';
 @observer
 class Profile extends Component {
   socialNetworks=()=>{
-    let networks = [`facebook`,`twitter`]
+    let networks = [`facebook`,`twitter`,`linkedin`]
     return networks.map(network=>{
       return(
         <SocialNetLoginButton network={network}/>

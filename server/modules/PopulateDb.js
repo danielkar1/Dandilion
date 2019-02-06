@@ -18,7 +18,7 @@ class PopulateDb {
     }
     async insertTokensToDb(internalID, socialNetWorkName, accessToken, accessTokenSecret, socialNetworkId) {
         let tokensTOdb = await sequelize
-            .query(`INSERT INTO SocialNetworkData VALUES(null,${internalID},${socialNetWorkName},${socialNetworkId},'${accessToken}','${accessTokenSecret}')`)
+            .query(`INSERT INTO SocialNetworkData VALUES(null,${internalID},${socialNetWorkName},'${socialNetworkId}','${accessToken}','${accessTokenSecret}')`)
         return tokensTOdb
     }
     async GetExcsitingClientAccessTokens(userId, SocialNetwork_NAME) {
@@ -60,8 +60,8 @@ class PopulateDb {
                 return result
             })
     }
-    savepost(text,img){
-        let newpost =new Post(text)
+    savepost(post,img){
+        let newpost =new Post({post:post})
         newpost.save()
     }
 }
