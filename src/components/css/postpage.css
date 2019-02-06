@@ -43,7 +43,7 @@ body{
     border: black, solid , 1px;
     border-radius: 5px;
     padding: 10%;
-    background-color:  #1d3461;  
+    background-color:  #6077ab;  
     
 }
 .main-social{
@@ -125,16 +125,6 @@ body{
     background: #637aad;
     height: 100%;
 }
-.fa-facebook-square:before{
-   color: #1d3461;
-   font-size: 32px;
-}
-
-/* .fa-twitter-square:before {
-    color:
-} */
-
-
 .myButton {  
     font-family: 'Montserrat', sans-serif;
     border-radius: 4px;
