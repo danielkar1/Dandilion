@@ -6,13 +6,7 @@ import './../../lib/css/emoji.css'
 class CurrentPost extends Component {
     render() {
       return (
-        
-       <div >Current Post: {this.props.MainPostPageStore.currentMainPost}</div> 
-     
-     
-            
-           
-       
+       <div>{this.props.MainPostPageStore.Postlist2[this.props.MainPostPageStore.currentMainPost].Text}</div> 
       )
     }
   }
