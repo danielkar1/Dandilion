@@ -9,8 +9,8 @@ let postSchema= new Schema({
     text: String,
     img: String,
     date: String,
-    socialNetwork: []
-
+    socialNetwork: [],
+    post: {},
 })
 
 const Post = mongoose.model(`posts`, postSchema)

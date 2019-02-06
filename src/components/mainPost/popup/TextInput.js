@@ -38,6 +38,7 @@ class TextInput extends Component {
                                 data-emojiable="true"
                                 type={anInput.type}
                                 onChange={this.inputHandler}
+                                value={this.props.PostStore[anInput.name]}
                                 name={anInput.name}
                                 // value={this.props.inputField}
                             />

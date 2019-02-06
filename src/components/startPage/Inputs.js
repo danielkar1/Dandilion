@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react'
 import StartPageButton from './StartPageButton';
 
 
-@inject(`StartPageStore`, `ProfileStore`)
+@inject(`StartPageStore`)
 @observer
 class Inputs extends Component{
     createInputsArea = () => {

@@ -8,6 +8,10 @@ class PostStore {
         this[name] = value
         console.log(this[name])
     }
+    @action deletInput = () => {
+        this.Image = ``
+        this.Text = ``
+    }
    
            
    

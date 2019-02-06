@@ -12,9 +12,9 @@ Use AlonRR_db;
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     User_id INT,
 --     SocialNetwork_NAME VARCHAR(25),
---     SocialNetwork_id INT,
---     SocialNetworkToken VARCHAR(150),
---     SocialNetworkTokenSecret VARCHAR(150),
+--     SocialNetwork_id VARCHAR(30),
+--     SocialNetworkToken VARCHAR(1000),
+--     SocialNetworkTokenSecret VARCHAR(400),
 --     FOREIGN KEY(User_id) REFERENCES User(id)
 
 -- );
@@ -25,11 +25,5 @@ Use AlonRR_db;
 --  INSERT INTO SocialNetworkData VALUES(null,1,"Twitter",1220749249 ,'1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg','DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb');
 -- INSERT INTO SocialData VALUES(null,1532535667 ,'1220749249-g2rWUYleLAWmpTXxRToDJGGJhvZV7naeh8xO3Pg','DXNV84ktNIddkoohOoT44typ2mTu8fHX0ri38lQ0pfIHb',null,null,null);
 
-  -- SELECT SocialNetworkToken,SocialNetworkTokenSecret FROM SocialNetworkData WHERE
-  -- User_id= 1;
-  
-
-
-  
-  
-  
+-- SELECT SocialNetworkToken,SocialNetworkTokenSecret FROM SocialNetworkData WHERE
+-- User_id= 1;
