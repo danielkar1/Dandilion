@@ -9,11 +9,13 @@ class Post extends Component {
   render() {
     return (
       <div className="post">
-        <TextInput />
-        <CheckInputs />
-        <Poster />
-      </div>
+    <TextInput />
+       <CheckInputs />
+       <Poster />
+     </div>
     )
+
+
   }
 }
 

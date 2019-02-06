@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import './../../../lib/css/emoji.css'
+import EmojiPicker from 'emoji-picker-react';
+import { observable } from 'mobx';
 @inject("PostStore")
 
 @observer
 class TextInput extends Component {
+    @observable inputField
     inputHandler = (e) => {
         this.props.PostStore.handleInput(e.target.name, e.target.value)
     }
+
+    // handleEmoji(emojiId, emojiData) {
+    //     console.log(emojiData)
+    //     console.log(emojiId)
+    //     let emojiPic = jsemoji.replace_colons(':${emoji.name}:')
+    //     inputField = this.props.PostStore.inputField + emojiPic;
+    // }
+
     render() {
         let inputs = [{
             name: `Image`,
@@ -20,14 +31,16 @@ class TextInput extends Component {
             <div className="text-inputs">
                 {inputs.map(anInput => {
                     return (
-                        <div  key={anInput.name} className="input-div">
+                        // <EmojiPicker onEmojiClick={this.handleEmoji}/>
+                        <div key={anInput.name} className="input-div">
                             <label>{anInput.name}</label>
-                            <input 
+                            <input
                                 data-emojiable="true"
                                 type={anInput.type}
                                 onChange={this.inputHandler}
                                 value={this.props.PostStore[anInput.name]}
                                 name={anInput.name}
+                                // value={this.props.inputField}
                             />
                         </div>
                     )

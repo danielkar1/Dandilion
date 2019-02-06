@@ -24,7 +24,7 @@ class StartPageButton extends Component {
     }
     render() {
         return (
-            <button className="signInButton" onClick={this.oparate}>{this.props.location}</button>
+            <div onClick={this.oparate}>{this.props.location}</div>
         )
     }
 }

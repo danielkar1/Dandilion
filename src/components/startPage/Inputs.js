@@ -1,5 +1,6 @@
 import React,{ Component } from 'react'
 import { inject, observer } from 'mobx-react'
+import StartPageButton from './StartPageButton';
 
 
 @inject(`StartPageStore`)
@@ -33,7 +34,7 @@ class Inputs extends Component{
     render () {
         const idea = 'check'
         return (
-        <div className="start-page-inputs">{this.createInputsArea()}</div>
+        <div className="start-page-inputs">{this.createInputsArea()} <div class="myButton" ><StartPageButton /></div></div>
         )
         
     }
