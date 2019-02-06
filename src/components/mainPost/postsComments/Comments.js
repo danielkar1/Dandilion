@@ -8,8 +8,7 @@ class Comments extends Component {
     const currentPost = this.props.MainPostPageStore.currentMainPost
     const socialNetsLoc = this.props.MainPostPageStore.Postlist2[currentPost].SocialNets
     const socialNetsArr = Object.keys(socialNetsLoc)
-    console.log(currentPost)
-    console.log(socialNetsArr)
+    
   }  
   render() {
     this.getComments()

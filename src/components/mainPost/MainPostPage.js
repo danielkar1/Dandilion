@@ -20,7 +20,7 @@ class MainPostPage extends Component {
                 <CurrentPostText />
                 <PostList />
                 <SocialNetInfo />
-                <Comments />
+                {/* <Comments /> */}
             </div>
         )
     }  

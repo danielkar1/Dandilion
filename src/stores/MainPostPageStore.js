@@ -1,5 +1,6 @@
-import { action, observable } from 'mobx';
+import { action, observable, computed } from 'mobx';
 import Axios from 'axios';
+import PostList from '../components/mainPost/PostList';
 // import RootStore from './RootStore';
 
 
@@ -28,9 +29,63 @@ class MainPostPageStore {
         instagram: "fab fa-instagram",
         linkdin: "fab fa-linkedin"
     }
+    @computed get findLastPostNum () {
+        const postArr = Object.keys(this.Postlist2)
+        return postArr.length +1
+    }
 
-    @action addPost = (text, socialNets) =>{
+    @observable addPost = (text, socialNets) => {
+        console.log(text)
+        socialNets = socialNets.filter(n => n)
+        console.log(socialNets)
+        const lastPostNum = this.findLastPostNum
+        let newthing ={}
+        socialNets.map(socialNet => {
+            newthing[socialNet]= {
+                id: `${socialNet}P${lastPostNum}`,
+                Likes: 0,
+                Shares: 0,
+                comments: []
+            }
+        }) 
+        console.log(newthing)
+        this.Postlist2[`Post${lastPostNum}`] = {
+            Text: text,
+            SocialNets: newthing 
+        }
 
+    }
+    @observable likesSum = 0
+    @action findTotalLikesOfPost = () => {
+        for (let post in this.PostList2) {
+            let socialNets = this.Postlist2[post].socialNets
+            for (let socialNet in socialNets) {
+                this.likesSum += socialNet.Likes
+            }
+        }
+        return this.likesSum
+    }
+    @action findMostLikedPost = () => {
+        let likesSum = 0
+        let mostLikedPost = ''
+        let maxLikesSum = -Infinity
+        const posts = Object.keys(this.Postlist2)
+        return this.findTotalLikesOfPost()
+        // console.log(posts)
+        // const socialNets = Object.keys(this.Postlist2.Post1.SocialNets)
+        // // console.log(socialNets)
+        // for (let post of posts) {
+        //     // console.log(post)
+        //     for (let socialNet of socialNets) {
+        //         // console.log(this.Postlist2.SocialNets[post])
+        //         likesSum += this.Postlist2[post].SocialNets[socialNet].Likes
+        //         if (maxLikesSum < likesSum) {
+        //             maxLikesSum = likesSum
+        //             mostLikedPost = this.Postlist2[post]
+        //         }
+        //     }
+        // }
+        // return mostLikedPost
     }
 
     @observable Postlist2 = {

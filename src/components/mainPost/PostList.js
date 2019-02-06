@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
-import { observable } from 'mobx';
 
 @inject(`MainPostPageStore`)
 @observer
 class PostList extends Component {
+  showMostLikedPost = () => {
+    const mostLikedPost = this.props.MainPostPageStore.findTotalLikesOfPost()
+    console.log(mostLikedPost)
+  }
   
     createPostList = () =>{
       const PostListData = this.props.MainPostPageStore.Postlist2
         return Object.keys(PostListData).map((post, index) =>{
             return (
-                <div key={index} onClick={this.handleOnclick}>{post}
+                <div className={post} onClick={this.handleOnclick} key={index} >
+                  <div>{post}</div>
                   <div>Post Text: {PostListData[post].Text}</div>
-                </div> 
+                </div>
             )
         })
     }
     handleOnclick =(e) => {
-      this.props.MainPostPageStore.currentMainPost = e.target.textContent
+      this.props.MainPostPageStore.currentMainPost = e.currentTarget.className
+      // console.log(e.currentTarget.className)
     }
     render() {
-     this.props.MainPostPageStore.getPosts()
+      // this.showMostLikedPost()
+    //  this.props.MainPostPageStore.getPosts()
       return (
         <div className="post-list">
           {this.createPostList()}
