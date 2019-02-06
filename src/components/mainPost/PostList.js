@@ -31,12 +31,7 @@ class PostList extends Component {
       return (
         
         <div className="post-list">
-         <div  className="social-icons">
-          <button className="icon">icon1</button>
-          <button className="icon">icon2</button>
-          <button className="icon">icon3</button>
-            <button className="icon">icon4</button> 
-            </div>
+         
             <a href="#" className="myButton">New Post<PopUp/></a> 
           {this.createPostList()}
         </div>
