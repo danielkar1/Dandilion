@@ -5,6 +5,7 @@ const Twitter = require(`twitter`)
 const { TWITTER_CONFIG } = require(`../../CONSTS`)
 const Posts = require('../modules/Scheme')
 const sqlOperations = require(`../modules/PopulateDb`)
+const request = require(`request`)
 
 router.get(`/`, function (req, res) {
    console.log("server is sain")
@@ -38,7 +39,7 @@ router.post(`/post`, async (req, res) => {//https://api.linkedin.com/v2/ugcPosts
       access_token_key: twitterKeys.accessToken,
       access_token_secret: twitterKeys.accessTokenSecret
    })
-   currentUser.post(`statuses/update`, { status: req.body.text })
+   let twitterposter = currentUser.post(`statuses/update`, { status: req.body.text })
       .then((res) => {
          sqlOperations.savepost(res)
       })
@@ -46,21 +47,38 @@ router.post(`/post`, async (req, res) => {//https://api.linkedin.com/v2/ugcPosts
          throw err
       })
    let linkedinPost = {
-      "author": "urn:li:person:8675309",
-      "lifecycleState": "PUBLISHED",
-      "specificContent": {
-         "com.linkedin.ugc.ShareContent": {
-            "shareCommentary": {
-               "text": "Hello World! This is my first Share on LinkedIn!"
-            },
-            "shareMediaCategory": "NONE"
+      method: 'POST',
+      url: 'https://api.linkedin.com/v2/shares',
+      headers: {
+         'cache-control': 'no-cache',
+         Authorization: 'Bearer AQUYM3KLxBKP-jlbAmO7vTeRWbI4GK8iTC-BLfZVPxqcdRr4TsaDVDL_7d8f07uWCgmMEhtaThs_lebqSWAEpRYdWeCsBn9AGvQjfGJcXb22hHrW6cH-i6nc1hhvX3iV6YjZMZGhlywh_atNgIapCUq9atar2J27CObXzPBjtPW-A_zMEUp5p5bgk17ClJJsw0tVwbC0b0aFN_Qlf4Ur4V016VMQCDm-QyLgUUm4sz5H9af4LtKGeIC_sT2WMw9dPQCL2hiKIixvkc7sXUvvJ217MZYQylcIFQiwhTtjzB1EBX9oHndDkv-HWcj_04tzab6nl6e1aqHjmGWbSf-tFGExCb4hrA',
+         'Content-Type': 'application/json'
+      },
+      body: {
+         owner: 'urn:li:person:VcAHgAXQ1o',
+         subject: 'Test Share 33',
+         text: {
+            text: `${req.body.text}`
          }
       },
-      "visibility": {
-         "com.linkedin.ugc.MemberNetworkVisibility": "PRIVATE"
-      }
+      json: true
    }
-   
+   // "X-Restli-Protocol-Version": "2.0.0",
+   let linkedposter = request.post(linkedinPost, (err, res) => {
+      if (err) {
+         console.log(err)
+      }
+      else {
+         console.log(res)
+      }
+   })
+   let poster = {
+      linkedin: linkedposter(),
+      twitter: twitterposter()
+   }
+   req.body.foreach(network => {
+      poster[network]
+   })
    res.send(true)
 })
 router.post('/log-in', async (req, res) => {
