@@ -34,7 +34,7 @@ class Inputs extends Component{
     render () {
         const idea = 'check'
         return (
-        <div className="start-page-inputs">{this.createInputsArea()} <div class="myButton" ><StartPageButton /></div></div>
+        <div className="start-page-inputs">{this.createInputsArea()} </div>
         )
         
     }
