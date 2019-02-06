@@ -33,7 +33,7 @@
 
 #loginContainer{
   display: grid;
-  grid-template-columns: 3fr,1fr,1fr;
+  /* grid-template-columns: 2fr,1fr,1fr; */
 }
 
 .start-page-inputs{
@@ -51,8 +51,8 @@
   margin-top: 20px;
 }
 .signInButton {
-  display: grid;
-  grid-column: 1/9;
+  
+  /* grid-column: 1/9; */
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -104,7 +104,7 @@
 }
 
 .navbar a:hover {
-  background-color: #f78733;
+  background-color: #f78733;  
   border-top-left-radius: 10%
   /* height: 100%; */
 }

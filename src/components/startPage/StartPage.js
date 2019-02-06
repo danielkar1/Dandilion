@@ -19,7 +19,7 @@ class StartPage extends Component {
         return (
             <div id="login">
                 <Inputs />
-                <StartPageButton />
+                <StartPageButton /> 
             </div>
         )
     }

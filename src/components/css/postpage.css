@@ -42,10 +42,13 @@ body{
     border: black, solid , 1px;
     border-radius: 20%;
     padding: 20%;
-    background: #fff92e;
+    background-color: #f78733;  
     
 }
 .main-social{
+    display: grid;
+    
+   
     background: #4abdac;
     align-items: center;
     border: fff92e groove 5px;
@@ -56,9 +59,9 @@ body{
 .social-colums-container{ 
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    margin-top: 30%;
+    /* margin-top: 20%; */
     grid-gap: 3%;
-    height: 50%;
+    height: 70%;
     
     border: grey groove 5px;
     /* grid-auto-columns: minmax(150px, auto); */
@@ -98,10 +101,15 @@ body{
 
 .current-post{
     display:grid;
+
     margin: 10%;
     padding: 10%;
 }
 
+.popupPost{
+    background: #637aad;
+    height: 100%;
+}
 .myButton {  
 	-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;

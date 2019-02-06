@@ -6,7 +6,7 @@ import PopUp from './popup/PopUp';
 @inject(`MainPostPageStore`)
 @observer
 class PostList extends Component {
-  
+
     createPostList = () =>{
       const PostListData = this.props.MainPostPageStore.Postlist2
         return Object.keys(PostListData).map((post, index) =>{
@@ -23,13 +23,13 @@ class PostList extends Component {
       return (
         
         <div className="post-list">
-         <div className="social-icons">
+         <div  className="social-icons">
           <button className="icon">icon1</button>
           <button className="icon">icon2</button>
           <button className="icon">icon3</button>
             <button className="icon">icon4</button> 
             </div>
-            <a href="#" class="myButton">New Post<PopUp/></a> 
+            <a href="#" className="myButton">New Post<PopUp/></a> 
           {this.createPostList()}
         </div>
       );
