@@ -18,7 +18,7 @@ CONSTS.js
 .env.development.local
 .env.test.local
 .env.production.local
-
+CONSTS.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
