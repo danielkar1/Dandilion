@@ -37,7 +37,7 @@ class MainPostPageStore {
     @observable addPost = (text, socialNets) => {
         console.log(text)
         socialNets = socialNets.filter(n => n)
-        console.log(socialNets)
+        // console.log(socialNets)
         const lastPostNum = this.findLastPostNum
         let newthing ={}
         socialNets.map(socialNet => {
@@ -55,22 +55,24 @@ class MainPostPageStore {
         }
 
     }
-    @observable likesSum = 0
-    @action findTotalLikesOfPost = () => {
-        for (let post in this.PostList2) {
-            let socialNets = this.Postlist2[post].socialNets
-            for (let socialNet in socialNets) {
-                this.likesSum += socialNet.Likes
-            }
-        }
-        return this.likesSum
+    findTotalLikesOfPost = (postName) => {
+        let likesSum = 0
+        let socialNets = this.Postlist2[postName].SocialNets
+        let socialNetsArray = Object.keys(socialNets)
+        
+        socialNetsArray.forEach( socialNet => 
+                likesSum += socialNets[socialNet].Likes
+            )
+        return likesSum
     }
     @action findMostLikedPost = () => {
         let likesSum = 0
         let mostLikedPost = ''
         let maxLikesSum = -Infinity
         const posts = Object.keys(this.Postlist2)
-        return this.findTotalLikesOfPost()
+        let stats= posts.map(post =>{return {[post]: this.findTotalLikesOfPost(post)}})
+        return stats
+        //  this.findTotalLikesOfPost()
         // console.log(posts)
         // const socialNets = Object.keys(this.Postlist2.Post1.SocialNets)
         // // console.log(socialNets)

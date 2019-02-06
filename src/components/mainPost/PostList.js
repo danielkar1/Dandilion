@@ -5,8 +5,8 @@ import { inject, observer } from 'mobx-react'
 @observer
 class PostList extends Component {
   showMostLikedPost = () => {
-    const mostLikedPost = this.props.MainPostPageStore.findTotalLikesOfPost()
-    console.log(mostLikedPost)
+    const stats = this.props.MainPostPageStore.findMostLikedPost()
+    console.log(stats)
   }
   
     createPostList = () =>{
@@ -25,7 +25,7 @@ class PostList extends Component {
       // console.log(e.currentTarget.className)
     }
     render() {
-      // this.showMostLikedPost()
+      this.showMostLikedPost()
     //  this.props.MainPostPageStore.getPosts()
       return (
         <div className="post-list">

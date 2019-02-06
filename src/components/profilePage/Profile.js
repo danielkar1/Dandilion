@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SocialNetLoginButton from './SocialNetLoginButton';
 import { inject, observer } from 'mobx-react'
 
-@inject(`MainPostPageStore`)
+@inject(`MainPostPageStore`, `StartPageStore`)
 @observer
 class Profile extends Component {
   socialNetworks=()=>{
