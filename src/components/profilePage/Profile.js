@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
 import SocialNetLoginButton from './SocialNetLoginButton';
+import { inject, observer } from 'mobx-react'
 
+@inject(`MainPostPageStore`, `StartPageStore`)
 @observer
 class Profile extends Component {
   socialNetworks=()=>{
-    let networks = [`facebook`,`twitter`,`linkedin`]
-    return networks.map(network=>{
+    let networks = [`facebook`,`twitter`, `instagram`, `linkdin`]
+    return networks.map((network, index)=>{
       return(
-        <SocialNetLoginButton network={network}/>
+        <div key={index}>
+          <SocialNetLoginButton network={network}/>
+          <i className={this.props.MainPostPageStore.socialNetImg[network]}></i>
+        </div>
       )
     })
   }
   render() {
     return (
       <div className="profile">
-        {this.socialNetworks()}
+        <div>{this.socialNetworks()}</div>
       </div>
     );
   }

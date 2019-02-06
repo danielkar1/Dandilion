@@ -8,6 +8,7 @@ import PostStore from './stores/PostStore';
 import SocialNetStore from './stores/SocialNetStore'
 import StartPageStore from './stores/StartPageStore'
 import MainPostPageStore from './stores/MainPostPageStore'
+import RootStore from './stores/RootStore'
 
 const stores = {
     PostStore,
@@ -17,7 +18,7 @@ const stores = {
 }
 
 ReactDOM.render(
-    <Provider {...stores}>
+    <Provider {...stores} >
         <App />
     </Provider>
     , document.getElementById('root')

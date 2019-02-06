@@ -20,11 +20,12 @@ class Poster extends Component {
             img: this.props.PostStore.Image
         }
         // console.log(clientInput)
+        this.props.MainPostPageStore.addPost(this.props.PostStore.Text, this.props.SocialNetStore.networksUsed)
+        this.props.PostStore.deletInput()
+        this.closeModal()
         Axios.post(url, clientInput)
-            .then(res => {
-                // this.props.PostStore.resetValues()
-                this.props.PostStore.deletInput()
-                this.closeModal()
+        .then(res => {
+            // this.props.PostStore.resetValues()
             })
             .catch(err=>console.log(err))
     }

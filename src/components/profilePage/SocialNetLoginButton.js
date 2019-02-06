@@ -43,11 +43,16 @@ class SocialNetLoginButton extends Component {
     render() {
         return (
             <div className={'button'}>
+            {this.props.StartPageStore.socialNetsLoginStatus[this.props.network]?
+            <span>
+                {this.props.network} Signed-in
+            </span>:
                 <button
-                    onClick={this.startAuth.bind(this)}
+                onClick={this.startAuth.bind(this)}
                 >
                     {this.props.network}
                 </button>
+            }
             </div>
         )
     }

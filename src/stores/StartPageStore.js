@@ -13,6 +13,12 @@ class StartPageStore {
             value: ''
         }
     }
+    @observable socialNetsLoginStatus = {
+        facebook: false,
+        twitter: true,
+        instagram: false,
+        linkdin: true
+    }
     @observable location = ``
 
     @observable internalId = ``
