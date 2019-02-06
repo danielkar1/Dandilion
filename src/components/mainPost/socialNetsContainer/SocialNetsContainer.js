@@ -5,15 +5,14 @@ import SocialNetInfo from './SocialNetInfo'
 
 @observer
 class SocialNetsContainer extends Component {
-    
-    render() {
-      return (
-        <div className="social-nets-container">
-            <SocialNetsImg />
-            <SocialNetInfo />
-        </div>
-      )
-    }
+  render() {
+    return (
+      <div className="social-nets-container">
+        <SocialNetsImg />
+        <SocialNetInfo />
+      </div>
+    )
   }
+}
 
-  export default SocialNetsContainer
+export default SocialNetsContainer

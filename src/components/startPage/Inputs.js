@@ -1,10 +1,10 @@
-import React,{ Component } from 'react'
+import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import StartPageButton from './StartPageButton';
 
 @inject(`StartPageStore`)
 @observer
-class Inputs extends Component{
+class Inputs extends Component {
     createInputsArea = () => {
         const StartPageData = this.props.StartPageStore.StartPageData
         return Object.keys(StartPageData).map((inputProperty, index) => {
@@ -12,9 +12,9 @@ class Inputs extends Component{
                 <div className="login-div" key={index}>
                     <label>{inputProperty}:</label>
                     <input type={StartPageData[inputProperty].type}
-                    name={inputProperty}
-                    placeholder={StartPageData[inputProperty].placeholder}
-                    onChange={this.handleChange}
+                        name={inputProperty}
+                        placeholder={StartPageData[inputProperty].placeholder}
+                        onChange={this.handleChange}
                     >
                     </input>
                 </div>
@@ -24,15 +24,12 @@ class Inputs extends Component{
     handleChange = (e) => {
         this.props.StartPageStore.changeStartPageData(e.target.name, e.target.value)
     }
-    check = () => {
-        let obj = { name: 'moshiko', job: 'fic'}
-        Object.keys(obj)
-    }
-    render () {
-        const idea = 'check'
+    render() {
         return (
-        <div className="start-page-inputs">{this.createInputsArea()} <div  ><StartPageButton /></div></div
-        )   
+            <div className="start-page-inputs">
+                {this.createInputsArea()}
+            </div>
+        )
     }
 }
 
