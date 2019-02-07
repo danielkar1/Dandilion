@@ -17,7 +17,7 @@ class MainPostPage extends Component {
             <div className="PostPage-container">
             <div> <PostList /> </div>
             <div className="main-social"> 
-            <div class="current-post"><CurrentPost /></div>
+            <div><CurrentPost /></div>
            <SocialNetInfo /> 
              </div> 
            </div>

@@ -46,6 +46,11 @@ body{
     background-color:  #6077ab;  
     
 }
+.post:hover {
+    background-color: #4ab3f4;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0, 0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0, 0.12);
+
+}
 .main-social{
     display: grid;
     
@@ -105,6 +110,9 @@ body{
     
 }
 .ingament-info{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-content: center;
     color: black;
     border-bottom: black groove 1px;
     font-size: 18px;
@@ -122,9 +130,30 @@ body{
 }
 
 .popupPost{
+    display: flex;
     background: #637aad;
     height: 100%;
 }
+
+.fa-facebook-square:before{
+    color: #4267b2;
+    font-size: 36px;
+}
+.fa-instagram:before {
+    color:#dc3172;
+    font-size: 36px;
+}
+
+.fa-twitter-square:before{
+    color:#4ab3f4;
+    font-size: 36px;
+} 
+.fa-linkedin:before{
+    color: #0077b5;
+    font-size: 36px;
+
+}
+
 .myButton {  
     font-family: 'Montserrat', sans-serif;
     border-radius: 4px;

@@ -135,7 +135,8 @@
 }
 
 .navbar a:hover {
-  background-color: #c6c5b9;  
+    background-color: #4ab3f4;
+  
   color: black;
   /* height: 100%; */
 }

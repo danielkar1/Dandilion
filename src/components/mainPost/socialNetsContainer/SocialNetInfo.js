@@ -16,12 +16,12 @@ class SocialNetInfo extends Component {
             <i className={this.props.MainPostPageStore.socialNetImg[socialNet]}></i>
           </div>
           <div className="ingament-info">
-            Likes: {socialNetsLoc[socialNet].Likes}
+           <div> Likes:</div> {socialNetsLoc[socialNet].Likes}
           </div>
           <div className="ingament-info">
-            Shares: {socialNetsLoc[socialNet].Shares}</div>
-          <div>
-            Comments: {socialNetsLoc[socialNet].comments.length}
+          <div> Shares:</div> {socialNetsLoc[socialNet].Shares}</div>
+          <div className="ingament-info"> 
+           <div> Comments:</div> {socialNetsLoc[socialNet].comments.length}
           </div>
         </div>
       )
