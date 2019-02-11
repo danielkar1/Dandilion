@@ -18,13 +18,24 @@ class StartPageButton extends Component {
             name: StartPageData.name.value
         })
             .then(Id => {
-                this.props.StartPageStore.updateId(Id)
-                this.props.StartPageStore.resetValues()
+                console.log(Id)
+                if (Id.data) {
+                    Id = Id.data.id
+                    this.props.StartPageStore.updateId(Id)
+                    this.props.StartPageStore.resetValues()
+                    window.sessionStorage.setItem('status', 'loggedIn')
+                    window.sessionStorage.setItem('u_id', Id)
+                } else {
+                    alert(`Wrong user or password`)
+                }
             })
     }
     render() {
         return (
-            <div className="myButton" onClick={this.oparate}>{this.props.location}</div>
+            <div className={`myButton ${this.props.location}`}
+                onClick={this.oparate}>
+                {this.props.location}
+            </div>
         )
     }
 }

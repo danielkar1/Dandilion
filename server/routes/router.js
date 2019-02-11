@@ -38,13 +38,6 @@ router.post(`/post`, async (req, res) => {
       access_token_key: twitterKeys.accessToken,
       access_token_secret: twitterKeys.accessTokenSecret
    })
-   // let twitterposter = currentUser.post(`statuses/update`, { status: req.body.text })
-   //    .then((res) => {
-   //       sqlOperations.savepost(res)
-   //    })
-   //    .catch(err => {
-   //       throw err
-   //    })
    let linkedinPost = {
       method: 'POST',
       url: 'https://api.linkedin.com/v2/shares',
@@ -63,14 +56,6 @@ router.post(`/post`, async (req, res) => {
       json: true
    }
    // "X-Restli-Protocol-Version": "2.0.0",
-   // let linkedposter = request.post(linkedinPost, (err, res) => {
-   //    if (err) {
-   //       console.log(err)
-   //    }
-   //    else {
-   //       sqlOperations.savepost(res)
-   //    }
-   // })
    poster = {
       linkedin: () => {
          request.post(linkedinPost, (err, res) => {
@@ -121,8 +106,12 @@ router.post(`/post`, async (req, res) => {
 })
 router.post('/login', async (req, res) => {
    let id = await sqlOperations.getUserId(req.body.password, req.body.name)
-   console.log(id)
-   res.send(id)
+   console.log(req)
+   if(id){
+      res.send(id)
+   } else {
+      res.send(false)
+   }
 })
 router.post(`/register`, async (req, res) => {
    let password = req.body.password

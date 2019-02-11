@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx';
+import { action, observable, computed } from 'mobx';
 
 class StartPageStore {
     @observable StartPageData = {
@@ -26,7 +26,6 @@ class StartPageStore {
     }
     @action changeStartPageData(name, value) {
         this.StartPageData[name].value = value
-        // console.log(this.StartPageData[name].value)
     }
     @action resetValues() {
         Object.keys(this.StartPageData).map(input => {
@@ -35,6 +34,12 @@ class StartPageStore {
     }
     @action updateLocation(location) {
         this.location = location ? `Log-in` : `Register`
+    }
+    @computed get loginStatus(){
+        let status = sessionStorage.getItem('status')
+        if (status){
+            this.updateId(sessionStorage.getItem('u_id'))
+        }
     }
 }
 
