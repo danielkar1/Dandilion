@@ -14,7 +14,7 @@ class Navbar extends Component {
         <div className="spacer"></div>
         <div> <Login /> </div>
       </div>
-    );
+    );  
   }
 }
 
