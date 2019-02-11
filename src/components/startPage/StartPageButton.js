@@ -10,6 +10,8 @@ import test_URL from '../../test_URL'
 @observer
 class StartPageButton extends Component {
     oparate = () => {
+        this.props.StartPageStore.saveToLocalStorage()
+
         let StartPageStore = this.props.StartPageStore
         let StartPageData = StartPageStore.StartPageData
         let url = `${test_URL}/${this.props.location}`

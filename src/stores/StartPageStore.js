@@ -13,6 +13,17 @@ class StartPageStore {
             value: ''
         }
     }
+  
+    @action saveToLocalStorage(){
+        let user ={
+            name:this.StartPageData.name.value,
+            password:this.StartPageData.password.value
+        }
+       let jsonUser=JSON.stringify(user)
+       window.localStorage.setItem("user",jsonUser)
+       console.log("got here")
+    }
+
     @observable socialNetsLoginStatus = {
         facebook: false,
         twitter: false,
@@ -36,6 +47,7 @@ class StartPageStore {
     @action updateLocation(location) {
         this.location = location ? `Log-in` : `Register`
     }
+   
 }
 
 export default new StartPageStore()

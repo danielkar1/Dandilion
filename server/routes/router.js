@@ -2,7 +2,7 @@ const express = require('express')
 const request = require(`request`)
 const Twitter = require(`twitter`)
 const router = express.Router()
-const sqlOperations = require(`../modules/PopulateDb`)
+const sqlOperations = require(`../../src/PopulateDb`)
 const { Auth, addUidtoSession } = require(`./passport-setup`)
 const { TWITTER_CONFIG } = require(`../../CONSTS`)
 
@@ -121,6 +121,7 @@ router.post(`/post`, async (req, res) => {
 })
 router.post('/login', async (req, res) => {
    let id = await sqlOperations.getUserId(req.body.password, req.body.name)
+  
    console.log(id)
    res.send(id)
 })

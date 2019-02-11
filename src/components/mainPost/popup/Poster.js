@@ -2,12 +2,18 @@ import React, { Component } from 'react'
 import Axios from 'axios';
 import { observer, inject } from 'mobx-react'
 import test_URL from '../../../test_URL'
+const sqlOperations= require('./../../../PopulateDb')
 
 @inject(`PostStore`, `StartPageStore`, `SocialNetStore`, `MainPostPageStore`)
 @observer
 class Poster extends Component {
     clickFunc = () => {
-        let id = 1
+        // id=sqlOperations.getUserId(password,name)
+     
+        let getItem=localStorage.getItem("user")
+        let item=JSON.parse(getItem)
+        let id= sqlOperations.getUserId(item.password,item.name)
+        console.log(id)
         let url = `${test_URL}/post`
         console.log(url)
         let clientInput = {

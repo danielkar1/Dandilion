@@ -1,6 +1,6 @@
-const CONSTS = require(`../../CONSTS`)
+const CONSTS = require(`../CONSTS`)
 const Sequelize = require('sequelize')
-const Post = require('./Scheme')
+const Post = require('../server/modules/Scheme')
 const mongoose = require(`mongoose`)
 mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost:3000/Posts', { useNewUrlParser: true })
 const sequelize = new Sequelize(`mysql://${CONSTS.dbConfig.name}:${CONSTS.dbConfig.password}@fs-bootcamp.cqc0oq2maxqm.us-west-2.rds.amazonaws.com/${CONSTS.dbConfig.dbName}`)
