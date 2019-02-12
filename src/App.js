@@ -10,9 +10,6 @@ import DevTools from 'mobx-react-devtools'
 
 @observer
 class App extends Component {
-  componentDidMount=()=>{
-    
-  }
   render() {
     return (
       <Router>

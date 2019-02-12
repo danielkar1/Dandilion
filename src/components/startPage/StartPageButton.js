@@ -13,9 +13,10 @@ class StartPageButton extends Component {
         let StartPageStore = this.props.StartPageStore
         let StartPageData = StartPageStore.StartPageData
         let url = `${test_URL}/${this.props.location}`
+        console.log(StartPageData.password.value)
         Axios.post(url, {
             password: StartPageData.password.value,
-            name: StartPageData.name.value
+            name: sessionStorage.getItem(`name`)
         })
             .then(Id => {
                 console.log(Id)

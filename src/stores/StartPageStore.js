@@ -5,7 +5,7 @@ class StartPageStore {
         name: {
             type: 'text',
             placeholder: 'Username',
-            value: ''
+            value: ``
         },
         password: {
             type: 'password',
@@ -25,7 +25,11 @@ class StartPageStore {
         this.internalId = Id
     }
     @action changeStartPageData(name, value) {
-        this.StartPageData[name].value = value
+        if(name===`name`){
+            sessionStorage.setItem(`name`,`${this.StartPageData.name.value}${value}`)
+        } else {
+            this.StartPageData[name].value = value
+        }
     }
     @action resetValues() {
         Object.keys(this.StartPageData).map(input => {

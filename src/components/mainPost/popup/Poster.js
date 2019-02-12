@@ -7,7 +7,7 @@ import test_URL from '../../../test_URL'
 @observer
 class Poster extends Component {
     clickFunc = () => {
-        let id = 1
+        let id = sessionStorage.getItem(`u_id`)
         let url = `${test_URL}/post`
         console.log(url)
         let clientInput = {
