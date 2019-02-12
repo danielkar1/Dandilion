@@ -29,7 +29,8 @@ class PopulateDb {
             .query(`
                 SELECT 
                     SocialNetworkToken, 
-                    SocialNetworkTokenSecret
+                    SocialNetworkTokenSecret,
+                    SocialNetwork_id
                 FROM 
                     SocialNetworkData 
                 WHERE
@@ -38,7 +39,8 @@ class PopulateDb {
         let results = JSON.parse(JSON.stringify(result[0]))
         return {
             accessToken: results[0].SocialNetworkToken,
-            accessTokenSecret: results[0].SocialNetworkTokenSecret
+            accessTokenSecret: results[0].SocialNetworkTokenSecret,
+            SocialNetwork_id: results[0].SocialNetwork_id
         }
     }
     async getUserId(password, name) {
@@ -55,7 +57,7 @@ class PopulateDb {
         return result[0]
     }
     savepost(post, img) {
-        let newpost = new Post({ post: post })
+        let newpost = new Post({post:post})
         newpost.save()
     }
 }

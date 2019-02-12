@@ -6,14 +6,8 @@ import test_URL from '../../../test_URL'
 @inject(`PostStore`, `StartPageStore`, `SocialNetStore`, `MainPostPageStore`)
 @observer
 class Poster extends Component {
-    clickFunc = async() => {
-        let getItem= localStorage.getItem("user")
-        let userData=JSON.parse(getItem)
-        console.log(userData)
-        let id= await Axios.post(`${test_URL}/login`, userData)
-        .then(res=> id=res.data.id)
-        console.log(id)
-
+    clickFunc = () => {
+        let id = sessionStorage.getItem(`u_id`)
         let url = `${test_URL}/post`
         let clientInput = {
             networks: this.props.SocialNetStore.networksUsed,
@@ -22,7 +16,7 @@ class Poster extends Component {
             img: this.props.PostStore.Image
         }
         console.log(clientInput)
-        await Axios.post(url, clientInput)
+        Axios.post(url, clientInput)
         .then(res => {
             this.props.MainPostPageStore.addPost(this.props.PostStore.Text, this.props.SocialNetStore.networksUsed)
             this.props.PostStore.deletInput()

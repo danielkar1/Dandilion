@@ -14,8 +14,8 @@ class Inputs extends Component {
                     name={inputProperty}
                     placeholder={StartPageData[inputProperty].placeholder}
                     onChange={this.handleChange}
-                    >
-                    </input>
+                    defaultValue={sessionStorage.getItem(`name`)}
+                    />
                 )
                 // <div className="login-div" key={index}>
                     {/* <label>{inputProperty}:</label> */}
