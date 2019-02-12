@@ -16,7 +16,7 @@ class PopulateDb {
         console.log(newUser)
         return newUser
     }
-    async insertTokensToDb(internalID, socialNetWorkName, accessToken, accessTokenSecret, socialNetworkId) {
+    async insertTokensToDb(internalID,socialNetWorkName, accessToken, accessTokenSecret, socialNetworkId) {
         let tokensTOdb = await sequelize
             .query(`
             INSERT INTO 
