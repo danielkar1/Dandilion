@@ -10,21 +10,35 @@ import test_URL from '../../test_URL'
 @observer
 class StartPageButton extends Component {
     oparate = () => {
+        // this.props.StartPageStore.saveToLocalStorage()
+
         let StartPageStore = this.props.StartPageStore
         let StartPageData = StartPageStore.StartPageData
         let url = `${test_URL}/${this.props.location}`
+        console.log(StartPageData.password.value)
         Axios.post(url, {
             password: StartPageData.password.value,
-            name: StartPageData.name.value
+            name: sessionStorage.getItem(`name`)
         })
             .then(Id => {
-                this.props.StartPageStore.updateId(Id)
-                this.props.StartPageStore.resetValues()
+                console.log(Id)
+                if (Id.data) {
+                    Id = Id.data.id
+                    this.props.StartPageStore.updateId(Id)
+                    this.props.StartPageStore.resetValues()
+                    window.sessionStorage.setItem('status', 'loggedIn')
+                    window.sessionStorage.setItem('u_id', Id)
+                } else {
+                    alert(`Wrong user or password`)
+                }
             })
     }
     render() {
         return (
-            <div className="myButton" onClick={this.oparate}>{this.props.location}</div>
+            <div className={`myButton ${this.props.location}`}
+                onClick={this.oparate}>
+                {this.props.location}
+            </div>
         )
     }
 }

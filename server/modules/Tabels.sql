@@ -27,3 +27,5 @@ Use AlonRR_db;
 
 -- SELECT SocialNetworkToken,SocialNetworkTokenSecret FROM SocialNetworkData WHERE
 -- User_id= 1;
+
+-- DELETE FROM SocialNetworkData

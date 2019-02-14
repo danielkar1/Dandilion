@@ -1,11 +1,11 @@
-import { action, observable } from 'mobx';
+import { action, observable, computed } from 'mobx';
 
 class StartPageStore {
     @observable StartPageData = {
         name: {
             type: 'text',
             placeholder: 'Username',
-            value: ''
+            value: ``
         },
         password: {
             type: 'password',
@@ -13,6 +13,17 @@ class StartPageStore {
             value: ''
         }
     }
+  
+    @action saveToLocalStorage(){
+        let user ={
+            name:this.StartPageData.name.value,
+            password:this.StartPageData.password.value
+        }
+       let jsonUser=JSON.stringify(user)
+       window.localStorage.setItem("user",jsonUser)
+       console.log("got here")
+    }
+
     @observable socialNetsLoginStatus = {
         facebook: false,
         twitter: false,
@@ -25,8 +36,11 @@ class StartPageStore {
         this.internalId = Id
     }
     @action changeStartPageData(name, value) {
-        this.StartPageData[name].value = value
-        // console.log(this.StartPageData[name].value)
+        if(name===`name`){
+            sessionStorage.setItem(`name`,`${this.StartPageData.name.value}${value}`)
+        } else {
+            this.StartPageData[name].value = value
+        }
     }
     @action resetValues() {
         Object.keys(this.StartPageData).map(input => {
@@ -35,6 +49,12 @@ class StartPageStore {
     }
     @action updateLocation(location) {
         this.location = location ? `Log-in` : `Register`
+    }
+    @computed get loginStatus(){
+        let status = sessionStorage.getItem('status')
+        if (status){
+            this.updateId(sessionStorage.getItem('u_id'))
+        }
     }
 }
 

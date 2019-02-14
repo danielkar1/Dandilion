@@ -7,9 +7,8 @@ import test_URL from '../../../test_URL'
 @observer
 class Poster extends Component {
     clickFunc = () => {
-        let id = 1
+        let id = sessionStorage.getItem(`u_id`)
         let url = `${test_URL}/post`
-        console.log(url)
         let clientInput = {
             networks: this.props.SocialNetStore.networksUsed,
             id: id,
@@ -22,6 +21,7 @@ class Poster extends Component {
             this.props.MainPostPageStore.addPost(this.props.PostStore.Text, this.props.SocialNetStore.networksUsed)
             this.props.PostStore.deletInput()
             this.closeModal()
+           res.end()
             // this.props.PostStore.resetValues()
             })
             .catch(err=>console.log(err))
@@ -29,11 +29,10 @@ class Poster extends Component {
     closeModal = () => {
         this.props.MainPostPageStore.newPostPopUp.visible = false;
     }
+
     render() {
         return (
-            <button
-                onClick={this.clickFunc}
-            >
+            <button  onClick={this.clickFunc}>
                 Post
             </button>
         )

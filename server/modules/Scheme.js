@@ -4,13 +4,7 @@ mongoose.connect('mongodb://localhost/Posts', { uslNewUrlParser : true})
 const Schema=mongoose.Schema
 
 let postSchema= new Schema({
- 
-    userIdkey: String,
-    text: String,
-    img: String,
-    date: String,
-    socialNetwork: [],
-    post: {},
+post:{}
 })
 
 const Post = mongoose.model(`posts`, postSchema)

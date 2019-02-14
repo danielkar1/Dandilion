@@ -1,6 +1,6 @@
-const CONSTS = require(`../../CONSTS`)
+const CONSTS = require(`../CONSTS`)
 const Sequelize = require('sequelize')
-const Post = require('./Scheme')
+const Post = require('../server/modules/Scheme')
 const mongoose = require(`mongoose`)
 mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost:3000/Posts', { useNewUrlParser: true })
 const sequelize = new Sequelize(`mysql://${CONSTS.dbConfig.name}:${CONSTS.dbConfig.password}@fs-bootcamp.cqc0oq2maxqm.us-west-2.rds.amazonaws.com/${CONSTS.dbConfig.dbName}`)
@@ -16,7 +16,7 @@ class PopulateDb {
         console.log(newUser)
         return newUser
     }
-    async insertTokensToDb(internalID, socialNetWorkName, accessToken, accessTokenSecret, socialNetworkId) {
+    async insertTokensToDb(internalID,socialNetWorkName, accessToken, accessTokenSecret, socialNetworkId) {
         let tokensTOdb = await sequelize
             .query(`
             INSERT INTO 
@@ -29,7 +29,8 @@ class PopulateDb {
             .query(`
                 SELECT 
                     SocialNetworkToken, 
-                    SocialNetworkTokenSecret
+                    SocialNetworkTokenSecret,
+                    SocialNetwork_id
                 FROM 
                     SocialNetworkData 
                 WHERE
@@ -38,7 +39,8 @@ class PopulateDb {
         let results = JSON.parse(JSON.stringify(result[0]))
         return {
             accessToken: results[0].SocialNetworkToken,
-            accessTokenSecret: results[0].SocialNetworkTokenSecret
+            accessTokenSecret: results[0].SocialNetworkTokenSecret,
+            SocialNetwork_id: results[0].SocialNetwork_id
         }
     }
     async getUserId(password, name) {
@@ -55,7 +57,7 @@ class PopulateDb {
         return result[0]
     }
     savepost(post, img) {
-        let newpost = new Post({ post: post })
+        let newpost = new Post({post:post})
         newpost.save()
     }
 }
